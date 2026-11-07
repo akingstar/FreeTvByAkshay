@@ -4,8 +4,8 @@
   --panel:#141414;
   --panel2:#1b1b1b;
   --line:#292929;
-  --gold:#d9b56d;
-  --gold2:#f0d69e;
+  --gold:#36c9f4;
+  --gold2:#a5edff;
   --text:#f7f5ef;
   --muted:#99958c;
   --green:#26d17c;
@@ -58,9 +58,9 @@ main {width:min(1180px,92%);margin:auto}
   align-items:center;
   padding:34px 5%;
   margin:18px 0 22px;
-  border:1px solid #332b1d;
+  border:1px solid #203448;
   border-radius:18px;
-  background:radial-gradient(ellipse at 80% 50%,#3a2c17 0%,#19150f 35%,#111 75%);
+  background:radial-gradient(ellipse at 80% 50%,#102d47 0%,#0b1622 35%,#111 75%);
 }
 .hero-content {position:relative;z-index:1}
 .eyebrow {
@@ -86,8 +86,8 @@ main {width:min(1180px,92%);margin:auto}
   padding:13px 18px;
   border:0;
   border-radius:7px;
-  background:linear-gradient(120deg,#c49b50,#f0d69e);
-  color:#17120a;
+  background:linear-gradient(120deg,#168bd2,#a5edff);
+  color:#07111b;
   font-size:11px;
   font-weight:900;
   letter-spacing:.7px;
@@ -99,15 +99,15 @@ main {width:min(1180px,92%);margin:auto}
   transform:translateY(-50%);
   width:220px;height:220px;
   display:grid;place-items:center;
-  border:1px solid #70572d;
+  border:1px solid #24516d;
   border-radius:50%;
-  color:#d9b56d;
+  color:#36c9f4;
   font-size:76px;font-weight:900;
   opacity:.3;
 }
 .hero-decoration:before,.hero-decoration:after {
   content:"";position:absolute;inset:15px;
-  border:1px solid #70572d;border-radius:50%;
+  border:1px solid #24516d;border-radius:50%;
 }
 .hero-decoration:after {inset:35px}
 .player-section,.india-section,.world-section {
@@ -167,7 +167,7 @@ main {width:min(1180px,92%);margin:auto}
 .player-actions {display:flex;gap:10px}
 .outline-button {
   padding:9px 13px;
-  border:1px solid #494237;
+  border:1px solid #263d52;
   border-radius:6px;
   background:transparent;
   color:var(--gold2);
@@ -221,13 +221,13 @@ main {width:min(1180px,92%);margin:auto}
   background:var(--panel2);
   transition:border-color .2s,transform .2s;
 }
-.channel-card:hover {border-color:#80683d;transform:translateY(-2px)}
+.channel-card:hover {border-color:#168bd2;transform:translateY(-2px)}
 .channel-top {display:flex;align-items:center;gap:11px;min-width:0}
 .channel-logo {
   width:43px;height:43px;flex:0 0 43px;
   display:grid;place-items:center;
   overflow:hidden;
-  border:1px solid #39332a;
+  border:1px solid #29445b;
   border-radius:8px;
   background:#101010;
   color:var(--gold);
@@ -254,7 +254,7 @@ main {width:min(1180px,92%);margin:auto}
   border:0;
   border-radius:5px;
   background:var(--gold);
-  color:#17120a;
+  color:#07111b;
   font-size:10px;
   font-weight:900;
   cursor:pointer;
@@ -297,7 +297,7 @@ main {width:min(1180px,92%);margin:auto}
   padding:9px 13px;
   border:1px solid #51432b;
   border-radius:5px;
-  background:#19150f;
+  background:#0b1622;
   color:var(--gold2);
   cursor:pointer;
 }
@@ -391,8 +391,8 @@ html { scroll-padding-top: 88px; }
 }
 
 .tab-link.active {
-  color: #17120a;
-  background: linear-gradient(135deg,#c49b50,#f0d69e);
+  color: #07111b;
+  background: linear-gradient(135deg,#168bd2,#a5edff);
   border-color: #e7c77f;
   box-shadow: 0 4px 18px rgba(217,181,109,.17);
 }
@@ -476,4 +476,165 @@ html { scroll-padding-top: 88px; }
 @media (prefers-reduced-motion: reduce) {
   .tab-link { transition: none; }
   html { scroll-behavior: auto; }
+}
+
+
+/* AKSHAY TV - BLUE CYAN PREMIUM THEME */
+:root {
+  --gold: #36c9f4;
+  --gold2: #a5edff;
+  --bg: #080e17;
+  --panel: #101c2a;
+  --panel2: #142437;
+  --line: #263d52;
+  --text: #f2f8ff;
+  --muted: #9aafc3;
+  --green: #21d6a0;
+}
+
+.channel-card {
+  border-color: #263d52;
+  border-radius: 13px;
+  background: linear-gradient(145deg, #172a40, #101c2a);
+  box-shadow: 0 5px 18px rgba(0,0,0,.16);
+}
+
+.channel-card:hover {
+  border-color: #36c9f4;
+  box-shadow: 0 8px 25px rgba(20,160,220,.13);
+  transform: translateY(-3px);
+}
+
+.channel-logo {
+  width: 54px;
+  height: 54px;
+  flex-basis: 54px;
+  border: 1px solid #31516b;
+  border-radius: 11px;
+  background: #0a1725;
+  color: #36c9f4;
+}
+
+.channel-name {
+  color: #f3f8ff;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.channel-country {
+  color: #9aafc3;
+  font-size: 11px;
+}
+
+.channel-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.quality-badge,
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+
+.quality-badge {
+  color: #a5edff;
+  background: #123b55;
+  border: 1px solid #23658b;
+}
+
+.quality-4k {
+  color: #d8c4ff;
+  background: #302052;
+  border-color: #63469b;
+}
+
+.quality-fhd {
+  color: #a5edff;
+  background: #123b55;
+}
+
+.quality-hd {
+  color: #a5f0d5;
+  background: #104333;
+  border-color: #23785c;
+}
+
+.quality-sd {
+  color: #c4d0dc;
+  background: #293746;
+  border-color: #46596b;
+}
+
+.live-badge {
+  color: #ff9d9d;
+  background: #401c29;
+  border: 1px solid #713448;
+}
+
+.channel-programme {
+  margin-top: 12px;
+  padding: 9px 10px;
+  border-left: 2px solid #36c9f4;
+  border-radius: 4px;
+  background: rgba(7,17,27,.55);
+  color: #a9bfd2;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.play-button {
+  border-radius: 7px;
+  background: linear-gradient(120deg, #168bd2, #36c9f4);
+  color: #041522;
+  font-weight: 900;
+}
+
+.favorite-button {
+  border-color: #31516b;
+  background: #0d1a28;
+  color: #a5edff;
+}
+
+.search-input:focus,
+.filters input:focus,
+.filters select:focus {
+  border-color: #36c9f4;
+  box-shadow: 0 0 0 2px rgba(54,201,244,.12);
+}
+
+.pagination button {
+  border-color: #31516b;
+  background: #102235;
+  color: #a5edff;
+}
+
+.text-link {
+  color: #a5edff;
+}
+
+@media (max-width: 700px) {
+  .channel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .channel-card {
+    padding: 10px;
+  }
+  .channel-logo {
+    width: 43px;
+    height: 43px;
+    flex-basis: 43px;
+  }
+  .channel-name {
+    font-size: 12px;
+  }
 }

@@ -160,6 +160,19 @@ function saveFavorites() {
   }
 }
 
+function getQuality(name) {
+  const value = String(name || "").toLowerCase();
+  const match = value.match(/\b(2160p|1440p|1080p|720p|576p|480p|360p|4k|uhd|fhd|hd|sd)\b/);
+
+  if (!match) return "";
+
+  const q = match[1];
+  if (q === "2160p" || q === "4k" || q === "uhd") return "4K";
+  if (q === "1440p" || q === "1080p" || q === "fhd") return "FHD";
+  if (q === "720p" || q === "hd") return "HD";
+  return "SD";
+}
+
 function makeCard(channel) {
   const card = document.createElement("article");
   card.className = "channel-card";
@@ -176,7 +189,10 @@ function makeCard(channel) {
     img.src = channel.logo;
     img.alt = "";
     img.loading = "lazy";
-    img.onerror = () => img.replaceWith(logo.cloneNode(true));
+    img.onerror = () => {
+      img.remove();
+      logo.textContent = "▶";
+    };
     logo.replaceChildren(img);
   }
 
@@ -189,10 +205,30 @@ function makeCard(channel) {
 
   const country = document.createElement("div");
   country.className = "channel-country";
-  country.textContent = channel.country;
+  country.textContent = channel.country || "Live TV";
 
-  details.append(name,country);
-  top.append(logo,details);
+  const meta = document.createElement("div");
+  meta.className = "channel-meta";
+
+  const quality = getQuality(channel.name);
+  if (quality) {
+    const badge = document.createElement("span");
+    badge.className = "quality-badge quality-" + quality.toLowerCase();
+    badge.textContent = quality;
+    meta.append(badge);
+  }
+
+  const live = document.createElement("span");
+  live.className = "live-badge";
+  live.textContent = "● LIVE";
+  meta.append(live);
+
+  details.append(name, country, meta);
+  top.append(logo, details);
+
+  const programme = document.createElement("div");
+  programme.className = "channel-programme";
+  programme.textContent = "Programme guide not connected";
 
   const actions = document.createElement("div");
   actions.className = "card-actions";
@@ -201,15 +237,15 @@ function makeCard(channel) {
   play.className = "play-button";
   play.type = "button";
   play.textContent = "▶ WATCH";
-  play.addEventListener("click",() => playChannel(channel));
+  play.addEventListener("click", () => playChannel(channel));
 
   const fav = document.createElement("button");
   fav.className = "favorite-button";
   fav.type = "button";
   fav.textContent = favorites.has(channel.url) ? "♥" : "♡";
-  fav.setAttribute("aria-label","Toggle favorite");
-  fav.setAttribute("aria-pressed",String(favorites.has(channel.url)));
-  fav.addEventListener("click",() => {
+  fav.setAttribute("aria-label", "Toggle favorite");
+  fav.setAttribute("aria-pressed", String(favorites.has(channel.url)));
+  fav.addEventListener("click", () => {
     if (favorites.has(channel.url)) favorites.delete(channel.url);
     else favorites.add(channel.url);
     saveFavorites();
@@ -217,8 +253,8 @@ function makeCard(channel) {
     renderIndia();
   });
 
-  actions.append(play,fav);
-  card.append(top,actions);
+  actions.append(play, fav);
+  card.append(top, programme, actions);
   return card;
 }
 
