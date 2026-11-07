@@ -6,7 +6,7 @@
   const video = $("video");
   let hls = null;
   let activeFilter = "all";
-  let items = load(STORAGE_KEY, []);
+  let items = load(STORAGE_KEY, []).filter(item => item && item.source !== "public-playlist");
   let favorites = load(FAVORITES_KEY, []);
   let deferredInstall = null;
 
@@ -15,7 +15,8 @@
     catch { return fallback; }
   }
   function save() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    const personalItems = items.filter(item => item && item.source !== "public-playlist");
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(personalItems));
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
   }
   function toast(message) {
@@ -458,7 +459,7 @@
         }
       }
 
-      if (added) save();
+      // Public playlist stays in memory; do not fill browser storage.
       render();
       toast(added + " live channels loaded.");
       console.log("Public TV channels added:", added);
