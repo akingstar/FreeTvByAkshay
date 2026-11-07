@@ -1,476 +1,329 @@
 (() => {
-  "use strict";
-  const $ = (id) => document.getElementById(id);
-  const STORAGE_KEY = "ftvbyakshay.library.v1";
-  const FAVORITES_KEY = "ftvbyakshay.favorites.v1";
-  const video = $("video");
-  let hls = null;
-  let activeFilter = "all";
-  let pageStart = 0;
-  const PAGE_SIZE = 60;
-  let items = load(STORAGE_KEY, []).filter(item => item && item.source !== "public-playlist");
-  let favorites = load(FAVORITES_KEY, []);
-  let deferredInstall = null;
+"use strict";
 
-  function load(key, fallback) {
-    try { const value = JSON.parse(localStorage.getItem(key)); return Array.isArray(value) ? value : fallback; }
-    catch { return fallback; }
+const $ = id => document.getElementById(id);
+const PAGE_SIZE = 48;
+const PLAYLIST_URL = "./data/playlist.m3u?v=simple1";
+
+let channels = [];
+let filtered = [];
+let page = 0;
+let hls = null;
+
+const video = $("video");
+
+function safeUrl(value) {
+  try {
+    const u = new URL(String(value || ""));
+    return ["http:", "https:"].includes(u.protocol) ? u.href : "";
+  } catch {
+    return "";
   }
-  function save() {
-    const personalItems = items.filter(item => item && item.source !== "public-playlist");
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(personalItems));
-    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
-  }
-  function toast(message) {
-    const el = $("toast"); el.textContent = message; el.classList.add("show");
-    clearTimeout(toast.timer); toast.timer = setTimeout(() => el.classList.remove("show"), 2600);
-  }
-  function safeUrl(value) {
-    try { const u = new URL(value); return ["https:", "http:"].includes(u.protocol) ? u.href : null; }
-    catch { return null; }
-  }
+}
 
-  function normalizeCountry(value) {
-    const raw = String(value || "").trim();
-    if (!raw) return "International";
+function countryName(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "International";
 
-    const map = {
-      US: "United States", USA: "United States",
-      GB: "United Kingdom", UK: "United Kingdom",
-      IN: "India", AU: "Australia", CA: "Canada",
-      FR: "France", DE: "Germany", ES: "Spain",
-      IT: "Italy", JP: "Japan", KR: "South Korea",
-      BR: "Brazil", MX: "Mexico", AE: "United Arab Emirates",
-      SA: "Saudi Arabia", QA: "Qatar", TR: "Turkey",
-      PK: "Pakistan", BD: "Bangladesh", LK: "Sri Lanka",
-      CN: "China", RU: "Russia", ZA: "South Africa"
-    };
+  const aliases = {
+    US:"United States",USA:"United States",
+    GB:"United Kingdom",UK:"United Kingdom",
+    KR:"South Korea",KP:"North Korea",
+    AE:"United Arab Emirates",RU:"Russia",
+    CZ:"Czechia",TR:"Turkey",VN:"Vietnam",
+    BO:"Bolivia",IR:"Iran",SY:"Syria",
+    TW:"Taiwan",HK:"Hong Kong"
+  };
 
-    const upper = raw.toUpperCase();
-    return map[upper] || raw;
-  }
+  const upper = raw.toUpperCase();
+  if (aliases[upper]) return aliases[upper];
 
-  function detectLanguage(name, explicit) {
-    const explicitText = String(explicit || "").trim();
-    if (explicitText) return explicitText;
-
-    const text = String(name || "").toLowerCase();
-    const languages = [
-      ["English", /\benglish\b/],
-      ["Hindi", /\bhindi\b/],
-      ["Urdu", /\burdu\b/],
-      ["Arabic", /\barabic\b/],
-      ["Spanish", /\b(spanish|español|espanol)\b/],
-      ["French", /\bfrench|français\b/],
-      ["German", /\bgerman|deutsch\b/],
-      ["Persian", /\b(persian|farsi)\b/],
-      ["Portuguese", /\bportuguese\b/],
-      ["Russian", /\brussian\b/],
-      ["Chinese", /\b(chinese|mandarin)\b/],
-      ["Bengali", /\b(bengali|bangla)\b/],
-      ["Tamil", /\btamil\b/],
-      ["Telugu", /\btelugu\b/],
-      ["Japanese", /\bjapanese\b/],
-      ["Korean", /\bkorean\b/]
-    ];
-
-    const found = languages.find(([, pattern]) => pattern.test(text));
-    return found ? found[0] : "Unknown";
-  }
-
-  function syncFilter(select, values, label) {
-    if (!select) return;
-    const previous = select.value;
-    select.innerHTML = "";
-    const all = document.createElement("option");
-    all.value = "all";
-    all.textContent = "All " + label;
-    select.appendChild(all);
-
-    values.forEach(value => {
-      const option = document.createElement("option");
-      option.value = value;
-      option.textContent = value;
-      select.appendChild(option);
-    });
-
-    select.value = values.includes(previous) ? previous : "all";
-  }
-
-  function stopPlayback() {
-    if (hls) { hls.destroy(); hls = null; }
-    video.pause(); video.removeAttribute("src"); video.load();
-  }
-  function playItem(item) {
-    const url = safeUrl(item.url);
-    if (!url) return toast("Please use a valid http/https URL.");
-    stopPlayback();
-
-    video.querySelectorAll("track").forEach(track => track.remove());
-    if (item.subtitleUrl) {
-      const subtitleUrl = safeUrl(item.subtitleUrl);
-      if (subtitleUrl) {
-        const track = document.createElement("track");
-        track.kind = "captions";
-        track.label = "English";
-        track.srclang = "en";
-        track.src = subtitleUrl;
-        track.default = true;
-        video.appendChild(track);
-      }
-    }
-
-    $("nowTitle").textContent = item.name;
-    $("playingName").textContent = item.name;
-    $("playingDescription").textContent = item.description || "Enjoy this stream. Playback depends on the source provider and browser support.";
-    $("playingType").textContent = item.type === "live" ? "● LIVE CHANNEL" : "MY VIDEO";
-    $("playerMessage").classList.add("hidden");
-    const isHls = /\.m3u8($|[?#])/i.test(url) || item.type === "live";
-    if (isHls && window.Hls && Hls.isSupported()) {
-      hls = new Hls({ enableWorker: true, lowLatencyMode: true });
-      hls.loadSource(url); hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        const tracks = hls.subtitleTracks || [];
-        if (tracks.length) {
-          let english = tracks.findIndex(track =>
-            /en|english/i.test((track.lang || "") + " " + (track.name || ""))
-          );
-          hls.subtitleTrack = english >= 0 ? english : 0;
-          hls.subtitleDisplay = true;
-        }
-      });
-      hls.on(Hls.Events.ERROR, (_, data) => {
-        if (data.fatal) toast("Stream unavailable. Check the URL, CORS and provider restrictions.");
-      });
-    } else if (video.canPlayType("application/vnd.apple.mpegurl") && isHls) {
-      video.src = url;
-    } else {
-      video.src = url;
-    }
-    video.play().catch(() => toast("Press Play in the video player to start."));
-    $("watch").scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-  function render() {
-    const query = $("searchInput").value.trim().toLowerCase();
-    const countrySelect = $("countryFilter");
-    const languageSelect = $("languageFilter");
-
-    const countries = [...new Set(items.map(item =>
-      item.type === "video" ? "My Videos" : normalizeCountry(item.country)
-    ))].sort();
-
-    const languages = [...new Set(items.map(item =>
-      item.language || "Unknown"
-    ))].sort();
-
-    syncFilter(countrySelect, countries, "Countries");
-    syncFilter(languageSelect, languages, "Languages");
-
-    const selectedCountry = countrySelect?.value || "all";
-    const selectedLanguage = languageSelect?.value || "all";
-
-    const visible = items.filter(item => {
-      const itemCountry = item.type === "video"
-        ? "My Videos"
-        : normalizeCountry(item.country);
-      const itemLanguage = item.language || "Unknown";
-
-      const filterOk =
-        activeFilter === "all" ||
-        (activeFilter === "live" && item.type === "live") ||
-        (activeFilter === "videos" && item.type === "video") ||
-        (activeFilter === "favorites" && favorites.includes(item.id));
-
-      const countryOk =
-        selectedCountry === "all" || itemCountry === selectedCountry;
-      const languageOk =
-        selectedLanguage === "all" || itemLanguage === selectedLanguage;
-
-      return filterOk && countryOk && languageOk &&
-        (item.name + " " + (item.description || "")).toLowerCase().includes(query);
-    });
-
-    if (pageStart >= visible.length) pageStart = 0;
-    const pageItems = visible.slice(pageStart, pageStart + PAGE_SIZE);
-    const grid = $("channelGrid");
-
-    if (!visible.length) {
-      grid.innerHTML = `<div class="empty-state"><div>▣</div><strong>Nothing found here</strong><p>Try another country, language or search.</p></div>`;
-      return;
-    }
-
-    function card(item) {
-      const fav = favorites.includes(item.id);
-      const itemName = String(item.name || "Live Channel");
-      const initial = escapeHtml(itemName.trim().charAt(0).toUpperCase() || "▶");
-
-      return `<article class="channel-card">
-        <div class="card-top">
-          <div class="channel-icon">${initial}</div>
-          <span class="card-type">${item.type === "live" ? "● LIVE" : "ON DEMAND"}</span>
-        </div>
-        <h3 title="${escapeHtml(itemName)}">${escapeHtml(itemName)}</h3>
-        <p>${escapeHtml(item.language || "Unknown")} · ${escapeHtml(item.description || (item.type === "live" ? "Live stream" : "Personal video"))}</p>
-        <div class="card-actions">
-          <button data-play="${escapeHtml(item.id)}">▶ Watch</button>
-          <button class="favorite" data-fav="${escapeHtml(item.id)}" aria-label="Toggle favorite">${fav ? "♥" : "♡"}</button>
-        </div>
-      </article>`;
-    }
-
-    function groupItems(list, getKey) {
-      const groups = new Map();
-      list.forEach(item => {
-        const key = getKey(item);
-        if (!groups.has(key)) groups.set(key, []);
-        groups.get(key).push(item);
-      });
-      return groups;
-    }
-
-    function shelf(title, groups, className) {
-      const sections = [...groups.entries()]
-        .filter(([, entries]) => entries.length)
-        .map(([name, entries]) => `
-          <section class="catalog-shelf">
-            <div class="shelf-heading">
-              <h3>${escapeHtml(name)}</h3>
-              <span>${entries.length} channels</span>
-            </div>
-            <div class="shelf-track ${className}">
-              ${entries.map(card).join("")}
-            </div>
-          </section>
-        `).join("");
-
-      return sections
-        ? `<section class="catalog-category"><h2>${title}</h2>${sections}</section>`
-        : "";
-    }
-
-    const countryGroups = groupItems(pageItems, item =>
-      item.type === "video" ? "My Videos" : normalizeCountry(item.country)
-    );
-
-    const languageItems = pageItems.filter(item =>
-      item.type === "live" &&
-      item.language &&
-      item.language !== "Unknown"
-    );
-
-    const languageGroups = groupItems(languageItems, item => item.language);
-
-    const countryOrder = ["India", "United States", "United Kingdom"];
-    const sortGroups = groups => [...groups.entries()].sort((a, b) => {
-      const ai = countryOrder.indexOf(a[0]);
-      const bi = countryOrder.indexOf(b[0]);
-
-      if (ai !== -1 || bi !== -1) {
-        if (ai === -1) return 1;
-        if (bi === -1) return -1;
-        return ai - bi;
-      }
-
-      return a[0].localeCompare(b[0]);
-    });
-
-    const shelfHtml =
-      shelf("Browse by Country", sortGroups(countryGroups), "country-track");
-
-    const pageEnd = Math.min(pageStart + PAGE_SIZE, visible.length);
-    const pageControls = visible.length > PAGE_SIZE
-      ? `<div class="catalog-pagination">
-          <span>Showing ${pageStart + 1}–${pageEnd} of ${visible.length} channels</span>
-          <div>
-            <button type="button" data-page="-1" ${pageStart === 0 ? "disabled" : ""}>Previous</button>
-            <button type="button" data-page="1" ${pageEnd >= visible.length ? "disabled" : ""}>Next 60</button>
-          </div>
-        </div>`
-      : `<div class="catalog-pagination"><span>Showing ${visible.length} channels</span></div>`;
-
-    grid.innerHTML =
-      (shelfHtml || `<div class="empty-state"><div>▣</div><strong>No channels found</strong><p>Try another country, language or search.</p></div>`) +
-      pageControls;
-  }
-  function escapeHtml(text) {
-    return String(text).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
-  }
-  $("channelGrid").addEventListener("click", event => {
-    const pageButton = event.target.closest("[data-page]");
-    if (pageButton) {
-      pageStart = Math.max(0, pageStart + Number(pageButton.dataset.page) * PAGE_SIZE);
-      render();
-      return;
-    }
-
-    const playId = event.target.closest("[data-play]")?.dataset.play;
-    const favId = event.target.closest("[data-fav]")?.dataset.fav;
-    if (playId) { const item = items.find(x => x.id === playId); if (item) playItem(item); }
-    if (favId) { favorites = favorites.includes(favId) ? favorites.filter(x => x !== favId) : [...favorites, favId]; save(); render(); }
-  });
-  $("addForm").addEventListener("submit", event => {
-    event.preventDefault();
-    const name = $("itemName").value.trim(), url = safeUrl($("itemUrl").value.trim());
-    if (!name || !url) return toast("Enter a name and a valid http/https URL.");
-    const type = $("itemType").value;
-    const subtitleInput = $("subtitleUrl")?.value.trim() || "";
-    const subtitleUrl = subtitleInput ? safeUrl(subtitleInput) : "";
-    if (subtitleInput && !subtitleUrl) {
-      return toast("Enter a valid English VTT subtitle URL.");
-    }
-    if (type === "live" && !/\.m3u8($|[?#])/i.test(url)) {
-      if (!confirm("This URL does not end in .m3u8. Add it anyway? Some live streams may not play.")) return;
-    }
-    items.unshift({
-      id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
-      type, name, url,
-      description: $("itemDesc").value.trim(),
-      subtitleUrl,
-      language: "Unknown",
-      country: type === "video" ? "My Videos" : "International"
-    });
-    save(); render(); event.target.reset(); toast("Added to your library on this device.");
-  });
-  document.querySelectorAll(".tab").forEach(tab => tab.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
-    tab.classList.add("active"); activeFilter = tab.dataset.filter; pageStart = 0; render();
-  }));
-  $("searchInput").addEventListener("input", () => { pageStart = 0; render(); });
-  $("countryFilter").addEventListener("change", () => { pageStart = 0; render(); });
-  $("languageFilter").addEventListener("change", () => { pageStart = 0; render(); });
-  $("browseBtn").addEventListener("click", () => $("channels").scrollIntoView({ behavior:"smooth" }));
-  $("addVideoHero").addEventListener("click", () => { $("itemType").value = "video"; $("add").scrollIntoView({ behavior:"smooth" }); $("itemName").focus(); });
-  $("fullscreenBtn").addEventListener("click", () => {
-    const target = $("video").parentElement;
-    if (document.fullscreenElement) document.exitFullscreen?.();
-    else target.requestFullscreen?.().catch(() => toast("Full screen is not available in this browser."));
-  });
-  $("year").textContent = new Date().getFullYear();
-  window.addEventListener("beforeinstallprompt", event => {
-    event.preventDefault(); deferredInstall = event; $("installBtn").classList.remove("hidden");
-  });
-  $("installBtn").addEventListener("click", async () => {
-    if (!deferredInstall) return;
-    deferredInstall.prompt(); await deferredInstall.userChoice; deferredInstall = null; $("installBtn").classList.add("hidden");
-  });
-  if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
-    window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
-  }
-
-  async function loadDefaultPlaylist() {
-    const playlistUrl =
-      "./data/playlist.m3u";
-
+  if (/^[A-Z]{2}$/.test(upper)) {
     try {
-      const response = await fetch(playlistUrl);
-      if (!response.ok) throw new Error("HTTP " + response.status);
+      return new Intl.DisplayNames(["en"],{type:"region"}).of(upper) || raw;
+    } catch {}
+  }
+  return raw;
+}
 
-      const data = await response.text();
-      if (!data.trim().startsWith("#EXTM3U")) {
-        throw new Error("Invalid M3U playlist");
-      }
+function getCountry(attrs, tvgId) {
+  const explicit = attrs["tvg-country"] || attrs.country;
+  if (explicit) return countryName(explicit);
 
-      const languageByUrl = new Map();
-
-      const lines = data.split(/\r?\n/);
-      let channelName = "";
-      let channelCountry = "International";
-      let channelLanguage = "Unknown";
-      let added = 0;
-      const existingByUrl = new Map(items.filter(item => item && item.url).map(item => [item.url, item]));
-      const existingById = new Map(items.filter(item => item && item.id).map(item => [item.id, item]));
-
-      function makeId(url) {
-        let hash = 2166136261;
-        for (let i = 0; i < url.length; i++) {
-          hash ^= url.charCodeAt(i);
-          hash = Math.imul(hash, 16777619);
-        }
-        return "public-" + (hash >>> 0).toString(16);
-      }
-
-      for (const line of lines) {
-        if (line.startsWith("#EXTINF")) {
-          const comma = line.lastIndexOf(",");
-          channelName = comma >= 0
-            ? line.slice(comma + 1).trim()
-            : "Public TV Channel";
-
-          const attributes = {};
-          for (const match of line.matchAll(/([\w-]+)="([^"]*)"/g)) {
-            attributes[match[1].toLowerCase()] = match[2];
-          }
-
-          const tvgId = attributes["tvg-id"] || "";
-          const idCountry = tvgId.match(/\.([a-z]{2})@/i)?.[1] || "";
-          const idLanguage = tvgId.match(/@([a-z]{3,})$/i)?.[1] || "";
-
-          let countryValue =
-            attributes["tvg-country"] || attributes["country"] || idCountry;
-
-          if (/^[a-z]{2}$/i.test(countryValue)) {
-            try {
-              countryValue = new Intl.DisplayNames(["en"], {
-                type: "region"
-              }).of(countryValue.toUpperCase()) || countryValue;
-            } catch {}
-          }
-
-          channelCountry = normalizeCountry(countryValue);
-          channelLanguage = detectLanguage(
-            channelName,
-            attributes["tvg-language"] ||
-            attributes["language"] ||
-            idLanguage
-          );
-        } else if (channelName && line.trim() && !line.startsWith("#")) {
-          const url = safeUrl(line.trim());
-
-          if (url) {
-            const resolvedLanguage = languageByUrl.get(url) || channelLanguage;
-            const id = makeId(url);
-            const existing = existingById.get(id) || existingByUrl.get(url);
-
-            if (existing) {
-              if (!existing.country || existing.country === "International") {
-                existing.country = channelCountry;
-              }
-              if (!existing.language || existing.language === "Unknown") {
-                existing.language = resolvedLanguage;
-              }
-            } else {
-              const newItem = {
-                id,
-                type: "live",
-                name: channelName || "Public TV Channel",
-                url,
-                country: channelCountry,
-                language: resolvedLanguage,
-                description:
-                  "Public playlist stream. Check broadcaster rights, region and availability.",
-                source: "public-playlist"
-              };
-              items.push(newItem);
-              existingByUrl.set(url, newItem);
-              existingById.set(id, newItem);
-              added++;
-            }
-          }
-
-          channelName = "";
-        }
-      }
-
-      // Public playlist stays in memory; do not fill browser storage.
-      render();
-      toast(added + " live channels loaded.");
-      console.log("Public TV channels added:", added);
-    } catch (error) {
-      console.error("Live playlist error:", error);
-      toast("Playlist error: " + String(error?.message || error).slice(0, 100));
-    }
+  // Some playlist IDs include a named regional suffix, e.g. @India.
+  const namedRegion = String(tvgId || "").match(/@([A-Za-z][A-Za-z ]+)$/);
+  if (namedRegion && namedRegion[1].length > 2) {
+    return countryName(namedRegion[1]);
   }
 
+  // Standard IDs often look like ChannelName.us@SD.
+  const code = String(tvgId || "").match(/\.([a-z]{2})@/i);
+  return code ? countryName(code[1]) : "International";
+}
+
+function parsePlaylist(data) {
+  const result = [];
+  let pending = null;
+  let index = 0;
+
+  for (const rawLine of data.split(/\r?\n/)) {
+    const line = String(rawLine || "").trim();
+    if (!line) continue;
+
+    if (line.startsWith("#EXTINF")) {
+      const comma = line.lastIndexOf(",");
+      const name = comma >= 0
+        ? line.slice(comma + 1).trim()
+        : "Live Channel";
+
+      const attrs = {};
+      for (const match of line.matchAll(/([\w-]+)="([^"]*)"/g)) {
+        attrs[match[1].toLowerCase()] = match[2];
+      }
+
+      pending = {
+        name: name || "Live Channel",
+        country: getCountry(attrs, attrs["tvg-id"]),
+        logo: safeUrl(attrs["tvg-logo"])
+      };
+      continue;
+    }
+
+    if (pending && !line.startsWith("#")) {
+      const url = safeUrl(line);
+      if (url) {
+        result.push({
+          id: index++,
+          name: pending.name,
+          country: pending.country,
+          logo: pending.logo,
+          url
+        });
+      }
+      pending = null;
+    }
+  }
+  return result;
+}
+
+function updateCountries() {
+  const select = $("countryFilter");
+  const previous = select.value;
+  const countries = [...new Set(channels.map(c => c.country))]
+    .sort((a,b) => a.localeCompare(b));
+
+  select.replaceChildren(new Option("All Countries","all"));
+  for (const name of countries) {
+    select.add(new Option(name,name));
+  }
+  if (countries.includes(previous)) select.value = previous;
+}
+
+function makeCard(channel) {
+  const card = document.createElement("article");
+  card.className = "channel-card";
+
+  const top = document.createElement("div");
+  top.className = "channel-top";
+
+  let logo;
+  if (channel.logo) {
+    logo = document.createElement("img");
+    logo.src = channel.logo;
+    logo.alt = "";
+    logo.loading = "lazy";
+    logo.className = "channel-logo";
+    logo.onerror = () => {
+      const fallback = document.createElement("div");
+      fallback.className = "channel-logo";
+      fallback.textContent = "▶";
+      logo.replaceWith(fallback);
+    };
+  } else {
+    logo = document.createElement("div");
+    logo.className = "channel-logo";
+    logo.textContent = "▶";
+  }
+
+  const details = document.createElement("div");
+  details.style.minWidth = "0";
+
+  const name = document.createElement("div");
+  name.className = "channel-name";
+  name.textContent = channel.name;
+
+  const country = document.createElement("div");
+  country.className = "channel-country";
+  country.textContent = channel.country;
+
+  details.append(name,country);
+  top.append(logo,details);
+
+  const play = document.createElement("button");
+  play.className = "play-button";
+  play.type = "button";
+  play.textContent = "▶  WATCH LIVE";
+  play.addEventListener("click", () => playChannel(channel));
+
+  card.append(top,play);
+  return card;
+}
+
+function render() {
+  const query = $("searchInput").value.toLowerCase().trim();
+  const selectedCountry = $("countryFilter").value;
+
+  filtered = channels.filter(channel => {
+    const matchesName = channel.name.toLowerCase().includes(query);
+    const matchesCountry =
+      selectedCountry === "all" || channel.country === selectedCountry;
+    return matchesName && matchesCountry;
+  });
+
+  const totalPages = Math.max(1,Math.ceil(filtered.length/PAGE_SIZE));
+  page = Math.min(page,totalPages-1);
+
+  const start = page * PAGE_SIZE;
+  const current = filtered.slice(start,start+PAGE_SIZE);
+  const grid = $("channelGrid");
+  grid.replaceChildren();
+
+  if (!current.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "No channels found. Try another search or country.";
+    grid.append(empty);
+  } else {
+    const fragment = document.createDocumentFragment();
+    current.forEach(channel => fragment.append(makeCard(channel)));
+    grid.append(fragment);
+  }
+
+  $("totalCount").textContent = filtered.length.toLocaleString() + " channels";
+  $("pagination").replaceChildren();
+
+  if (filtered.length > PAGE_SIZE) {
+    const previous = document.createElement("button");
+    previous.textContent = "← Previous";
+    previous.disabled = page === 0;
+    previous.onclick = () => { page--; render(); };
+
+    const label = document.createElement("span");
+    label.textContent = `Page ${page+1} of ${totalPages}`;
+
+    const next = document.createElement("button");
+    next.textContent = "Next →";
+    next.disabled = page >= totalPages-1;
+    next.onclick = () => { page++; render(); };
+
+    $("pagination").append(previous,label,next);
+  } else if (filtered.length) {
+    $("pagination").textContent = `Showing all ${filtered.length} channels`;
+  }
+}
+
+function stopPlayer() {
+  if (hls) {
+    hls.destroy();
+    hls = null;
+  }
+  video.pause();
+  video.removeAttribute("src");
+  video.load();
+}
+
+function playChannel(channel) {
+  stopPlayer();
+
+  $("nowTitle").textContent = channel.name;
+  $("playingName").textContent = channel.name;
+  $("playerStatus").textContent = "Connecting...";
+  $("playerPlaceholder").classList.add("hidden");
+
+  const isHls = /\.m3u8($|[?#])/i.test(channel.url);
+
+  if (isHls && window.Hls && Hls.isSupported()) {
+    hls = new Hls({enableWorker:true});
+    hls.loadSource(channel.url);
+    hls.attachMedia(video);
+
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      $("playerStatus").textContent = "Stream loaded";
+      video.play().catch(() => {
+        $("playerStatus").textContent = "Press Play to start";
+      });
+    });
+
+    hls.on(Hls.Events.ERROR, (_, data) => {
+      if (data.fatal) {
+        $("playerStatus").textContent = "Stream unavailable or blocked";
+      }
+    });
+  } else {
+    video.src = channel.url;
+    video.play().then(() => {
+      $("playerStatus").textContent = "Playing";
+    }).catch(() => {
+      $("playerStatus").textContent = "Cannot play this stream in browser";
+    });
+  }
+
+  $("watch").scrollIntoView({behavior:"smooth"});
+}
+
+async function loadChannels() {
+  $("loadStatus").textContent = "Loading worldwide playlist...";
+
+  try {
+    const response = await fetch(PLAYLIST_URL,{cache:"no-store"});
+    if (!response.ok) throw new Error("Playlist HTTP " + response.status);
+
+    const data = await response.text();
+    if (!data.trimStart().startsWith("#EXTM3U")) {
+      throw new Error("Playlist format is invalid");
+    }
+
+    channels = parsePlaylist(data);
+    if (!channels.length) throw new Error("No valid stream URLs found");
+
+    updateCountries();
+    render();
+
+    const countryCount = new Set(channels.map(c => c.country)).size;
+    $("loadStatus").textContent =
+      `Loaded ${channels.length.toLocaleString()} channels from ${countryCount} country groups. Some streams may be offline or region-restricted.`;
+  } catch (error) {
+    console.error("Playlist loading error:",error);
+    $("loadStatus").textContent = "Could not load channels: " + error.message;
+    $("totalCount").textContent = "0 channels";
+    $("channelGrid").innerHTML =
+      '<div class="empty">Playlist unavailable. Please refresh the page.</div>';
+  }
+}
+
+$("searchInput").addEventListener("input",() => {
+  page = 0;
   render();
-  loadDefaultPlaylist();
+});
+
+$("countryFilter").addEventListener("change",() => {
+  page = 0;
+  render();
+});
+
+$("fullscreenBtn").addEventListener("click",() => {
+  const target = video;
+  if (target.requestFullscreen) target.requestFullscreen();
+  else if (target.webkitEnterFullscreen) target.webkitEnterFullscreen();
+});
+
+video.addEventListener("error",() => {
+  $("playerStatus").textContent = "Playback failed: stream may be offline or blocked";
+});
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js").catch(console.warn);
+}
+
+loadChannels();
 })();

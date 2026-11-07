@@ -1,117 +1,73 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#090b12">
-  <meta name="description" content="FreeTvByAkshay — free-to-watch live channels and your own videos.">
-  <title>FreeTvByAkshay | Watch Free</title>
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js" defer></script>
-  <script src="app.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="FreeTvByAkshay - Worldwide free live TV channels.">
+<title>Akshay TV - Worldwide Live TV</title>
+<link rel="stylesheet" href="style.css?v=simple1">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js" defer></script>
+<script src="app.js?v=simple1" defer></script>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#" aria-label="FreeTvByAkshay home">
-      <img src="assets/logo.svg" alt="" width="38" height="38">
-      <span>FreeTv<span class="brand-accent">ByAkshay</span></span>
-    </a>
-    <div class="top-actions">
-      <span class="live-indicator"><i></i> FREE STREAMING</span>
-      <button id="installBtn" class="button button-quiet hidden">Install app</button>
+<header class="header">
+  <a class="brand" href="./">AKSHAY <span>TV</span></a>
+  <span class="live-badge"><i></i> LIVE TV</span>
+</header>
+
+<main>
+  <section class="welcome">
+    <p class="eyebrow">WORLDWIDE ENTERTAINMENT</p>
+    <h1>Watch Live TV.<br><span>From Anywhere.</span></h1>
+    <p class="muted">Explore television channels from around the world.</p>
+  </section>
+
+  <section class="player-section" id="watch">
+    <div class="player-heading">
+      <div>
+        <span class="eyebrow">NOW PLAYING</span>
+        <h2 id="nowTitle">Choose a channel</h2>
+      </div>
+      <span class="live-badge"><i></i> PLAYER</span>
     </div>
-  </header>
+    <div class="video-box">
+      <video id="video" controls playsinline preload="none"></video>
+      <div id="playerPlaceholder">
+        <div class="play-symbol">▶</div>
+        <strong>Your TV screen is ready</strong>
+        <span>Select any channel below to start.</span>
+      </div>
+    </div>
+    <div class="player-info">
+      <span id="playingName">Welcome to Akshay TV</span>
+      <span id="playerStatus">Select a channel</span>
+    </div>
+    <button id="fullscreenBtn" class="secondary-button">⛶ Fullscreen</button>
+  </section>
 
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">YOUR SCREEN. YOUR ENTERTAINMENT.</p>
-        <h1>Watch what<br><span>you love.</span></h1>
-        <p class="hero-sub">Live channels and your personal video collection — all in one place.</p>
-        <div class="hero-actions">
-          <button class="button button-primary" id="browseBtn">Explore channels <span>→</span></button>
-          <button class="button button-outline" id="addVideoHero">＋ Add your video</button>
-        </div>
+  <section class="channels-section" id="channels">
+    <div class="section-title">
+      <div>
+        <p class="eyebrow">DISCOVER CHANNELS</p>
+        <h2>Live Channels</h2>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="screen-glow"></div>
-        <div class="screen-card">
-          <div class="screen-top"><span></span><span></span><span></span><b>FTV</b></div>
-          <div class="screen-play">▶</div>
-          <div class="screen-caption">ENTERTAINMENT<br><strong>WITHOUT LIMITS</strong></div>
-        </div>
-        <div class="floating-tag">▶ &nbsp; LIVE & ON DEMAND</div>
-      </div>
-    </section>
+      <span id="totalCount" class="count">Loading...</span>
+    </div>
 
-    <section class="player-section" id="watch">
-      <div class="section-heading">
-        <div><p class="eyebrow">NOW PLAYING</p><h2 id="nowTitle">Choose something to watch</h2></div>
-        <span class="quality-pill">YOUR PLAYER</span>
-      </div>
-      <div class="player-layout">
-        <div class="video-wrap">
-          <video id="video" controls playsinline preload="metadata" poster="assets/poster.svg"></video>
-          <div id="playerMessage" class="player-message">
-            <div class="big-play">▶</div>
-            <strong>Your screen is ready</strong>
-            <span>Select a channel or paste a video/stream URL.</span>
-          </div>
-        </div>
-        <aside class="now-card">
-          <span class="live-label" id="playingType">READY TO PLAY</span>
-          <h3 id="playingName">Welcome to FreeTvByAkshay</h3>
-          <p id="playingDescription">Choose a free-to-watch channel or add a video URL that you own or are authorized to share.</p>
-          <button id="fullscreenBtn" class="button button-outline button-wide">⛶ Full screen</button>
-        </aside>
-      </div>
-    </section>
+    <div class="filters">
+      <input id="searchInput" type="search" placeholder="⌕ Search channel name..." autocomplete="off">
+      <select id="countryFilter">
+        <option value="all">All Countries</option>
+      </select>
+    </div>
 
-    <section class="channels-section" id="channels">
-      <div class="section-heading">
-        <div><p class="eyebrow">FIND YOUR NEXT WATCH</p><h2>Explore</h2></div>
-        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search channels or videos…" aria-label="Search channels or videos"></label>
-      </div>
-      <div class="tabs" role="tablist">
-        <button class="tab active" data-filter="all">All</button>
-        <button class="tab" data-filter="live">Live TV</button>
-        <button class="tab" data-filter="videos">My videos</button>
-        <button class="tab" data-filter="favorites">♥ Favorites</button>
-      </div>
-      <div class="catalog-filters">
-        <label>Country
-          <select id="countryFilter"><option value="all">All Countries</option></select>
-        </label>
-        <label>Language
-          <select id="languageFilter"><option value="all">All Languages</option></select>
-        </label>
-      </div>
-      <div id="channelGrid" class="channel-grid">
-        <div class="empty-state"><div>▣</div><strong>No channels added yet</strong><p>Add a stream URL you are authorized to use.</p></div>
-      </div>
-    </section>
+    <p id="loadStatus" class="status">Loading worldwide channels...</p>
+    <div id="channelGrid" class="channel-grid"></div>
+    <div id="pagination" class="pagination"></div>
+  </section>
+</main>
 
-    <section class="add-section" id="add">
-      <div class="add-intro"><p class="eyebrow">MAKE IT YOURS</p><h2>Add a channel<br>or your own video.</h2><p>Use official broadcaster streams, public-domain media, or videos you own/have permission to share.</p></div>
-      <form id="addForm" class="add-form">
-        <label>What are you adding?
-          <select id="itemType"><option value="live">Live channel (HLS / .m3u8)</option><option value="video">My video (MP4 / WebM)</option></select>
-        </label>
-        <label>Channel / video name<input id="itemName" required maxlength="60" placeholder="e.g. My News Channel"></label>
-        <label>Stream / video URL<input id="itemUrl" required type="url" placeholder="https://example.com/stream.m3u8"></label>
-        <label>Short description (optional)<input id="itemDesc" maxlength="120" placeholder="What is this channel about?"></label>
-        <label>English subtitles (.vtt URL, optional)
-          <input id="subtitleUrl" type="url" placeholder="https://example.com/subtitles-en.vtt">
-        </label>
-        <button class="button button-primary button-wide" type="submit">＋ Add to my library</button>
-        <p class="form-note">Items are saved in this browser only. Never add private or unauthorized stream links.</p>
-      </form>
-    </section>
-  </main>
-
-  <footer><a class="brand footer-brand" href="#"><img src="assets/logo.svg" alt="" width="28" height="28"><span>FreeTv<span class="brand-accent">ByAkshay</span></span></a><p>Independent personal streaming interface. Stream rights remain with their respective owners.</p><span>© <span id="year"></span> FreeTvByAkshay</span></footer>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<footer>FreeTvByAkshay · Worldwide Live TV</footer>
 </body>
 </html>
