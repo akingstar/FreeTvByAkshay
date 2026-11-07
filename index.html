@@ -12,20 +12,27 @@
 <meta name="description" content="AKSHAY TV — discover Indian and worldwide live television channels.">
 <title>AKSHAY TV | Premium Live Television</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="stylesheet" href="style.css?v=india4">
+<link rel="stylesheet" href="style.css?v=premium-tabs-1">
 <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js" defer></script>
-<script src="app.js?v=india4" defer></script>
+<script src="app.js?v=premium-tabs-1" defer></script>
 </head>
 <body>
 <header class="header">
-  <a class="brand" href="./">AKSHAY<span>TV</span></a>
+  <a class="brand" href="#home">AKSHAY<span>TV</span></a>
+  <nav class="desktop-tabs" aria-label="Main navigation">
+    <a class="tab-link active" href="#home" data-section="home"><span>⌂</span> Home</a>
+    <a class="tab-link" href="#watch" data-section="watch"><span>▶</span> Player</a>
+    <a class="tab-link" href="#india" data-section="india"><span>🇮🇳</span> India</a>
+    <a class="tab-link" href="#world" data-section="world"><span>🌍</span> World</a>
+    <a class="tab-link" href="#india" data-action="favorites"><span>♥</span> Favorites</a>
+  </nav>
   <div class="header-right">
     <span class="live-badge"><i></i> LIVE NOW</span>
   </div>
 </header>
 
 <main>
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="hero-content">
       <span class="eyebrow">PREMIUM INDIAN LIVE TV</span>
       <h1>Popular Indian<br><span>Live Channels</span></h1>
@@ -110,6 +117,14 @@
     <div id="pagination" class="pagination"></div>
   </section>
 </main>
+
+<nav class="mobile-tabs" aria-label="Mobile navigation">
+  <a class="tab-link active" href="#home" data-section="home"><span>⌂</span><small>Home</small></a>
+  <a class="tab-link" href="#watch" data-section="watch"><span>▶</span><small>Player</small></a>
+  <a class="tab-link" href="#india" data-section="india"><span>🇮🇳</span><small>India</small></a>
+  <a class="tab-link" href="#world" data-section="world"><span>🌍</span><small>World</small></a>
+  <a class="tab-link" href="#india" data-action="favorites"><span>♥</span><small>Saved</small></a>
+</nav>
 
 <footer>
   <a class="brand footer-brand" href="./">AKSHAY<span>TV</span></a>

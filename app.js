@@ -548,6 +548,53 @@ $("viewFilter").addEventListener("change",() => {
   render();
 });
 
+// Premium navigation: existing sections and existing favorites are reused.
+const navigationLinks = [...document.querySelectorAll(".tab-link")];
+
+function setActiveNavigation(section) {
+  navigationLinks.forEach(link => {
+    const active = link.dataset.section === section;
+    if (link.dataset.section) {
+      link.classList.toggle("active", active);
+      if (active) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    }
+  });
+}
+
+document.querySelectorAll('[data-action="favorites"]').forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    $("viewFilter").value = "favorites";
+    $("indiaViewFilter").value = "favorites";
+    page = 0;
+    indiaPage = 0;
+    render();
+    renderIndia();
+    setActiveNavigation("india");
+    document.getElementById("india").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+});
+
+navigationLinks.forEach(link => {
+  if (!link.dataset.section) return;
+  link.addEventListener("click", () => setActiveNavigation(link.dataset.section));
+});
+
+if ("IntersectionObserver" in window) {
+  const navObserver = new IntersectionObserver(entries => {
+    const visible = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a,b) => b.intersectionRatio - a.intersectionRatio);
+    if (visible.length) setActiveNavigation(visible[0].target.id);
+  }, {rootMargin:"-22% 0px -58% 0px",threshold:[0,.15,.35,.6]});
+
+  ["home","watch","india","world"].forEach(id => {
+    const section = document.getElementById(id);
+    if (section) navObserver.observe(section);
+  });
+}
+
 $("fullscreenBtn").addEventListener("click",() => {
   if (video.requestFullscreen) video.requestFullscreen();
   else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();

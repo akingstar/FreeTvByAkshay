@@ -336,3 +336,144 @@ footer>span {color:var(--muted);font-size:10px}
   .header {min-height:60px}
   .live-badge {font-size:8px}
 }
+
+
+/* ===== AKSHAY TV PREMIUM NAVIGATION ===== */
+html { scroll-padding-top: 88px; }
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 76px;
+  gap: 24px;
+  backdrop-filter: blur(18px);
+  background: rgba(9,9,9,.94);
+  box-shadow: 0 8px 28px rgba(0,0,0,.22);
+}
+
+.desktop-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tab-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  color: #aaa69c;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: .2px;
+  white-space: nowrap;
+  transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.tab-link span {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tab-link:hover {
+  color: var(--gold2);
+  background: rgba(217,181,109,.08);
+  border-color: rgba(217,181,109,.16);
+}
+
+.tab-link.active {
+  color: #17120a;
+  background: linear-gradient(135deg,#c49b50,#f0d69e);
+  border-color: #e7c77f;
+  box-shadow: 0 4px 18px rgba(217,181,109,.17);
+}
+
+.mobile-tabs { display: none; }
+
+.hero, .player-section, .india-section, .world-section {
+  scroll-margin-top: 94px;
+}
+
+.hero {
+  box-shadow: inset 0 1px rgba(255,255,255,.035), 0 18px 45px rgba(0,0,0,.18);
+}
+
+.player-section, .india-section, .world-section {
+  box-shadow: 0 12px 35px rgba(0,0,0,.13);
+}
+
+@media (max-width:760px) {
+  html {
+    scroll-padding-top: 72px;
+    scroll-padding-bottom: 90px;
+  }
+
+  body { padding-bottom: 78px; }
+
+  .header {
+    min-height: 62px;
+    padding-left: 5%;
+    padding-right: 5%;
+    gap: 8px;
+  }
+
+  .brand { font-size: 20px; }
+  .desktop-tabs { display: none; }
+
+  .header-right .live-badge {
+    padding: 7px 9px;
+    font-size: 9px;
+  }
+
+  .mobile-tabs {
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(5,minmax(0,1fr));
+    gap: 3px;
+    padding: 8px 7px calc(8px + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(217,181,109,.22);
+    background: rgba(12,12,12,.96);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 -10px 35px rgba(0,0,0,.4);
+  }
+
+  .mobile-tabs .tab-link {
+    min-width: 0;
+    min-height: 52px;
+    padding: 5px 2px;
+    flex-direction: column;
+    gap: 4px;
+    border-radius: 10px;
+    font-size: 10px;
+  }
+
+  .mobile-tabs .tab-link span { font-size: 18px; }
+  .mobile-tabs .tab-link small {
+    font-size: 10px;
+    font-weight: 750;
+  }
+
+  .mobile-tabs .tab-link.active {
+    box-shadow: 0 3px 14px rgba(217,181,109,.15);
+  }
+
+  footer { padding-bottom: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-link { transition: none; }
+  html { scroll-behavior: auto; }
+}
