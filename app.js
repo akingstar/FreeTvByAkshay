@@ -309,33 +309,85 @@ function playChannel(channel) {
   $("playerStatus").textContent = "Connecting...";
   $("playerPlaceholder").classList.add("hidden");
 
-  const isHls = /\.m3u8($|[?#])/i.test(channel.url);
-
-  if (isHls && window.Hls && Hls.isSupported()) {
-    hls = new Hls({enableWorker:true});
-    hls.loadSource(channel.url);
-    hls.attachMedia(video);
-
-    hls.on(Hls.Events.MANIFEST_PARSED,() => {
-      $("playerStatus").textContent = "Stream loaded";
-      video.play().catch(() => {
-        $("playerStatus").textContent = "Press Play to start";
-      });
-    });
-
-    hls.on(Hls.Events.ERROR,(_,data) => {
-      if (data.fatal) $("playerStatus").textContent = "Stream unavailable or blocked";
-    });
-  } else {
-    video.src = channel.url;
-    video.play().then(() => {
-      $("playerStatus").textContent = "Playing";
-    }).catch(() => {
-      $("playerStatus").textContent = "Cannot play this stream in browser";
-    });
+  const url = safeUrl(channel.url);
+  if (!url) {
+    $("playerStatus").textContent = "Invalid stream URL";
+    return;
   }
 
-  $("watch").scrollIntoView({behavior:"smooth"});
+  const isHls = /\.m3u8($|[?#])/i.test(url);
+  const nativeHls = video.canPlayType("application/vnd.apple.mpegurl") ||
+                    video.canPlayType("application/x-mpegURL");
+
+  const startPlayback = () => {
+    video.play().then(() => {
+      $("playerStatus").textContent = "Playing";
+    }).catch(error => {
+      console.warn("Playback start:", error);
+      $("playerStatus").textContent =
+        "Stream loaded. Press Play to start, or stream may be unsupported.";
+    });
+  };
+
+  if (isHls && window.Hls && Hls.isSupported()) {
+    let networkRetries = 0;
+    let mediaRecovered = false;
+
+    hls = new Hls({
+      enableWorker: true,
+      lowLatencyMode: false,
+      backBufferLength: 30,
+      manifestLoadingTimeOut: 20000,
+      manifestLoadingMaxRetry: 2,
+      fragLoadingTimeOut: 30000,
+      fragLoadingMaxRetry: 3
+    });
+
+    hls.attachMedia(video);
+
+    hls.on(Hls.Events.MEDIA_ATTACHED, () => {
+      hls.loadSource(url);
+    });
+
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      $("playerStatus").textContent = "Stream loaded";
+      startPlayback();
+    });
+
+    hls.on(Hls.Events.ERROR, (_, data) => {
+      if (!data.fatal) return;
+
+      if (data.type === Hls.ErrorTypes.NETWORK_ERROR && networkRetries < 2) {
+        networkRetries++;
+        $("playerStatus").textContent = "Network interrupted. Retrying...";
+        hls.startLoad();
+        return;
+      }
+
+      if (data.type === Hls.ErrorTypes.MEDIA_ERROR && !mediaRecovered) {
+        mediaRecovered = true;
+        $("playerStatus").textContent = "Recovering video...";
+        hls.recoverMediaError();
+        return;
+      }
+
+      $("playerStatus").textContent =
+        "Cannot play this stream: " + (data.details || data.type || "unsupported stream");
+      console.warn("Fatal HLS error:", data);
+    });
+
+  } else if (isHls && nativeHls) {
+    video.src = url;
+    video.addEventListener("loadedmetadata", startPlayback, { once: true });
+    video.load();
+  } else if (isHls) {
+    $("playerStatus").textContent =
+      "This browser cannot play this HLS format.";
+  } else {
+    video.src = url;
+    video.load();
+    startPlayback();
+  }
 }
 
 function updateIndiaCategories() {

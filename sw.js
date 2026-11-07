@@ -1,4 +1,4 @@
-const CACHE_NAME = "akshay-tv-india-v3";
+const CACHE_NAME = "akshay-tv-india-v4";
 const APP_FILES = [
   "./",
   "./index.html",
