@@ -370,33 +370,6 @@
 
       const languageByUrl = new Map();
 
-      const languageFeeds = [
-        [
-          "https://raw.githubusercontent.com/AdeelWajid/iptv_validated_list/main/playlists/languages/hin.m3u",
-          "Hindi"
-        ],
-        [
-          "https://raw.githubusercontent.com/AdeelWajid/iptv_validated_list/main/playlists/languages/eng.m3u",
-          "English"
-        ]
-      ];
-
-      await Promise.all(languageFeeds.map(async ([feedUrl, language]) => {
-        try {
-          const feedResponse = await fetch(feedUrl);
-          if (!feedResponse.ok) return;
-
-          const feedText = await feedResponse.text();
-          for (const feedLine of feedText.split(/\r?\n/)) {
-            if (!feedLine.trim() || feedLine.trim().startsWith("#")) continue;
-            const feedUrlSafe = safeUrl(feedLine.trim());
-            if (feedUrlSafe) languageByUrl.set(feedUrlSafe, language);
-          }
-        } catch (error) {
-          console.warn("Language feed unavailable:", language, error);
-        }
-      }));
-
       const lines = data.split(/\r?\n/);
       let channelName = "";
       let channelCountry = "International";
@@ -492,7 +465,7 @@
       console.log("Public TV channels added:", added);
     } catch (error) {
       console.error("Live playlist error:", error);
-      toast("Live playlist unavailable. Try again later.");
+      toast("Playlist error: " + String(error?.message || error).slice(0, 100));
     }
   }
 
