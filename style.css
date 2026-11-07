@@ -108,3 +108,37 @@
   }
   .shelf-heading h3 { font-size: 16px; }
 }
+
+
+/* Lightweight channel pagination */
+.catalog-pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 22px 0;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 12px;
+}
+.catalog-pagination > div {
+  display: flex;
+  gap: 8px;
+}
+.catalog-pagination button {
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel2);
+  color: var(--text);
+  font-weight: 700;
+}
+.catalog-pagination button:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}

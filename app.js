@@ -6,6 +6,8 @@
   const video = $("video");
   let hls = null;
   let activeFilter = "all";
+  let pageStart = 0;
+  const PAGE_SIZE = 60;
   let items = load(STORAGE_KEY, []).filter(item => item && item.source !== "public-playlist");
   let favorites = load(FAVORITES_KEY, []);
   let deferredInstall = null;
@@ -187,6 +189,8 @@
         (item.name + " " + (item.description || "")).toLowerCase().includes(query);
     });
 
+    if (pageStart >= visible.length) pageStart = 0;
+    const pageItems = visible.slice(pageStart, pageStart + PAGE_SIZE);
     const grid = $("channelGrid");
 
     if (!visible.length) {
@@ -242,11 +246,11 @@
         : "";
     }
 
-    const countryGroups = groupItems(visible, item =>
+    const countryGroups = groupItems(pageItems, item =>
       item.type === "video" ? "My Videos" : normalizeCountry(item.country)
     );
 
-    const languageItems = visible.filter(item =>
+    const languageItems = pageItems.filter(item =>
       item.type === "live" &&
       item.language &&
       item.language !== "Unknown"
@@ -268,15 +272,36 @@
       return a[0].localeCompare(b[0]);
     });
 
-    grid.innerHTML =
+    const shelfHtml =
       shelf("Browse by Country", sortGroups(countryGroups), "country-track") +
-      shelf("Browse by Language", sortGroups(languageGroups), "language-track") ||
-      `<div class="empty-state"><div>▣</div><strong>No channels found</strong><p>Try another country, language or search.</p></div>`;
+      shelf("Browse by Language", sortGroups(languageGroups), "language-track");
+
+    const pageEnd = Math.min(pageStart + PAGE_SIZE, visible.length);
+    const pageControls = visible.length > PAGE_SIZE
+      ? `<div class="catalog-pagination">
+          <span>Showing ${pageStart + 1}–${pageEnd} of ${visible.length} channels</span>
+          <div>
+            <button type="button" data-page="-1" ${pageStart === 0 ? "disabled" : ""}>Previous</button>
+            <button type="button" data-page="1" ${pageEnd >= visible.length ? "disabled" : ""}>Next 60</button>
+          </div>
+        </div>`
+      : `<div class="catalog-pagination"><span>Showing ${visible.length} channels</span></div>`;
+
+    grid.innerHTML =
+      (shelfHtml || `<div class="empty-state"><div>▣</div><strong>No channels found</strong><p>Try another country, language or search.</p></div>`) +
+      pageControls;
   }
   function escapeHtml(text) {
     return String(text).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
   }
   $("channelGrid").addEventListener("click", event => {
+    const pageButton = event.target.closest("[data-page]");
+    if (pageButton) {
+      pageStart = Math.max(0, pageStart + Number(pageButton.dataset.page) * PAGE_SIZE);
+      render();
+      return;
+    }
+
     const playId = event.target.closest("[data-play]")?.dataset.play;
     const favId = event.target.closest("[data-fav]")?.dataset.fav;
     if (playId) { const item = items.find(x => x.id === playId); if (item) playItem(item); }
@@ -307,11 +332,11 @@
   });
   document.querySelectorAll(".tab").forEach(tab => tab.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
-    tab.classList.add("active"); activeFilter = tab.dataset.filter; render();
+    tab.classList.add("active"); activeFilter = tab.dataset.filter; pageStart = 0; render();
   }));
-  $("searchInput").addEventListener("input", render);
-  $("countryFilter").addEventListener("change", render);
-  $("languageFilter").addEventListener("change", render);
+  $("searchInput").addEventListener("input", () => { pageStart = 0; render(); });
+  $("countryFilter").addEventListener("change", () => { pageStart = 0; render(); });
+  $("languageFilter").addEventListener("change", () => { pageStart = 0; render(); });
   $("browseBtn").addEventListener("click", () => $("channels").scrollIntoView({ behavior:"smooth" }));
   $("addVideoHero").addEventListener("click", () => { $("itemType").value = "video"; $("add").scrollIntoView({ behavior:"smooth" }); $("itemName").focus(); });
   $("fullscreenBtn").addEventListener("click", () => {
@@ -378,6 +403,8 @@
       let channelCountry = "International";
       let channelLanguage = "Unknown";
       let added = 0;
+      const existingByUrl = new Map(items.filter(item => item && item.url).map(item => [item.url, item]));
+      const existingById = new Map(items.filter(item => item && item.id).map(item => [item.id, item]));
 
       function makeId(url) {
         let hash = 2166136261;
@@ -428,9 +455,7 @@
           if (url) {
             const resolvedLanguage = languageByUrl.get(url) || channelLanguage;
             const id = makeId(url);
-            const existing = items.find(
-              item => item.id === id || item.url === url
-            );
+            const existing = existingById.get(id) || existingByUrl.get(url);
 
             if (existing) {
               if (!existing.country || existing.country === "International") {
@@ -440,7 +465,7 @@
                 existing.language = resolvedLanguage;
               }
             } else {
-              items.push({
+              const newItem = {
                 id,
                 type: "live",
                 name: channelName || "Public TV Channel",
@@ -450,7 +475,10 @@
                 description:
                   "Public playlist stream. Check broadcaster rights, region and availability.",
                 source: "public-playlist"
-              });
+              };
+              items.push(newItem);
+              existingByUrl.set(url, newItem);
+              existingById.set(id, newItem);
               added++;
             }
           }
