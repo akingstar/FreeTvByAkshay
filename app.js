@@ -4,7 +4,7 @@
 const $ = id => document.getElementById(id);
 const PAGE_SIZE = 48;
 const PLAYLIST_URL = "./data/playlist.m3u";
-const INDIA_PLAYLIST_URL = "./data/india-candidates.m3u";
+const INDIA_PLAYLIST_URL = "./data/india-working.m3u";
 let channels = [];
 let indiaChannels = [];
 let indiaFiltered = [];
@@ -410,7 +410,22 @@ async function loadIndiaChannels() {
     if (!response.ok) throw new Error("India playlist HTTP " + response.status);
     const data = await response.text();
     if (!data.trimStart().startsWith("#EXTM3U")) throw new Error("Invalid India playlist format");
-    indiaChannels = parseIndiaPlaylist(data);
+
+indiaChannels = parseIndiaPlaylist(data);
+const popularFirst = [
+  "Aaj Tak", "ABP News", "India TV", "NDTV India", "Zee News",
+  "News18 India", "Republic Bharat", "TV9 Bharatvarsh", "News24",
+  "News Nation", "CNBC Awaaz", "Zee Business", "Zee TV",
+  "Colors", "Sony SAB", "Star Bharat", "Zee Cinema", "9XM"
+];
+indiaChannels.sort((a,b) => {
+  const rank = name => {
+    const i = popularFirst.findIndex(x => name.toLowerCase().includes(x.toLowerCase()));
+    return i < 0 ? 999 : i;
+  };
+  return rank(a.name) - rank(b.name);
+});
+
     updateIndiaCategories();
     renderIndia();
     status.textContent = `Loaded ${indiaChannels.length.toLocaleString()} Indian stream listings. Availability and playback depend on each provider.`;
