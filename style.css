@@ -49,3 +49,62 @@
   .catalog-filters select { min-width: 0; width: 100%; }
   .country-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* OTT-style country and language shelves */
+.catalog-category {
+  display: block;
+  margin: 26px 0 38px;
+}
+.catalog-category > h2 {
+  margin: 0 0 20px;
+  font-size: 25px;
+  letter-spacing: -.7px;
+}
+.catalog-shelf {
+  margin: 0 0 28px;
+  min-width: 0;
+}
+.shelf-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+.shelf-heading h3 {
+  margin: 0;
+  padding-left: 11px;
+  border-left: 3px solid var(--accent);
+  font-size: 18px;
+}
+.shelf-heading span {
+  color: var(--muted);
+  font-size: 11px;
+}
+.shelf-track {
+  display: flex;
+  gap: 13px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 3px 2px 13px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #414b63 transparent;
+}
+.shelf-track .channel-card {
+  flex: 0 0 225px;
+  width: 225px;
+  scroll-snap-align: start;
+}
+.shelf-track .channel-card:hover {
+  transform: translateY(-3px);
+}
+@media(max-width:560px) {
+  .catalog-category > h2 { font-size: 22px; }
+  .shelf-track { gap: 10px; }
+  .shelf-track .channel-card {
+    flex-basis: 185px;
+    width: 185px;
+  }
+  .shelf-heading h3 { font-size: 16px; }
+}

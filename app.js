@@ -193,18 +193,10 @@
       return;
     }
 
-    const groups = new Map();
-    visible.forEach(item => {
-      const country = item.type === "video"
-        ? "My Videos"
-        : normalizeCountry(item.country);
-      if (!groups.has(country)) groups.set(country, []);
-      groups.get(country).push(item);
-    });
-
     function card(item) {
       const fav = favorites.includes(item.id);
       const initial = escapeHtml(item.name.trim().charAt(0).toUpperCase() || "▶");
+
       return `<article class="channel-card">
         <div class="card-top">
           <div class="channel-icon">${initial}</div>
@@ -219,14 +211,66 @@
       </article>`;
     }
 
-    grid.innerHTML = [...groups.entries()].map(([country, entries]) => `
-      <section class="country-section">
-        <h3 class="country-heading">${escapeHtml(country)}</h3>
-        <div class="channel-grid country-grid">
-          ${entries.map(card).join("")}
-        </div>
-      </section>
-    `).join("");
+    function groupItems(list, getKey) {
+      const groups = new Map();
+      list.forEach(item => {
+        const key = getKey(item);
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(item);
+      });
+      return groups;
+    }
+
+    function shelf(title, groups, className) {
+      const sections = [...groups.entries()]
+        .filter(([, entries]) => entries.length)
+        .map(([name, entries]) => `
+          <section class="catalog-shelf">
+            <div class="shelf-heading">
+              <h3>${escapeHtml(name)}</h3>
+              <span>${entries.length} channels</span>
+            </div>
+            <div class="shelf-track ${className}">
+              ${entries.map(card).join("")}
+            </div>
+          </section>
+        `).join("");
+
+      return sections
+        ? `<section class="catalog-category"><h2>${title}</h2>${sections}</section>`
+        : "";
+    }
+
+    const countryGroups = groupItems(visible, item =>
+      item.type === "video" ? "My Videos" : normalizeCountry(item.country)
+    );
+
+    const languageItems = visible.filter(item =>
+      item.type === "live" &&
+      item.language &&
+      item.language !== "Unknown"
+    );
+
+    const languageGroups = groupItems(languageItems, item => item.language);
+
+    const countryOrder = ["India", "United States", "United Kingdom"];
+    const sortGroups = groups => [...groups.entries()].sort((a, b) => {
+      const ai = countryOrder.indexOf(a[0]);
+      const bi = countryOrder.indexOf(b[0]);
+
+      if (ai !== -1 || bi !== -1) {
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+      }
+
+      return a[0].localeCompare(b[0]);
+    });
+
+    grid.innerHTML =
+      shelf("Browse by Country", sortGroups(countryGroups), "country-track") +
+      shelf("Browse by Language", sortGroups(languageGroups), "language-track") ||
+      `<div class="empty-state"><div>▣</div><strong>No channels found</strong><p>Try another country, language or search.</p></div>`;
   }
   function escapeHtml(text) {
     return String(text).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
@@ -299,6 +343,35 @@
         throw new Error("Invalid M3U playlist");
       }
 
+      const languageByUrl = new Map();
+
+      const languageFeeds = [
+        [
+          "https://raw.githubusercontent.com/AdeelWajid/iptv_validated_list/main/playlists/languages/hin.m3u",
+          "Hindi"
+        ],
+        [
+          "https://raw.githubusercontent.com/AdeelWajid/iptv_validated_list/main/playlists/languages/eng.m3u",
+          "English"
+        ]
+      ];
+
+      await Promise.all(languageFeeds.map(async ([feedUrl, language]) => {
+        try {
+          const feedResponse = await fetch(feedUrl);
+          if (!feedResponse.ok) return;
+
+          const feedText = await feedResponse.text();
+          for (const feedLine of feedText.split(/\r?\n/)) {
+            if (!feedLine.trim() || feedLine.trim().startsWith("#")) continue;
+            const feedUrlSafe = safeUrl(feedLine.trim());
+            if (feedUrlSafe) languageByUrl.set(feedUrlSafe, language);
+          }
+        } catch (error) {
+          console.warn("Language feed unavailable:", language, error);
+        }
+      }));
+
       const lines = data.split(/\r?\n/);
       let channelName = "";
       let channelCountry = "International";
@@ -352,6 +425,7 @@
           const url = safeUrl(line.trim());
 
           if (url) {
+            const resolvedLanguage = languageByUrl.get(url) || channelLanguage;
             const id = makeId(url);
             const existing = items.find(
               item => item.id === id || item.url === url
@@ -362,7 +436,7 @@
                 existing.country = channelCountry;
               }
               if (!existing.language || existing.language === "Unknown") {
-                existing.language = channelLanguage;
+                existing.language = resolvedLanguage;
               }
             } else {
               items.push({
@@ -371,7 +445,7 @@
                 name: channelName || "Public TV Channel",
                 url,
                 country: channelCountry,
-                language: channelLanguage,
+                language: resolvedLanguage,
                 description:
                   "Public playlist stream. Check broadcaster rights, region and availability.",
                 source: "public-playlist"
