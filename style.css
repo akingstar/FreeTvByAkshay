@@ -638,3 +638,48 @@ html { scroll-padding-top: 88px; }
     font-size: 12px;
   }
 }
+
+
+/* AKSHAY TV EPG */
+.channel-programme {
+  display: grid;
+  gap: 5px;
+  min-height: 43px;
+  overflow-wrap: anywhere;
+}
+
+.channel-programme div,
+.player-epg div {
+  display: flex;
+  gap: 7px;
+  align-items: baseline;
+}
+
+.channel-programme strong,
+.player-epg strong {
+  flex: 0 0 auto;
+  color: #36c9f4;
+  font-size: 9px;
+  letter-spacing: .7px;
+}
+
+.player-epg {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 13px;
+  border: 1px solid #263d52;
+  border-left: 3px solid #36c9f4;
+  border-radius: 8px;
+  background: #101c2a;
+  color: #c5d8e8;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .player-epg {
+    font-size: 11px;
+  }
+}

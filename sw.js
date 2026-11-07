@@ -1,4 +1,4 @@
-const CACHE_NAME = "akshay-tv-india-v5";
+const CACHE_NAME = "akshay-tv-india-v6-epg";
 const APP_FILES = [
   "./",
   "./index.html",
@@ -29,7 +29,7 @@ self.addEventListener("fetch", event => {
 
   if (event.request.method !== "GET" || url.origin !== self.location.origin) return;
 
-  if (url.pathname.endsWith(".m3u") || url.pathname.endsWith(".m3u8")) return;
+  if (url.pathname.endsWith(".m3u") || url.pathname.endsWith(".m3u8") || url.pathname.endsWith("/epg.json")) return;
 
   event.respondWith(
     fetch(event.request).then(response => {

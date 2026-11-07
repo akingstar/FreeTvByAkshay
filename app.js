@@ -13,6 +13,9 @@ const INDIA_PAGE_SIZE = 48;
 let filtered = [];
 let page = 0;
 let hls = null;
+let epgChannels = {};
+let epgReady = false;
+let activeChannel = null;
 
 const video = $("video");
 
@@ -76,7 +79,8 @@ function parsePlaylist(data) {
       pending = {
         name: comma >= 0 ? line.slice(comma + 1).trim() : "Live Channel",
         country: getCountry(attrs,attrs["tvg-id"]),
-        logo: safeUrl(attrs["tvg-logo"])
+        logo: safeUrl(attrs["tvg-logo"]),
+        tvgId: attrs["tvg-id"] || ""
       };
       continue;
     }
@@ -89,6 +93,7 @@ function parsePlaylist(data) {
           name: pending.name || "Live Channel",
           country: pending.country,
           logo: pending.logo,
+          tvgId: pending.tvgId,
           url
         });
       }
@@ -115,7 +120,8 @@ function parseIndiaPlaylist(data) {
       pending = {
         name: comma >= 0 ? line.slice(comma + 1).trim() : "Indian Live Channel",
         category: attrs["group-title"] || "Other",
-        logo: safeUrl(attrs["tvg-logo"])
+        logo: safeUrl(attrs["tvg-logo"]),
+        tvgId: attrs["tvg-id"] || ""
       };
       continue;
     }
@@ -132,6 +138,7 @@ function parseIndiaPlaylist(data) {
           country: `INDIA • ${pending.category}`,
           category: pending.category,
           logo: pending.logo,
+          tvgId: pending.tvgId,
           url
         });
       }
@@ -171,6 +178,65 @@ function getQuality(name) {
   if (q === "1440p" || q === "1080p" || q === "fhd") return "FHD";
   if (q === "720p" || q === "hd") return "HD";
   return "SD";
+}
+
+function programmeFor(channel) {
+  const id = String(channel.tvgId || "").split("@")[0];
+  const list = epgChannels[id] || [];
+  const now = Math.floor(Date.now() / 1000);
+  return {
+    current: list.find(item => item.start <= now && item.stop > now) || null,
+    next: list.find(item => item.start > now) || null
+  };
+}
+
+function appendProgrammeLine(container, label, item) {
+  const line = document.createElement("div");
+  const tag = document.createElement("strong");
+  const title = document.createElement("span");
+  tag.textContent = label + " ";
+  title.textContent = item.title || "Untitled programme";
+  line.append(tag, title);
+  container.append(line);
+}
+
+function renderProgrammeBlock(container, channel) {
+  container.replaceChildren();
+  container.className = "channel-programme";
+
+  const {current, next} = programmeFor(channel);
+
+  if (current) appendProgrammeLine(container, "NOW", current);
+  if (next) appendProgrammeLine(container, "NEXT", next);
+
+  if (!current && !next) {
+    container.textContent = epgReady
+      ? "No programme listing available"
+      : "Programme guide loading...";
+  }
+}
+
+function updatePlayerEpg(channel) {
+  const box = $("playerEpg");
+  if (!box) return;
+
+  box.replaceChildren();
+
+  if (!channel) {
+    box.textContent = "Choose a channel to view programme information.";
+    return;
+  }
+
+  const {current, next} = programmeFor(channel);
+
+  if (current) appendProgrammeLine(box, "NOW", current);
+  if (next) appendProgrammeLine(box, "NEXT", next);
+
+  if (!current && !next) {
+    box.textContent = epgReady
+      ? "No programme listing available for this channel."
+      : "Loading programme guide...";
+  }
 }
 
 function makeCard(channel) {
@@ -227,8 +293,7 @@ function makeCard(channel) {
   top.append(logo, details);
 
   const programme = document.createElement("div");
-  programme.className = "channel-programme";
-  programme.textContent = "Programme guide not connected";
+  renderProgrammeBlock(programme, channel);
 
   const actions = document.createElement("div");
   actions.className = "card-actions";
@@ -339,6 +404,8 @@ function stopPlayer() {
 
 function playChannel(channel) {
   stopPlayer();
+  activeChannel = channel;
+  updatePlayerEpg(channel);
 
   $("nowTitle").textContent = channel.name;
   $("playingName").textContent = channel.name;
@@ -491,6 +558,34 @@ function renderIndia() {
   }
 }
 
+async function loadEpg() {
+  try {
+    const response = await fetch("./data/epg.json", {cache:"no-store"});
+    if (!response.ok) throw new Error("EPG HTTP " + response.status);
+
+    const data = await response.json();
+    if (!data || !data.channels || typeof data.channels !== "object") {
+      throw new Error("Invalid EPG data");
+    }
+
+    epgChannels = data.channels;
+    epgReady = true;
+
+    render();
+    renderIndia();
+
+    if (activeChannel) updatePlayerEpg(activeChannel);
+
+    console.log("EPG loaded:", Object.keys(epgChannels).length, "channels");
+  } catch (error) {
+    epgReady = true;
+    console.warn("EPG loading error:", error);
+    render();
+    renderIndia();
+    if (activeChannel) updatePlayerEpg(activeChannel);
+  }
+}
+
 async function loadIndiaChannels() {
   const status = $("indiaLoadStatus");
   try {
@@ -638,16 +733,26 @@ $("fullscreenBtn").addEventListener("click",() => {
 
 $("stopBtn").addEventListener("click",() => {
   stopPlayer();
+  activeChannel = null;
+  updatePlayerEpg(null);
   $("playerStatus").textContent = "Playback stopped";
 });
 
 video.addEventListener("error",() => {
   $("playerStatus").textContent = "Playback failed: stream may be offline or blocked";
 });
+setInterval(() => {
+  if (!epgReady) return;
+  render();
+  renderIndia();
+  if (activeChannel) updatePlayerEpg(activeChannel);
+}, 60000);
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./sw.js").catch(console.warn);
 }
 
 loadChannels();
 loadIndiaChannels();
+loadEpg();
 })();
