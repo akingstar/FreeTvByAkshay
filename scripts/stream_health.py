@@ -8,6 +8,7 @@ from urllib.parse import urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = ["data/playlist.m3u", "data/india-working.m3u"]
+CANDIDATES = "data/india-candidates.m3u"
 HEALTH = ROOT / "data/stream-health.json"
 QUARANTINE = ROOT / "data/stream-quarantine.json"
 WORKERS = 48
@@ -150,6 +151,8 @@ def main():
         headers[filename] = header
         active[filename] = entries
 
+    _, candidate_entries = parse_playlist(ROOT / CANDIDATES)
+
     urls = {
         e["url"]
         for entries in active.values()
@@ -159,7 +162,9 @@ def main():
         e["url"] for e in quarantine_data
         if isinstance(e, dict) and e.get("url")
     )
+    urls.update(e["url"] for e in candidate_entries)
 
+    print("Candidate India entries:", len(candidate_entries))
     print("Unique stream URLs to test:", len(urls))
     print("Concurrent workers:", WORKERS)
 
@@ -274,6 +279,20 @@ def main():
 
     quarantine_data = still_quarantined + new_quarantine
 
+    promoted = 0
+    india_filename = "data/india-working.m3u"
+    india_urls = {entry["url"] for entry in active[india_filename]}
+
+    for entry in candidate_entries:
+        url = entry["url"]
+        status, reason = results[url]
+
+        if status == "pass" and url not in india_urls:
+            active[india_filename].append(entry)
+            india_urls.add(url)
+            promoted += 1
+            print("INDIA CHANNEL ADDED:", entry["lines"][0][-90:])
+
     for filename in FILES:
         write_playlist(ROOT / filename, headers[filename], active[filename])
 
@@ -285,6 +304,9 @@ def main():
     print("Restricted / not judged:", restricted)
     print("Newly quarantined entries:", removed)
     print("Recovered entries restored:", restored)
+    print("New India candidates promoted:", promoted)
+    print("India working entries:",
+          len(active["data/india-working.m3u"]))
     print("Currently quarantined:", len(quarantine_data))
     print("Remaining worldwide entries:",
           sum(len(x) for x in active.values()))
