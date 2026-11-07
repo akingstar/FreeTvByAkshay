@@ -288,7 +288,7 @@
 
   async function loadDefaultPlaylist() {
     const playlistUrl =
-      "https://raw.githubusercontent.com/freecasthub/public-iptv/main/playlist.m3u";
+      "https://raw.githubusercontent.com/AdeelWajid/iptv_validated_list/main/playlist.m3u";
 
     try {
       const response = await fetch(playlistUrl);
@@ -326,12 +326,27 @@
             attributes[match[1].toLowerCase()] = match[2];
           }
 
-          channelCountry = normalizeCountry(
-            attributes["tvg-country"] || attributes["country"] || ""
-          );
+          const tvgId = attributes["tvg-id"] || "";
+          const idCountry = tvgId.match(/\.([a-z]{2})@/i)?.[1] || "";
+          const idLanguage = tvgId.match(/@([a-z]{3,})$/i)?.[1] || "";
+
+          let countryValue =
+            attributes["tvg-country"] || attributes["country"] || idCountry;
+
+          if (/^[a-z]{2}$/i.test(countryValue)) {
+            try {
+              countryValue = new Intl.DisplayNames(["en"], {
+                type: "region"
+              }).of(countryValue.toUpperCase()) || countryValue;
+            } catch {}
+          }
+
+          channelCountry = normalizeCountry(countryValue);
           channelLanguage = detectLanguage(
             channelName,
-            attributes["tvg-language"] || attributes["language"] || ""
+            attributes["tvg-language"] ||
+            attributes["language"] ||
+            idLanguage
           );
         } else if (channelName && line.trim() && !line.startsWith("#")) {
           const url = safeUrl(line.trim());
