@@ -3,7 +3,8 @@
 
 const $ = id => document.getElementById(id);
 const PAGE_SIZE = 48;
-const PLAYLIST_URL = "./data/playlist.m3u?v=simple1";
+const PLAYLIST_URL = "./data/playlist.m3u";
+const WAVES_URL = "https://www.wavesott.com/";
 
 let channels = [];
 let filtered = [];
@@ -12,10 +13,21 @@ let hls = null;
 
 const video = $("video");
 
+const indiaChannels = [
+  "DD National","DD News","DD Sports","DD Bharati","DD Urdu","DD Kisan",
+  "DD Arunprabha","DD Assam","DD Bangla","DD Bihar","DD Chandana",
+  "DD Chhattisgarh","DD Girnar","DD Goa","DD Haryana",
+  "DD Himachal Pradesh","DD Jharkhand","DD Kashir","DD Madhya Pradesh",
+  "DD Malayalam","DD Manipur","DD Meghalaya","DD Mizoram","DD Nagaland",
+  "DD Odia","DD Punjabi","DD Rajasthan","DD Sahyadri","DD Saptagiri",
+  "DD Tamil","DD Tripura","DD Uttar Pradesh","DD Uttarakhand","DD Yadagiri",
+  "DD India"
+];
+
 function safeUrl(value) {
   try {
     const u = new URL(String(value || ""));
-    return ["http:", "https:"].includes(u.protocol) ? u.href : "";
+    return ["http:","https:"].includes(u.protocol) ? u.href : "";
   } catch {
     return "";
   }
@@ -26,13 +38,9 @@ function countryName(value) {
   if (!raw) return "International";
 
   const aliases = {
-    US:"United States",USA:"United States",
-    GB:"United Kingdom",UK:"United Kingdom",
-    KR:"South Korea",KP:"North Korea",
-    AE:"United Arab Emirates",RU:"Russia",
-    CZ:"Czechia",TR:"Turkey",VN:"Vietnam",
-    BO:"Bolivia",IR:"Iran",SY:"Syria",
-    TW:"Taiwan",HK:"Hong Kong"
+    US:"United States",USA:"United States",GB:"United Kingdom",UK:"United Kingdom",
+    KR:"South Korea",KP:"North Korea",AE:"United Arab Emirates",
+    RU:"Russia",CZ:"Czechia",TR:"Turkey",VN:"Vietnam",TW:"Taiwan",HK:"Hong Kong"
   };
 
   const upper = raw.toUpperCase();
@@ -50,13 +58,9 @@ function getCountry(attrs, tvgId) {
   const explicit = attrs["tvg-country"] || attrs.country;
   if (explicit) return countryName(explicit);
 
-  // Some playlist IDs include a named regional suffix, e.g. @India.
-  const namedRegion = String(tvgId || "").match(/@([A-Za-z][A-Za-z ]+)$/);
-  if (namedRegion && namedRegion[1].length > 2) {
-    return countryName(namedRegion[1]);
-  }
+  const named = String(tvgId || "").match(/@([A-Za-z][A-Za-z ]+)$/);
+  if (named && named[1].length > 2) return countryName(named[1]);
 
-  // Standard IDs often look like ChannelName.us@SD.
   const code = String(tvgId || "").match(/\.([a-z]{2})@/i);
   return code ? countryName(code[1]) : "International";
 }
@@ -64,26 +68,21 @@ function getCountry(attrs, tvgId) {
 function parsePlaylist(data) {
   const result = [];
   let pending = null;
-  let index = 0;
 
   for (const rawLine of data.split(/\r?\n/)) {
-    const line = String(rawLine || "").trim();
+    const line = rawLine.trim();
     if (!line) continue;
 
     if (line.startsWith("#EXTINF")) {
       const comma = line.lastIndexOf(",");
-      const name = comma >= 0
-        ? line.slice(comma + 1).trim()
-        : "Live Channel";
-
       const attrs = {};
       for (const match of line.matchAll(/([\w-]+)="([^"]*)"/g)) {
         attrs[match[1].toLowerCase()] = match[2];
       }
 
       pending = {
-        name: name || "Live Channel",
-        country: getCountry(attrs, attrs["tvg-id"]),
+        name: comma >= 0 ? line.slice(comma + 1).trim() : "Live Channel",
+        country: getCountry(attrs,attrs["tvg-id"]),
         logo: safeUrl(attrs["tvg-logo"])
       };
       continue;
@@ -93,8 +92,8 @@ function parsePlaylist(data) {
       const url = safeUrl(line);
       if (url) {
         result.push({
-          id: index++,
-          name: pending.name,
+          id: result.length,
+          name: pending.name || "Live Channel",
           country: pending.country,
           logo: pending.logo,
           url
@@ -106,17 +105,23 @@ function parsePlaylist(data) {
   return result;
 }
 
-function updateCountries() {
-  const select = $("countryFilter");
-  const previous = select.value;
-  const countries = [...new Set(channels.map(c => c.country))]
-    .sort((a,b) => a.localeCompare(b));
-
-  select.replaceChildren(new Option("All Countries","all"));
-  for (const name of countries) {
-    select.add(new Option(name,name));
+function getFavorites() {
+  try {
+    const value = JSON.parse(localStorage.getItem("akshaytv-favorites") || "[]");
+    return new Set(Array.isArray(value) ? value : []);
+  } catch {
+    return new Set();
   }
-  if (countries.includes(previous)) select.value = previous;
+}
+
+let favorites = getFavorites();
+
+function saveFavorites() {
+  try {
+    localStorage.setItem("akshaytv-favorites",JSON.stringify([...favorites]));
+  } catch {
+    $("loadStatus").textContent = "Favorites could not be saved by this browser.";
+  }
 }
 
 function makeCard(channel) {
@@ -126,27 +131,21 @@ function makeCard(channel) {
   const top = document.createElement("div");
   top.className = "channel-top";
 
-  let logo;
+  const logo = document.createElement("div");
+  logo.className = "channel-logo";
+  logo.textContent = "▶";
+
   if (channel.logo) {
-    logo = document.createElement("img");
-    logo.src = channel.logo;
-    logo.alt = "";
-    logo.loading = "lazy";
-    logo.className = "channel-logo";
-    logo.onerror = () => {
-      const fallback = document.createElement("div");
-      fallback.className = "channel-logo";
-      fallback.textContent = "▶";
-      logo.replaceWith(fallback);
-    };
-  } else {
-    logo = document.createElement("div");
-    logo.className = "channel-logo";
-    logo.textContent = "▶";
+    const img = document.createElement("img");
+    img.src = channel.logo;
+    img.alt = "";
+    img.loading = "lazy";
+    img.onerror = () => img.replaceWith(logo.cloneNode(true));
+    logo.replaceChildren(img);
   }
 
   const details = document.createElement("div");
-  details.style.minWidth = "0";
+  details.className = "channel-details";
 
   const name = document.createElement("div");
   name.className = "channel-name";
@@ -159,25 +158,107 @@ function makeCard(channel) {
   details.append(name,country);
   top.append(logo,details);
 
+  const actions = document.createElement("div");
+  actions.className = "card-actions";
+
   const play = document.createElement("button");
   play.className = "play-button";
   play.type = "button";
-  play.textContent = "▶  WATCH LIVE";
-  play.addEventListener("click", () => playChannel(channel));
+  play.textContent = "▶ WATCH";
+  play.addEventListener("click",() => playChannel(channel));
 
-  card.append(top,play);
+  const fav = document.createElement("button");
+  fav.className = "favorite-button";
+  fav.type = "button";
+  fav.textContent = favorites.has(channel.url) ? "♥" : "♡";
+  fav.setAttribute("aria-label","Toggle favorite");
+  fav.setAttribute("aria-pressed",String(favorites.has(channel.url)));
+  fav.addEventListener("click",() => {
+    if (favorites.has(channel.url)) favorites.delete(channel.url);
+    else favorites.add(channel.url);
+    saveFavorites();
+    render();
+  });
+
+  actions.append(play,fav);
+  card.append(top,actions);
   return card;
+}
+
+function renderIndia() {
+  const query = $("indiaSearch").value.toLowerCase().trim();
+  const list = indiaChannels.filter(name => name.toLowerCase().includes(query));
+  const grid = $("indiaGrid");
+  grid.replaceChildren();
+
+  $("indiaCount").textContent = `${list.length} channels listed`;
+
+  list.forEach(name => {
+    const card = document.createElement("article");
+    card.className = "channel-card india-card";
+
+    const top = document.createElement("div");
+    top.className = "channel-top";
+
+    const logo = document.createElement("div");
+    logo.className = "channel-logo india-logo";
+    logo.textContent = "🇮🇳";
+
+    const details = document.createElement("div");
+    details.className = "channel-details";
+
+    const title = document.createElement("div");
+    title.className = "channel-name";
+    title.textContent = name;
+
+    const sub = document.createElement("div");
+    sub.className = "channel-country";
+    sub.textContent = "Doordarshan directory";
+
+    details.append(title,sub);
+    top.append(logo,details);
+
+    const link = document.createElement("a");
+    link.className = "play-button official-link";
+    link.href = WAVES_URL;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "OFFICIAL PLATFORM ↗";
+
+    card.append(top,link);
+    grid.append(card);
+  });
+
+  if (!list.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "No Indian channels found.";
+    grid.append(empty);
+  }
+}
+
+function updateCountries() {
+  const select = $("countryFilter");
+  const previous = select.value;
+  const countries = [...new Set(channels.map(c => c.country))]
+    .sort((a,b) => a.localeCompare(b));
+
+  select.replaceChildren(new Option("All Countries","all"));
+  countries.forEach(name => select.add(new Option(name,name)));
+
+  if (countries.includes(previous)) select.value = previous;
 }
 
 function render() {
   const query = $("searchInput").value.toLowerCase().trim();
   const selectedCountry = $("countryFilter").value;
+  const view = $("viewFilter").value;
 
   filtered = channels.filter(channel => {
     const matchesName = channel.name.toLowerCase().includes(query);
-    const matchesCountry =
-      selectedCountry === "all" || channel.country === selectedCountry;
-    return matchesName && matchesCountry;
+    const matchesCountry = selectedCountry === "all" || channel.country === selectedCountry;
+    const matchesFavorite = view !== "favorites" || favorites.has(channel.url);
+    return matchesName && matchesCountry && matchesFavorite;
   });
 
   const totalPages = Math.max(1,Math.ceil(filtered.length/PAGE_SIZE));
@@ -191,7 +272,9 @@ function render() {
   if (!current.length) {
     const empty = document.createElement("div");
     empty.className = "empty";
-    empty.textContent = "No channels found. Try another search or country.";
+    empty.textContent = view === "favorites"
+      ? "No favorites yet. Tap ♡ on a channel to save it."
+      : "No channels found. Try another search or country.";
     grid.append(empty);
   } else {
     const fragment = document.createDocumentFragment();
@@ -199,7 +282,7 @@ function render() {
     grid.append(fragment);
   }
 
-  $("totalCount").textContent = filtered.length.toLocaleString() + " channels";
+  $("totalCount").textContent = `${filtered.length.toLocaleString()} channels`;
   $("pagination").replaceChildren();
 
   if (filtered.length > PAGE_SIZE) {
@@ -230,6 +313,7 @@ function stopPlayer() {
   video.pause();
   video.removeAttribute("src");
   video.load();
+  $("playerPlaceholder").classList.remove("hidden");
 }
 
 function playChannel(channel) {
@@ -247,17 +331,15 @@ function playChannel(channel) {
     hls.loadSource(channel.url);
     hls.attachMedia(video);
 
-    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+    hls.on(Hls.Events.MANIFEST_PARSED,() => {
       $("playerStatus").textContent = "Stream loaded";
       video.play().catch(() => {
         $("playerStatus").textContent = "Press Play to start";
       });
     });
 
-    hls.on(Hls.Events.ERROR, (_, data) => {
-      if (data.fatal) {
-        $("playerStatus").textContent = "Stream unavailable or blocked";
-      }
+    hls.on(Hls.Events.ERROR,(_,data) => {
+      if (data.fatal) $("playerStatus").textContent = "Stream unavailable or blocked";
     });
   } else {
     video.src = channel.url;
@@ -291,15 +373,17 @@ async function loadChannels() {
 
     const countryCount = new Set(channels.map(c => c.country)).size;
     $("loadStatus").textContent =
-      `Loaded ${channels.length.toLocaleString()} channels from ${countryCount} country groups. Some streams may be offline or region-restricted.`;
+      `Loaded ${channels.length.toLocaleString()} channels across ${countryCount} country groups. Some streams may be offline or region-restricted.`;
   } catch (error) {
     console.error("Playlist loading error:",error);
-    $("loadStatus").textContent = "Could not load channels: " + error.message;
+    $("loadStatus").textContent = "Could not load playlist: " + error.message;
     $("totalCount").textContent = "0 channels";
     $("channelGrid").innerHTML =
-      '<div class="empty">Playlist unavailable. Please refresh the page.</div>';
+      '<div class="empty">Worldwide playlist unavailable. Please refresh.</div>';
   }
 }
+
+$("indiaSearch").addEventListener("input",renderIndia);
 
 $("searchInput").addEventListener("input",() => {
   page = 0;
@@ -311,15 +395,26 @@ $("countryFilter").addEventListener("change",() => {
   render();
 });
 
+$("viewFilter").addEventListener("change",() => {
+  page = 0;
+  render();
+});
+
 $("fullscreenBtn").addEventListener("click",() => {
-  const target = video;
-  if (target.requestFullscreen) target.requestFullscreen();
-  else if (target.webkitEnterFullscreen) target.webkitEnterFullscreen();
+  if (video.requestFullscreen) video.requestFullscreen();
+  else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+});
+
+$("stopBtn").addEventListener("click",() => {
+  stopPlayer();
+  $("playerStatus").textContent = "Playback stopped";
 });
 
 video.addEventListener("error",() => {
   $("playerStatus").textContent = "Playback failed: stream may be offline or blocked";
 });
+
+renderIndia();
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./sw.js").catch(console.warn);
