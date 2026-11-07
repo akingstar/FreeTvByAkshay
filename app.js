@@ -4,8 +4,6 @@
 const $ = id => document.getElementById(id);
 const PAGE_SIZE = 48;
 const PLAYLIST_URL = "./data/playlist.m3u";
-const WAVES_URL = "https://www.wavesott.com/";
-
 let channels = [];
 let filtered = [];
 let page = 0;
@@ -13,16 +11,6 @@ let hls = null;
 
 const video = $("video");
 
-const indiaChannels = [
-  "DD National","DD News","DD Sports","DD Bharati","DD Urdu","DD Kisan",
-  "DD Arunprabha","DD Assam","DD Bangla","DD Bihar","DD Chandana",
-  "DD Chhattisgarh","DD Girnar","DD Goa","DD Haryana",
-  "DD Himachal Pradesh","DD Jharkhand","DD Kashir","DD Madhya Pradesh",
-  "DD Malayalam","DD Manipur","DD Meghalaya","DD Mizoram","DD Nagaland",
-  "DD Odia","DD Punjabi","DD Rajasthan","DD Sahyadri","DD Saptagiri",
-  "DD Tamil","DD Tripura","DD Uttar Pradesh","DD Uttarakhand","DD Yadagiri",
-  "DD India"
-];
 
 function safeUrl(value) {
   try {
@@ -185,58 +173,6 @@ function makeCard(channel) {
   return card;
 }
 
-function renderIndia() {
-  const query = $("indiaSearch").value.toLowerCase().trim();
-  const list = indiaChannels.filter(name => name.toLowerCase().includes(query));
-  const grid = $("indiaGrid");
-  grid.replaceChildren();
-
-  $("indiaCount").textContent = `${list.length} channels listed`;
-
-  list.forEach(name => {
-    const card = document.createElement("article");
-    card.className = "channel-card india-card";
-
-    const top = document.createElement("div");
-    top.className = "channel-top";
-
-    const logo = document.createElement("div");
-    logo.className = "channel-logo india-logo";
-    logo.textContent = "🇮🇳";
-
-    const details = document.createElement("div");
-    details.className = "channel-details";
-
-    const title = document.createElement("div");
-    title.className = "channel-name";
-    title.textContent = name;
-
-    const sub = document.createElement("div");
-    sub.className = "channel-country";
-    sub.textContent = "Doordarshan directory";
-
-    details.append(title,sub);
-    top.append(logo,details);
-
-    const link = document.createElement("a");
-    link.className = "play-button official-link";
-    link.href = WAVES_URL;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.textContent = "OFFICIAL PLATFORM ↗";
-
-    card.append(top,link);
-    grid.append(card);
-  });
-
-  if (!list.length) {
-    const empty = document.createElement("div");
-    empty.className = "empty";
-    empty.textContent = "No Indian channels found.";
-    grid.append(empty);
-  }
-}
-
 function updateCountries() {
   const select = $("countryFilter");
   const previous = select.value;
@@ -383,7 +319,6 @@ async function loadChannels() {
   }
 }
 
-$("indiaSearch").addEventListener("input",renderIndia);
 
 $("searchInput").addEventListener("input",() => {
   page = 0;
@@ -413,9 +348,6 @@ $("stopBtn").addEventListener("click",() => {
 video.addEventListener("error",() => {
   $("playerStatus").textContent = "Playback failed: stream may be offline or blocked";
 });
-
-renderIndia();
-
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./sw.js").catch(console.warn);
 }
