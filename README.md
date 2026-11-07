@@ -36,3 +36,12 @@ Open `index.html` through a local static server (recommended) rather than `file:
 ## Privacy
 
 No account or backend is included. User-added URLs and favorites stay in the browser's local storage. Anyone using the same browser profile can access them.
+
+## Public live TV playlist
+
+The app loads a community-maintained public playlist:
+https://github.com/freecasthub/public-iptv
+
+The app links to streams hosted by third parties; it does not host video.
+Availability, regional restrictions, browser CORS and broadcasting rights
+must be checked with the respective broadcaster.

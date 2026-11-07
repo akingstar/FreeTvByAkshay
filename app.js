@@ -120,5 +120,76 @@
   if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
     window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
   }
+
+  async function loadDefaultPlaylist() {
+    const playlistUrl =
+      "https://raw.githubusercontent.com/freecasthub/public-iptv/main/playlist.m3u";
+
+    try {
+      const response = await fetch(playlistUrl);
+      if (!response.ok) throw new Error("HTTP " + response.status);
+
+      const data = await response.text();
+      if (!data.trim().startsWith("#EXTM3U")) {
+        throw new Error("Invalid M3U playlist");
+      }
+
+      const lines = data.split(/\r?\n/);
+      let channelName = "";
+      let added = 0;
+
+      function makeId(url) {
+        let hash = 2166136261;
+        for (let i = 0; i < url.length; i++) {
+          hash ^= url.charCodeAt(i);
+          hash = Math.imul(hash, 16777619);
+        }
+        return "public-" + (hash >>> 0).toString(16);
+      }
+
+      for (const line of lines) {
+        if (line.startsWith("#EXTINF")) {
+          const comma = line.lastIndexOf(",");
+          channelName = comma >= 0
+            ? line.slice(comma + 1).trim()
+            : "Public TV Channel";
+        } else if (channelName && line.trim() && !line.startsWith("#")) {
+          const url = safeUrl(line.trim());
+
+          if (url) {
+            const id = makeId(url);
+            const exists = items.some(
+              item => item.id === id || item.url === url
+            );
+
+            if (!exists) {
+              items.push({
+                id,
+                type: "live",
+                name: channelName || "Public TV Channel",
+                url,
+                description:
+                  "Public playlist stream. Check broadcaster rights, region and availability.",
+                source: "public-playlist"
+              });
+              added++;
+            }
+          }
+
+          channelName = "";
+        }
+      }
+
+      if (added) save();
+      render();
+      toast(added + " live channels loaded.");
+      console.log("Public TV channels added:", added);
+    } catch (error) {
+      console.error("Live playlist error:", error);
+      toast("Live playlist unavailable. Try again later.");
+    }
+  }
+
   render();
+  loadDefaultPlaylist();
 })();
