@@ -51,7 +51,8 @@
   }
 
   function detectLanguage(name, explicit) {
-    if (explicit && explicit.trim()) return explicit.trim();
+    const explicitText = String(explicit || "").trim();
+    if (explicitText) return explicitText;
 
     const text = String(name || "").toLowerCase();
     const languages = [
@@ -200,14 +201,15 @@
 
     function card(item) {
       const fav = favorites.includes(item.id);
-      const initial = escapeHtml(item.name.trim().charAt(0).toUpperCase() || "▶");
+      const itemName = String(item.name || "Live Channel");
+      const initial = escapeHtml(itemName.trim().charAt(0).toUpperCase() || "▶");
 
       return `<article class="channel-card">
         <div class="card-top">
           <div class="channel-icon">${initial}</div>
           <span class="card-type">${item.type === "live" ? "● LIVE" : "ON DEMAND"}</span>
         </div>
-        <h3 title="${escapeHtml(item.name)}">${escapeHtml(item.name)}</h3>
+        <h3 title="${escapeHtml(itemName)}">${escapeHtml(itemName)}</h3>
         <p>${escapeHtml(item.language || "Unknown")} · ${escapeHtml(item.description || (item.type === "live" ? "Live stream" : "Personal video"))}</p>
         <div class="card-actions">
           <button data-play="${escapeHtml(item.id)}">▶ Watch</button>
