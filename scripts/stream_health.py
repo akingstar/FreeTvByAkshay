@@ -179,31 +179,35 @@ def main():
     passed = 0
     new_quarantine = []
 
-    # Evaluate active feeds.
+    # Evaluate each unique active URL only once per scan.
+    processed_active_urls = set()
     for filename, entries in active.items():
         keep = []
         for entry in entries:
             url = entry["url"]
             status, reason = results[url]
-            old = history.get(url, {})
-            failures = int(old.get("failures", 0))
 
-            if status == "pass":
-                passed += 1
-                history.pop(url, None)
+            if url not in processed_active_urls:
+                processed_active_urls.add(url)
+
+                if status == "pass":
+                    passed += 1
+                    history.pop(url, None)
+
+                elif status == "restricted":
+                    restricted += 1
+
+                else:
+                    failures = int(history.get(url, {}).get("failures", 0)) + 1
+                    history[url] = {
+                        "failures": failures,
+                        "last_reason": reason
+                    }
+
+            if status == "pass" or status == "restricted":
                 keep.append(entry)
-
-            elif status == "restricted":
-                restricted += 1
-                # Access restrictions are not proof that a feed is dead.
-                keep.append(entry)
-
             else:
-                failures += 1
-                history[url] = {
-                    "failures": failures,
-                    "last_reason": reason
-                }
+                failures = int(history.get(url, {}).get("failures", 0))
 
                 if failures >= MAX_FAILURES:
                     new_quarantine.append({
@@ -220,8 +224,9 @@ def main():
 
         active[filename] = keep
 
-    # Recheck previously quarantined entries. Restore if recovered.
+    # Recheck quarantined URLs; count each unique URL only once per scan.
     still_quarantined = []
+    processed_quarantine_urls = set()
     for entry in quarantine_data:
         if not isinstance(entry, dict) or not entry.get("url"):
             continue
@@ -242,16 +247,29 @@ def main():
             print("RESTORED:", url)
 
         elif status == "restricted":
-            restricted += 1
+            if url not in processed_quarantine_urls:
+                restricted += 1
+                processed_quarantine_urls.add(url)
             still_quarantined.append(entry)
 
         else:
-            entry["failures"] = int(entry.get("failures", 0)) + 1
+            if url not in processed_quarantine_urls:
+                previous = int(history.get(url, {}).get(
+                    "failures", entry.get("failures", 0)
+                ))
+                failures = previous + 1
+                history[url] = {
+                    "failures": failures,
+                    "last_reason": reason
+                }
+                processed_quarantine_urls.add(url)
+            else:
+                failures = int(history.get(url, {}).get(
+                    "failures", entry.get("failures", 0)
+                ))
+
+            entry["failures"] = failures
             entry["reason"] = reason
-            history[url] = {
-                "failures": entry["failures"],
-                "last_reason": reason
-            }
             still_quarantined.append(entry)
 
     quarantine_data = still_quarantined + new_quarantine
