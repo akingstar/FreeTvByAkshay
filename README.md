@@ -1,7 +1,9 @@
 # FreeTvByAkshay
 
-A static, mobile-friendly TV-style web app for:
-- Authorized live HLS streams (`.m3u8`)
+A static, mobile-friendly AKSHAY TV directory for:
+- A separate Indian channel directory loaded from `data/india-candidates.m3u`
+- Worldwide channels loaded from `data/playlist.m3u`
+- HLS playback (`.m3u8`) where providers permit browser playback
 - Your own / authorized MP4 or WebM videos
 - Search, favorites, full-screen playback and browser-local library
 - Installable PWA shell
@@ -39,9 +41,14 @@ No account or backend is included. User-added URLs and favorites stay in the bro
 
 ## Public live TV playlist
 
-The app loads a community-maintained public playlist:
+The worldwide directory loads a community-maintained public playlist:
 https://github.com/freecasthub/public-iptv
 
 The app links to streams hosted by third parties; it does not host video.
 Availability, regional restrictions, browser CORS and broadcasting rights
 must be checked with the respective broadcaster.
+
+
+## Indian channel directory
+
+The India section loads the bundled `data/india-candidates.m3u` file and supports search, category filtering, favorites and pagination. The bundled list is a community candidate directory, not a guarantee that every stream is online or authorized for redistribution. DD/WAVES entries have been excluded. Check broadcaster terms and stream availability before use.

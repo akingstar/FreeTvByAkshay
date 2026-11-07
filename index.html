@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090909">
-<meta name="description" content="AKSHAY TV — discover free worldwide television and official Indian TV platforms.">
+<meta name="description" content="AKSHAY TV — discover Indian and worldwide live television channels.">
 <title>AKSHAY TV | Premium Live Television</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="stylesheet" href="style.css?v=premium1">
+<link rel="stylesheet" href="style.css?v=india2">
 <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js" defer></script>
-<script src="app.js?v=premium1" defer></script>
+<script src="app.js?v=india2" defer></script>
 </head>
 <body>
 <header class="header">
@@ -22,10 +22,10 @@
 <main>
   <section class="hero">
     <div class="hero-content">
-      <span class="eyebrow">YOUR WORLD. YOUR ENTERTAINMENT.</span>
-      <h1>Television.<br><span>Without Borders.</span></h1>
-      <p>Discover channels from India and around the world.</p>
-      <a class="gold-button" href="#india">EXPLORE INDIA TV <span>↓</span></a>
+      <span class="eyebrow">THE HOME OF LIVE TELEVISION</span>
+      <h1>India’s Channels.<br><span>All in One Place.</span></h1>
+      <p>Explore Indian television and discover channels from around the world.</p>
+      <a class="gold-button" href="#india">EXPLORE INDIAN TV <span>↓</span></a>
     </div>
     <div class="hero-decoration"><span>AK</span><i></i></div>
   </section>
@@ -54,6 +54,30 @@
       <button id="fullscreenBtn" class="outline-button">⛶ Fullscreen</button>
       <button id="stopBtn" class="outline-button">■ Stop</button>
     </div>
+  </section>
+
+
+  <section class="india-section" id="india">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">INDIA CHANNEL DIRECTORY</span>
+        <h2>Indian Live TV</h2>
+        <p class="section-description">News, entertainment, movies, music and regional channels.</p>
+      </div>
+      <span id="indiaTotalCount" class="count">Loading...</span>
+    </div>
+    <div class="filters india-filters">
+      <input id="indiaSearch" type="search" placeholder="⌕ Search Indian channels..." autocomplete="off">
+      <select id="indiaCategoryFilter"><option value="all">All categories</option></select>
+      <select id="indiaViewFilter">
+        <option value="all">All channels</option>
+        <option value="favorites">My favorites ♥</option>
+      </select>
+    </div>
+    <p id="indiaLoadStatus" class="status">Loading Indian channel directory...</p>
+    <div id="indiaChannelGrid" class="channel-grid"></div>
+    <div id="indiaPagination" class="pagination"></div>
+    <p class="notice">Streams are sourced from a public community playlist. Individual links may be offline, geo-restricted or blocked by their providers. Only streams permitted by their broadcasters should be used.</p>
   </section>
 
   <section class="world-section" id="world">
@@ -85,7 +109,7 @@
 
 <footer>
   <a class="brand footer-brand" href="./">AKSHAY<span>TV</span></a>
-  <p>FreeTvByAkshay · Worldwide Live TV</p>
+  <p>Indian &amp; Worldwide Live TV</p>
   <span>Streams are provided by the existing playlist and may be unavailable or region-restricted.</span>
 </footer>
 </body>

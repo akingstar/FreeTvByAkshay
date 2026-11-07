@@ -4,7 +4,12 @@
 const $ = id => document.getElementById(id);
 const PAGE_SIZE = 48;
 const PLAYLIST_URL = "./data/playlist.m3u";
+const INDIA_PLAYLIST_URL = "./data/india-candidates.m3u";
 let channels = [];
+let indiaChannels = [];
+let indiaFiltered = [];
+let indiaPage = 0;
+const INDIA_PAGE_SIZE = 48;
 let filtered = [];
 let page = 0;
 let hls = null;
@@ -93,6 +98,49 @@ function parsePlaylist(data) {
   return result;
 }
 
+function parseIndiaPlaylist(data) {
+  const result = [];
+  const seen = new Set();
+  let pending = null;
+
+  for (const rawLine of data.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line) continue;
+    if (line.startsWith("#EXTINF")) {
+      const comma = line.lastIndexOf(",");
+      const attrs = {};
+      for (const match of line.matchAll(/([\w-]+)="([^"]*)"/g)) {
+        attrs[match[1].toLowerCase()] = match[2];
+      }
+      pending = {
+        name: comma >= 0 ? line.slice(comma + 1).trim() : "Indian Live Channel",
+        category: attrs["group-title"] || "Other",
+        logo: safeUrl(attrs["tvg-logo"])
+      };
+      continue;
+    }
+    if (pending && !line.startsWith("#")) {
+      const url = safeUrl(line);
+      const name = pending.name || "Indian Live Channel";
+      // DD/WAVES entries were deliberately removed from this directory.
+      const excluded = /^(?:DD\b|Doordarshan\b)|WAVES/i.test(name);
+      if (url && !excluded && !seen.has(url)) {
+        seen.add(url);
+        result.push({
+          id: result.length,
+          name,
+          country: `INDIA • ${pending.category}`,
+          category: pending.category,
+          logo: pending.logo,
+          url
+        });
+      }
+      pending = null;
+    }
+  }
+  return result;
+}
+
 function getFavorites() {
   try {
     const value = JSON.parse(localStorage.getItem("akshaytv-favorites") || "[]");
@@ -166,6 +214,7 @@ function makeCard(channel) {
     else favorites.add(channel.url);
     saveFavorites();
     render();
+    renderIndia();
   });
 
   actions.append(play,fav);
@@ -289,6 +338,88 @@ function playChannel(channel) {
   $("watch").scrollIntoView({behavior:"smooth"});
 }
 
+function updateIndiaCategories() {
+  const select = $("indiaCategoryFilter");
+  const previous = select.value;
+  const categories = [...new Set(indiaChannels.map(c => c.category))]
+    .filter(Boolean).sort((a,b) => a.localeCompare(b));
+  select.replaceChildren(new Option("All categories","all"));
+  categories.forEach(name => select.add(new Option(name,name)));
+  if (categories.includes(previous)) select.value = previous;
+}
+
+function renderIndia() {
+  const search = $("indiaSearch");
+  const categorySelect = $("indiaCategoryFilter");
+  const viewSelect = $("indiaViewFilter");
+  const grid = $("indiaChannelGrid");
+  if (!search || !categorySelect || !viewSelect || !grid) return;
+
+  const query = search.value.toLowerCase().trim();
+  const category = categorySelect.value;
+  const view = viewSelect.value;
+  indiaFiltered = indiaChannels.filter(channel =>
+    channel.name.toLowerCase().includes(query) &&
+    (category === "all" || channel.category === category) &&
+    (view !== "favorites" || favorites.has(channel.url))
+  );
+
+  const totalPages = Math.max(1,Math.ceil(indiaFiltered.length/INDIA_PAGE_SIZE));
+  indiaPage = Math.min(indiaPage,totalPages-1);
+  const start = indiaPage * INDIA_PAGE_SIZE;
+  const current = indiaFiltered.slice(start,start+INDIA_PAGE_SIZE);
+  grid.replaceChildren();
+
+  if (!current.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = view === "favorites"
+      ? "No Indian favorites yet. Tap ♡ on a channel to save it."
+      : "No Indian channels found. Try another search or category.";
+    grid.append(empty);
+  } else {
+    const fragment = document.createDocumentFragment();
+    current.forEach(channel => fragment.append(makeCard(channel)));
+    grid.append(fragment);
+  }
+
+  $("indiaTotalCount").textContent = `${indiaFiltered.length.toLocaleString()} channels`;
+  const pagination = $("indiaPagination");
+  pagination.replaceChildren();
+  if (indiaFiltered.length > INDIA_PAGE_SIZE) {
+    const previous = document.createElement("button");
+    previous.textContent = "← Previous";
+    previous.disabled = indiaPage === 0;
+    previous.onclick = () => { indiaPage--; renderIndia(); };
+    const label = document.createElement("span");
+    label.textContent = `Page ${indiaPage+1} of ${totalPages}`;
+    const next = document.createElement("button");
+    next.textContent = "Next →";
+    next.disabled = indiaPage >= totalPages-1;
+    next.onclick = () => { indiaPage++; renderIndia(); };
+    pagination.append(previous,label,next);
+  } else if (indiaFiltered.length) {
+    pagination.textContent = `Showing all ${indiaFiltered.length} Indian channels`;
+  }
+}
+
+async function loadIndiaChannels() {
+  const status = $("indiaLoadStatus");
+  try {
+    const response = await fetch(INDIA_PLAYLIST_URL,{cache:"no-store"});
+    if (!response.ok) throw new Error("India playlist HTTP " + response.status);
+    const data = await response.text();
+    if (!data.trimStart().startsWith("#EXTM3U")) throw new Error("Invalid India playlist format");
+    indiaChannels = parseIndiaPlaylist(data);
+    updateIndiaCategories();
+    renderIndia();
+    status.textContent = `Loaded ${indiaChannels.length.toLocaleString()} Indian stream listings. Availability and playback depend on each provider.`;
+  } catch (error) {
+    console.error("India playlist loading error:",error);
+    status.textContent = "Could not load Indian channels: " + error.message;
+  }
+}
+
 async function loadChannels() {
   $("loadStatus").textContent = "Loading worldwide playlist...";
 
@@ -319,6 +450,21 @@ async function loadChannels() {
   }
 }
 
+
+$("indiaSearch").addEventListener("input",() => {
+  indiaPage = 0;
+  renderIndia();
+});
+
+$("indiaCategoryFilter").addEventListener("change",() => {
+  indiaPage = 0;
+  renderIndia();
+});
+
+$("indiaViewFilter").addEventListener("change",() => {
+  indiaPage = 0;
+  renderIndia();
+});
 
 $("searchInput").addEventListener("input",() => {
   page = 0;
@@ -353,4 +499,5 @@ if ("serviceWorker" in navigator) {
 }
 
 loadChannels();
+loadIndiaChannels();
 })();

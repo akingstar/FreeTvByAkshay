@@ -1,9 +1,9 @@
 {
-  "name": "FreeTvByAkshay",
-  "short_name": "FreeTV",
+  "name": "AKSHAY TV — Indian & Worldwide Live Television",
+  "short_name": "AKSHAY TV",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#090b12",
-  "theme_color": "#090b12",
-  "description": "Live channels and your own videos."
+  "background_color": "#090909",
+  "theme_color": "#090909",
+  "description": "Indian and worldwide live TV channel directory."
 }

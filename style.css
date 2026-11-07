@@ -110,7 +110,7 @@ main {width:min(1180px,92%);margin:auto}
   border:1px solid #70572d;border-radius:50%;
 }
 .hero-decoration:after {inset:35px}
-.player-section,.world-section {
+.player-section,.india-section,.world-section {
   padding:25px;
   margin:25px 0;
   border:1px solid var(--line);
