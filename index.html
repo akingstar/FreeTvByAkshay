@@ -80,6 +80,14 @@
         <button class="tab" data-filter="videos">My videos</button>
         <button class="tab" data-filter="favorites">♥ Favorites</button>
       </div>
+      <div class="catalog-filters">
+        <label>Country
+          <select id="countryFilter"><option value="all">All Countries</option></select>
+        </label>
+        <label>Language
+          <select id="languageFilter"><option value="all">All Languages</option></select>
+        </label>
+      </div>
       <div id="channelGrid" class="channel-grid">
         <div class="empty-state"><div>▣</div><strong>No channels added yet</strong><p>Add a stream URL you are authorized to use.</p></div>
       </div>
@@ -94,6 +102,9 @@
         <label>Channel / video name<input id="itemName" required maxlength="60" placeholder="e.g. My News Channel"></label>
         <label>Stream / video URL<input id="itemUrl" required type="url" placeholder="https://example.com/stream.m3u8"></label>
         <label>Short description (optional)<input id="itemDesc" maxlength="120" placeholder="What is this channel about?"></label>
+        <label>English subtitles (.vtt URL, optional)
+          <input id="subtitleUrl" type="url" placeholder="https://example.com/subtitles-en.vtt">
+        </label>
         <button class="button button-primary button-wide" type="submit">＋ Add to my library</button>
         <p class="form-note">Items are saved in this browser only. Never add private or unauthorized stream links.</p>
       </form>
