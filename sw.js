@@ -1,5 +1,5 @@
-const CACHE = "freetvbyakshay-v4";
-const CORE = ["./", "./index.html", "./style.css", "./app.js", "./assets/logo.svg", "./assets/poster.svg", "./manifest.webmanifest"];
+const CACHE = "freetvbyakshay-v5";
+const CORE = ["./", "./index.html", "./style.css", "./app.js", "./data/playlist.m3u", "./assets/logo.svg", "./assets/poster.svg", "./manifest.webmanifest"];
 self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE))));
 self.addEventListener("activate", event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))));
 self.addEventListener("fetch", event => {

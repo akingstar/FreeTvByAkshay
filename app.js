@@ -273,8 +273,7 @@
     });
 
     const shelfHtml =
-      shelf("Browse by Country", sortGroups(countryGroups), "country-track") +
-      shelf("Browse by Language", sortGroups(languageGroups), "language-track");
+      shelf("Browse by Country", sortGroups(countryGroups), "country-track");
 
     const pageEnd = Math.min(pageStart + PAGE_SIZE, visible.length);
     const pageControls = visible.length > PAGE_SIZE
@@ -358,7 +357,7 @@
 
   async function loadDefaultPlaylist() {
     const playlistUrl =
-      "https://raw.githubusercontent.com/AdeelWajid/iptv_validated_list/main/playlist.m3u";
+      "./data/playlist.m3u";
 
     try {
       const response = await fetch(playlistUrl);
