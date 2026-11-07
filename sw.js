@@ -1,9 +1,11 @@
-const CACHE_NAME = "akshay-tv-india-v4";
+const CACHE_NAME = "akshay-tv-india-v5";
 const APP_FILES = [
   "./",
   "./index.html",
   "./style.css",
-  "./app.js"
+  "./app.js",
+  "./manifest.webmanifest",
+  "./assets/akshay-tv-icon.svg"
 ];
 
 self.addEventListener("install", event => {

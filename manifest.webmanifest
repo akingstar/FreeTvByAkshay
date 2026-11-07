@@ -1,9 +1,24 @@
 {
+  "id": "./",
   "name": "AKSHAY TV — Indian & Worldwide Live Television",
   "short_name": "AKSHAY TV",
+  "description": "Indian and worldwide live TV channel directory.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#090909",
   "theme_color": "#090909",
-  "description": "Indian and worldwide live TV channel directory."
+  "categories": [
+    "entertainment",
+    "video"
+  ],
+  "icons": [
+    {
+      "src": "./assets/akshay-tv-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
 }
