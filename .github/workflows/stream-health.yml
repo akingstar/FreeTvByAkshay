@@ -1,0 +1,49 @@
+name: AKSHAY TV Stream Health
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: akshay-tv-stream-health
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Scan streams and quarantine dead feeds
+        run: python scripts/stream_health.py
+
+      - name: Publish health results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/playlist.m3u \
+                  data/india-working.m3u \
+                  data/stream-health.json \
+                  data/stream-quarantine.json
+
+          if ! git diff --cached --quiet; then
+            git commit -m "Automated stream health cleanup"
+            git push origin HEAD:main
+          else
+            echo "No playlist or health changes."
+          fi
