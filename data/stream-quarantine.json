@@ -1,22 +1,12 @@
 [
   {
     "source": "data/playlist.m3u",
-    "url": "http://stream.mcquack.net/420/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"FAN.ru@SD\" tvg-logo=\"https://i.imgur.com/mDeTbaF.png\" group-title=\"Animation;Movies\",FAN (576p)",
-      "http://stream.mcquack.net/420/index.m3u8"
-    ],
-    "failures": 4,
-    "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
     "url": "https://du1gyxfing4ke.cloudfront.net/scheduler/scheduleMaster/152.m3u8",
     "lines": [
       "#EXTINF:-1 tvg-id=\"HumorMill.us@SD\" tvg-logo=\"https://i.imgur.com/e5W91v2.png\" group-title=\"Comedy\",Humor Mill TV (1080p)",
       "https://du1gyxfing4ke.cloudfront.net/scheduler/scheduleMaster/152.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HLS_NO_PLAYLIST_OR_SEGMENT"
   },
   {
@@ -26,7 +16,7 @@
       "#EXTINF:-1 tvg-id=\"FlowersTVUSA.us@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/ml/1/1c/Flowers-Onam.png\" group-title=\"Culture\",Flowers TV USA (396p)",
       "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/flowers_nim_https/050522/flowers/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -36,7 +26,7 @@
       "#EXTINF:-1 tvg-id=\"FNX.us@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/e/e8/FNX_Web_Logo.png\" group-title=\"Culture\",FNX (1080p)",
       "https://fnx.lls.pbs.org/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -48,7 +38,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 VLC/3.0.18 LibVLC/3.0.18",
       "https://flash1.bogulus1.cfd/wild/usergenr9qsi5gt.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTML_OR_JSON_RESPONSE"
   },
   {
@@ -58,7 +48,7 @@
       "#EXTINF:-1 tvg-id=\"TheExplorers.ru@SD\" tvg-logo=\"https://www.oreol.tv/img/news/Logo_The_Explorers_Bleu.png\" group-title=\"Documentary\",The Explorers (1080p)",
       "https://sofast-yupptv.vgcdn.net/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/4804aca3-dd54-43d1-8caa-0b836a76d9e9/manifest.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -68,7 +58,7 @@
       "#EXTINF:-1 tvg-id=\"AlAlamiya2.sd@SD\" tvg-logo=\"https://i.imgur.com/5FrE3Nv.png\" group-title=\"Education\",Al Alamiya 2",
       "http://82.212.74.98:8000/live/7815.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -78,7 +68,7 @@
       "#EXTINF:-1 tvg-id=\"Create.us@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Create_TV_network_logo.svg/960px-Create_TV_network_logo.svg.png\" group-title=\"Education\",Create (1080p)",
       "https://create.lls.pbs.org/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -88,7 +78,7 @@
       "#EXTINF:-1 tvg-id=\"PBS.us@KQED\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/8/89/PBS_logo_2019.svg\" group-title=\"Education\",KQED-DT2 (1080p)",
       "https://kqeddt2.lls.pbs.org/kqeddt2-hls.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -98,7 +88,7 @@
       "#EXTINF:-1 tvg-id=\"PBS.us@KVIE\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/8/89/PBS_logo_2019.svg\" group-title=\"Education\",KVIE-DT2 (1080p)",
       "https://kviedt2.lls.pbs.org/kviedt2-hls.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -108,7 +98,7 @@
       "#EXTINF:-1 tvg-id=\"TRTEBAIlkokul.tr@SD\" tvg-logo=\"https://i.imgur.com/CRBfZi4.png\" group-title=\"Education\",TRT EBA Ilkokul (720p)",
       "https://tv-e-okul00.medya.trt.com.tr/master.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_400"
   },
   {
@@ -118,8 +108,8 @@
       "#EXTINF:-1 tvg-id=\"TRTEBALise.tr@SD\" tvg-logo=\"https://i.imgur.com/vj2L2L2.png\" group-title=\"Education\",TRT EBA Lise (720p)",
       "https://tv-e-okul02.medya.trt.com.tr/master.m3u8"
     ],
-    "failures": 5,
-    "reason": "NETWORK_UnicodeEncodeError"
+    "failures": 6,
+    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -128,7 +118,7 @@
       "#EXTINF:-1 tvg-id=\"PBS.us@WEDQ\" tvg-logo=\"https://i.imgur.com/FfEebzW.png\" group-title=\"Education\",WEDQ-DT4 (1080p)",
       "https://wedqdt4.lls.pbs.org/wedqdt4-hls.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -138,7 +128,7 @@
       "#EXTINF:-1 tvg-id=\"WorldChannel.us@WGTV\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/3/36/World_Channel_2023.svg\" group-title=\"Education\",WGTV-DT3 (1080p)",
       "https://wgtvdt3.lls.pbs.org/wgtvdt3-cmaf-hls.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -148,7 +138,7 @@
       "#EXTINF:-1 tvg-id=\"WorldChannel.us@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/3/36/World_Channel_2023.svg\" group-title=\"Education\",World Channel (1080p)",
       "https://world.lls.pbs.org/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -160,7 +150,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 VLC/3.0.18 LibVLC/3.0.18",
       "https://cronos.mangora1.cfd/spyn/usergencs85ja0j1rrnd.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTML_OR_JSON_RESPONSE"
   },
   {
@@ -170,7 +160,7 @@
       "#EXTINF:-1 tvg-id=\"DiscoveryChannel.ru@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019_Discovery_logo.svg/960px-2019_Discovery_logo.svg.png\" group-title=\"Entertainment\",Discovery Channel (1080p)",
       "http://stream.mcquack.net/177/index.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -180,7 +170,7 @@
       "#EXTINF:-1 tvg-id=\"ETVPlus.in@SD\" tvg-logo=\"https://dtil.tmsimg.com/assets/s143030_ld_h15_aa.png?lock=720x540\" group-title=\"Entertainment\",ETV Plus (396p)",
       "https://yupplivegcpusa.yuppcdn.net/100823/smil:etvplus.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -190,7 +180,7 @@
       "#EXTINF:-1 tvg-id=\"Friday.ru@SD\" tvg-logo=\"https://i.imgur.com/UfmlXxe.png\" group-title=\"Entertainment\",Friday! (576p)",
       "http://stream.mcquack.net/181/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -200,7 +190,7 @@
       "#EXTINF:-1 tvg-id=\"JaihindTV.in@SD\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Jaihind%20TV.png\" group-title=\"Entertainment\",Jaihind TV (576p)",
       "https://raw.githubusercontent.com/amazeyourself/adaptive-streams/refs/heads/main/streams/in/YuppTV/JaihindTV.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_416"
   },
   {
@@ -210,7 +200,7 @@
       "#EXTINF:-1 tvg-id=\"KalaignarMurasu.in@SD\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Murasu%20TV.png\" group-title=\"Entertainment\",Kalaignar Murasu (396p)",
       "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/murasu_nim_https/050522/murasu/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -220,7 +210,7 @@
       "#EXTINF:-1 tvg-id=\"KCLTV.in@SD\" tvg-logo=\"https://i.imgur.com/bkp9dIm.png\" group-title=\"Entertainment\",KCL TV (720p)",
       "https://kcltv.livebox.co.in/kclhls/live.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -230,7 +220,7 @@
       "#EXTINF:-1 tvg-id=\"KRGVTV52.us@HD\" tvg-logo=\"https://i.imgur.com/kTh2jgF.png\" group-title=\"Entertainment\",KRGV-DT2 (720p) [Geo-blocked]",
       "https://d3svnrf3rmq619.cloudfront.net/krgv-live/smil:krgv-somos.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -240,17 +230,7 @@
       "#EXTINF:-1 tvg-id=\"SanaTV.in@SD\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Sana-TV-Logo_2000_X_1125_Transpharent.png\" group-title=\"Entertainment\",Sana TV (1080p)",
       "https://vglivessai.akamaized.net/us/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b6d9e864-ec16-410a-804d-ccf8f720bfaa/index.m3u8"
     ],
-    "failures": 5,
-    "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "http://stream.mcquack.net/135/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"TNT.ru@SD\" tvg-logo=\"https://i.imgur.com/T4A6rEI.png\" group-title=\"Entertainment\",TNT SD (576p)",
-      "http://stream.mcquack.net/135/index.m3u8"
-    ],
-    "failures": 4,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -260,7 +240,7 @@
       "#EXTINF:-1 tvg-id=\"A7TV.do@HD\" tvg-logo=\"https://a7tvjarabacoa.netlify.app/IMG_1968.PNG\" group-title=\"General\",A7 TV (1080p)",
       "https://183.bozztv.com/ssh101/ssh101/a7tvjarabacoa/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_416"
   },
   {
@@ -270,7 +250,7 @@
       "#EXTINF:-1 tvg-id=\"AccessHumboldt.us@SD\" tvg-logo=\"https://i.imgur.com/tJl43uM.png\" group-title=\"General\",Access Humboldt (1080p)",
       "https://rtmp-live-ingest-ap-northeast-2-universe-dacast-com.akamaized.net/transmuxv1/streams/f08fcd45-1d04-9a8c-39ca-f56091820e5c.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_503"
   },
   {
@@ -280,18 +260,8 @@
       "#EXTINF:-1 tvg-id=\"BTB.pl@SD\" tvg-logo=\"https://btb.j00r.us/images/logo_BTB.webp\" group-title=\"General\",BTB (1080p)",
       "https://emisja.btb.j00r.us/iptv/session/1/hls.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://live20.bozztv.com/akamaissh101/ssh101/canalmulti24/playlist.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"CanalMultivision.do@SD\" tvg-logo=\"https://i.imgur.com/puOrL7B.jpg\" group-title=\"General\",Canal Multivision (720p) [Not 24/7]",
-      "https://live20.bozztv.com/akamaissh101/ssh101/canalmulti24/playlist.m3u8"
-    ],
-    "failures": 5,
-    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -300,7 +270,7 @@
       "#EXTINF:-1 tvg-id=\"Cosmovision.co@SD\" tvg-logo=\"https://i.imgur.com/bj7Jd2q.png\" group-title=\"General\",Cosmovision (720p)",
       "https://lbgo.bozztv.com/ssh101/ssh101/Cosmovisi\u00f3n/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_UnicodeEncodeError"
   },
   {
@@ -310,7 +280,7 @@
       "#EXTINF:-1 tvg-id=\"DaliTV.tw@SD\" tvg-logo=\"https://i.imgur.com/pFIMLsA.png\" group-title=\"General\",Dali TV (\u5927\u7acb\u96fb\u8996\u53f0) (720p)",
       "http://www.dalitv.com.tw:4568/live/dali/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -320,8 +290,8 @@
       "#EXTINF:-1 tvg-id=\"EUTV.br@SD\" tvg-logo=\"https://i.imgur.com/8PxpamC.png\" group-title=\"General\",EUTV (720p)",
       "https://cdn.jmvstream.com/w/LVW-8719/LVW8719_AcLVAxWy5J/playlist.m3u8"
     ],
-    "failures": 5,
-    "reason": "NETWORK_InvalidURL"
+    "failures": 6,
+    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -330,7 +300,7 @@
       "#EXTINF:-1 tvg-id=\"GlobalTV.do@SD\" tvg-logo=\"https://i.imgur.com/1rQaROm.png\" group-title=\"General\",Global TV (720p) [Not 24/7]",
       "https://vtm1.msinteractiva.com/globaltv/globaltv/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -340,7 +310,7 @@
       "#EXTINF:-1 tvg-id=\"JTV.id@Madura\" tvg-logo=\"https://i.imgur.com/mIDWIQk.png\" group-title=\"General\",JTV Madura (480p) [Not 24/7]",
       "http://122.248.43.242:1935/JTVMADURA/_definst_/myStream/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -350,7 +320,7 @@
       "#EXTINF:-1 tvg-id=\"KaifaTV.jo@SD\" tvg-logo=\"https://i.imgur.com/zGGeSQg.png\" group-title=\"General\",Kaifa TV (576p)",
       "http://82.212.74.2:8000/live/7311.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -362,7 +332,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/143.0.0.0 Safari/537.36",
       "https://streamer.nknews.org/tvhls/stream.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_520"
   },
   {
@@ -372,7 +342,7 @@
       "#EXTINF:-1 tvg-id=\"LRTLituanica.lt@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/LRT_Lituanica_Logo_2022.svg/960px-LRT_Lituanica_Logo_2022.svg.png\" group-title=\"General\",LRT Lituanica (1080p) [Geo-blocked]",
       "https://stream-live.lrt.lt/lituanica/master.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -382,17 +352,7 @@
       "#EXTINF:-1 tvg-id=\"MakoiVarosiTelevizio.hu@SD\" tvg-logo=\"https://i.imgur.com/PF3BP4X.png\" group-title=\"General\",Mak\u00f3i V\u00e1rosi (576p)",
       "http://makomedia.mikrohalo.hu/hls/makotv.m3u8"
     ],
-    "failures": 5,
-    "reason": "HTTP_404"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://v1.tustreaming.cl/margamargatv/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"MargaMargaTV.cl@SD\" tvg-logo=\"https://i.imgur.com/4cg51eE.png\" group-title=\"General\",Marga Marga TV (720p)",
-      "https://v1.tustreaming.cl/margamargatv/index.m3u8"
-    ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -402,17 +362,7 @@
       "#EXTINF:-1 tvg-id=\"NACTV.ca@SD\" tvg-logo=\"https://i.imgur.com/FzM95rH.png\" group-title=\"General\",NACTV",
       "https://stream2.pivotalelements.com/memfs/2d2e1038-9eb2-44df-a9b9-109de5752f3b_output_0.m3u8"
     ],
-    "failures": 5,
-    "reason": "HTTP_404"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://tv1.ninatv.cl/hls/stream.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"NinaTV.cl@SD\" tvg-logo=\"https://cdn.m3u.cl/logo/1552_Nina_TV.png\" group-title=\"General\",Nina TV (720p)",
-      "https://tv1.ninatv.cl/hls/stream.m3u8"
-    ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -422,7 +372,7 @@
       "#EXTINF:-1 tvg-id=\"Novoetelevidenie.kz@SD\" tvg-logo=\"https://i.imgur.com/mmKWrWs.png\" group-title=\"General\",Novoe televidenie",
       "https://live.zhanafm.kz:8181/memfs/fd715789-382f-4ec6-b4ba-d8e2fde59c7b.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -432,7 +382,7 @@
       "#EXTINF:-1 tvg-id=\"NTV.mv@SD\" tvg-logo=\"https://i.imgur.com/jnXpcwV.png\" group-title=\"General\",NTV",
       "https://sunplay-cdn.bitratelabs.com/live/local-channel/ntv-e3d4300b49c8c901e9339174215d7580/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -442,7 +392,7 @@
       "#EXTINF:-1 tvg-id=\"QuartoCanaleFlegreo.it@SD\" tvg-logo=\"https://i.imgur.com/XfNSWp0.png\" group-title=\"General\",Quarto Canale Flegreo (720p)",
       "https://live.mariatvcdn.com/dialogos/171e41deedf405f10c7dd6311387fb43.sdp/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -453,7 +403,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
       "https://streaming-live.rtp.pt/liverepeater/rtp1HD.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -464,7 +414,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
       "https://streaming-live.rtp.pt/liverepeater/rtp2HD.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -475,7 +425,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
       "https://streaming-live.rtp.pt/liverepeater/smil:rtpacores.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -486,7 +436,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
       "https://streaming-live.rtp.pt/liverepeater/smil:rtpacoresHD.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -497,7 +447,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
       "https://streaming-live.rtp.pt/liverepeater/smil:rtpmadeira.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -508,7 +458,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
       "https://streaming-live.rtp.pt/liverepeater/smil:rtpi.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -519,17 +469,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
       "https://streaming-live.rtp.pt/liverepeater/smil:rtpafrica.smil/playlist.m3u8"
     ],
-    "failures": 5,
-    "reason": "HTTP_404"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://59ef525c24caa.streamlock.net/telebrunca/telebrunca/playlist.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"TeleBrunca.cr@SD\" tvg-logo=\"https://i.imgur.com/m3xu6Ms.png\" group-title=\"General\",TeleBrunca (720p) [Not 24/7]",
-      "https://59ef525c24caa.streamlock.net/telebrunca/telebrunca/playlist.m3u8"
-    ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -539,7 +479,7 @@
       "#EXTINF:-1 tvg-id=\"TVModum.no@SD\" tvg-logo=\"https://i.imgur.com/kljua5X.png\" group-title=\"General\",TV Modum (720p)",
       "https://cdn010.panaccess.com/5677_streams/TVMODUM/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -549,7 +489,7 @@
       "#EXTINF:-1 tvg-id=\"TV1KG.kg@SD\" tvg-logo=\"https://i.imgur.com/Mti9t9C.png\" group-title=\"General\",TV1 KG (1080p)",
       "http://212.2.225.30:1935/live/site.stream/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_URLError"
   },
   {
@@ -559,7 +499,7 @@
       "#EXTINF:-1 tvg-id=\"VasarhelyiTelevizio.hu@SD\" tvg-logo=\"https://i.imgur.com/WOEqdmx.png\" group-title=\"General\",V\u00e1s\u00e1rhelyi Telev\u00edzi\u00f3 (576p)",
       "https://stream.vasarhelyitelevizio.hu/stream/stream.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -569,7 +509,7 @@
       "#EXTINF:-1 tvg-id=\"LDPRTV.ru@SD\" tvg-logo=\"https://i.imgur.com/gCmCRfe.png\" group-title=\"General\",\u041b\u0414\u041f\u0420 \u0422\u0412 (1080p)",
       "http://46.46.143.222:1935/live/mp4:ldpr.stream/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_URLError"
   },
   {
@@ -579,17 +519,7 @@
       "#EXTINF:-1 tvg-id=\"OsetiyaIryston.ru@SD\" tvg-logo=\"https://i.imgur.com/N0Zn4zU.png\" group-title=\"General\",\u041e\u0441\u0435\u0442\u0438\u044f \u0418\u0440\u044b\u0441\u0442\u043e\u043d (1080p)",
       "https://osir.mediacdn.ru/cdn/osetia/playlist.m3u8"
     ],
-    "failures": 5,
-    "reason": "HTTP_404"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://v-us-01.wisestream.io/memfs/e4ade538-7924-4359-81ef-b9d4dd229e91.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"CanalFDR.br@SD\" tvg-logo=\"https://i.imgur.com/7SE4CkE.png\" group-title=\"General;Education\",Canal FDR (1080p)",
-      "https://v-us-01.wisestream.io/memfs/e4ade538-7924-4359-81ef-b9d4dd229e91.m3u8"
-    ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -599,7 +529,7 @@
       "#EXTINF:-1 tvg-id=\"BalapanInternational.kz@SD\" tvg-logo=\"https://otv.server-img.lfstrm.tv/images/channel_logos/logo_638108d82e47243302bc81f1.png\" group-title=\"Kids\",Balapan International (1080p)",
       "https://live-3.otcnet.ru/Balapan/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_503"
   },
   {
@@ -609,7 +539,7 @@
       "#EXTINF:-1 tvg-id=\"KidoodleTV.ca@SD\" tvg-logo=\"https://i.imgur.com/MaFtbM5.png\" group-title=\"Kids\",Kidoodle.TV (1080p)",
       "https://amg07653-apmc-amg07653c9-samsung-us-8740.playouts.now.amagi.tv/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -619,7 +549,7 @@
       "#EXTINF:-1 tvg-id=\"HGTVAsia.us@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/HGTV_US_Logo_2015.svg/960px-HGTV_US_Logo_2015.svg.png\" group-title=\"Lifestyle\",HGTV Asia (1080p)",
       "https://freem3u.xyz/api/live/play.m3u8?vid=99"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -629,7 +559,7 @@
       "#EXTINF:-1 tvg-id=\"YachtingTV.cz@SD\" tvg-logo=\"https://i.imgur.com/YxO60B1.png\" group-title=\"Lifestyle\",Yachting TV (1080p)",
       "https://streams2.sofast.tv/vglive-sk-461164/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -639,8 +569,8 @@
       "#EXTINF:-1 tvg-id=\"NTVStyle.ru@SD\" tvg-logo=\"https://i.imgur.com/rX6K6qT.png\" group-title=\"Lifestyle\",\u041d\u0422\u0412 \u0421\u0442\u0438\u043b\u044c (576p)",
       "https://cdn.ntv.ru/th_style/playlist.m3u8"
     ],
-    "failures": 5,
-    "reason": "HLS_NESTING_LIMIT"
+    "failures": 6,
+    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -651,7 +581,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 VLC/3.0.18 LibVLC/3.0.18",
       "https://cronos.mangora1.cfd/axy/usergend3h5jkc9rnd.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTML_OR_JSON_RESPONSE"
   },
   {
@@ -661,7 +591,7 @@
       "#EXTINF:-1 tvg-id=\"CanalPlusActionEurope.nl@Czechia\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Canal%2B_Action_2024.svg/1920px-Canal%2B_Action_2024.svg.png\" group-title=\"Movies\",Canal+ Action Europe Czechia",
       "http://46.149.191.219:9106/play/a01g"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_URLError"
   },
   {
@@ -671,7 +601,7 @@
       "#EXTINF:-1 tvg-id=\"ETVCinema.in@SD\" tvg-logo=\"https://dtil.tmsimg.com/assets/s143026_ld_h15_aa.png?lock=720x540\" group-title=\"Movies\",ETV Cinema (396p)",
       "https://yupplivegcpusa.yuppcdn.net/100823/smil:etvcinema.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -681,7 +611,7 @@
       "#EXTINF:-1 tvg-id=\"FILMBOXPlusOne.pl@Nederland\" tvg-logo=\"https://spiintl.com/data/files/kcfinderUploadDir/images/filmboxplus/filmbox%2Bone.png\" group-title=\"Movies\",FILMBOX+ One Nederland",
       "http://46.149.191.219:9100/play/a015"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_URLError"
   },
   {
@@ -701,7 +631,7 @@
       "#EXTINF:-1 tvg-id=\"NEWKMOVIES.us@SD\" tvg-logo=\"https://i.imgur.com/wCgirjc.png\" group-title=\"Movies\",NEW KMOVIES (1080p)",
       "https://ads.its-newid.net/api/manifest.m3u8?ads.service_id=GB1700007PK&channel_id=newid_343&tp=samsung_tvplus"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_400"
   },
   {
@@ -711,7 +641,7 @@
       "#EXTINF:-1 tvg-id=\"PocketFilms.in@SD\" tvg-logo=\"https://jiotvimages.cdn.jio.com/dare_images/images/p_pktflm.png\" group-title=\"Movies\",Pocket Films",
       "https://vglivessai.akamaized.net/sg/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/b8ada260-bb81-472b-b7c1-3a79213a84b8/e02a0ce5-6c42-4cca-bb53-e5cfecff74a9/0.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -723,7 +653,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 VLC/3.0.18 LibVLC/3.0.18",
       "https://flash1.bogulus1.cfd/tivi10/usergenrxs4f7zc.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTML_OR_JSON_RESPONSE"
   },
   {
@@ -733,18 +663,8 @@
       "#EXTINF:-1 tvg-id=\"CityEdenKinoArt.ru@HD\" tvg-logo=\"https://i.imgur.com/67CWCtz.png\" group-title=\"Movies\",\u0421\u0438\u0442\u0438 \u042d\u0434\u0435\u043c \u041a\u0438\u043d\u043e\u0410\u0440\u0442 [Not 24/7]",
       "https://cityeden.catcast.tv/content/38398/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_503"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://albportal.net/albkanalemusic.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"AlbKanaleMusicTV.al@HD\" tvg-logo=\"https://i.imgur.com/JdKxscs.png\" group-title=\"Music\",AlbKanale Music TV (1080p)",
-      "https://albportal.net/albkanalemusic.m3u8"
-    ],
-    "failures": 5,
-    "reason": "HTTP_416"
   },
   {
     "source": "data/playlist.m3u",
@@ -753,7 +673,7 @@
       "#EXTINF:-1 tvg-id=\"MBCMood.sa@SD\" tvg-logo=\"https://shahid.mbc.net/mediaObject/c2b6a882-458b-446e-b0fe-f97f7992149a?height=auto&width=144&croppingPoint=&version=1&type=png\" group-title=\"Music\",MBC Mood (1080p)",
       "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-wanasah/13e82ea6232fa647c43b26e8a41f173d/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -764,7 +684,7 @@
       "#EXTVLCOPT:http-referrer=https://mic-indo.com/live",
       "https://mic.siar.us/mic/live/mic.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -774,18 +694,8 @@
       "#EXTINF:-1 tvg-id=\"NEWKPOP.us@SD\" tvg-logo=\"https://i.imgur.com/B7ILXMc.png\" group-title=\"Music\",NEW KPOP (1080p)",
       "https://ads.its-newid.net/api/manifest.m3u8?ads.service_id=GB17000088V&channel_id=newid_086&tp=samsung_tvplus"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_400"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://stream3.srr.ro/live/antenasatelor/chunklist_w1642210843.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"RadioRomaniaAntenaSatelor.ro@720p\" tvg-logo=\"https://www.antenasatelor.ro/templates/default/images/custom/logo-main.svg\" group-title=\"Music\",Radio Romania Antena Satelor (720p) [Not 24/7]",
-      "https://stream3.srr.ro/live/antenasatelor/chunklist_w1642210843.m3u8"
-    ],
-    "failures": 5,
-    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -794,7 +704,7 @@
       "#EXTINF:-1 tvg-id=\"RadioTeleHit.ht@SD\" tvg-logo=\"https://i.ibb.co/Gt2QDgf/cropped-transparent2-103x70.png\" group-title=\"Music\",Radio T\u00e9l\u00e9 Hit (480p)",
       "https://59d39900ebfb8.streamlock.net/RadioTelehit/RadioTelehit/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -804,7 +714,7 @@
       "#EXTINF:-1 tvg-id=\"30ALionelNation.us@SD\" tvg-logo=\"https://m.media-amazon.com/images/I/71dgsQwVcNL.png\" group-title=\"News\",30A Lionel Nation TV",
       "https://30a-tv.com/ln.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -814,18 +724,8 @@
       "#EXTINF:-1 tvg-id=\"AlMayadeenTV.lb@SD\" tvg-logo=\"https://i.imgur.com/GtQOKeW.png\" group-title=\"News\",Al Mayadeen (576p)",
       "https://mdnlv.cdn.octivid.com/almdn/smil:mpegts.stream.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://vglivessai.akamaized.net/ptnr-lg/title-Bharat24News_LGIndia/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/ebcf5152-686a-43ae-ad13-15bc198112b7/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"Bharat24.in@SD\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Bharat-24-Transparent1.png\" group-title=\"News\",Bharat24 (1080p)",
-      "https://vglivessai.akamaized.net/ptnr-lg/title-Bharat24News_LGIndia/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/ebcf5152-686a-43ae-ad13-15bc198112b7/index.m3u8"
-    ],
-    "failures": 5,
-    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -834,8 +734,8 @@
       "#EXTINF:-1 tvg-id=\"Canal38.br@SD\" tvg-logo=\"https://i.imgur.com/co7TCWC.png\" group-title=\"News\",Canal 38 (720p)",
       "https://cdn.jmvstream.com/w/LVW-8503/LVW8503_d0V5oduFlK/playlist.m3u8"
     ],
-    "failures": 5,
-    "reason": "NETWORK_InvalidURL"
+    "failures": 6,
+    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -844,7 +744,7 @@
       "#EXTINF:-1 tvg-id=\"DailyPostTV.in@SD\" tvg-logo=\"https://papaji.freetvindia.com/media/Daily_post.png\" group-title=\"News\",Daily Post TV (1080p)",
       "https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/103b8dd3-a888-4d1d-89a5-8a4bc25e48c1/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -855,7 +755,7 @@
       "#EXTVLCOPT:http-referrer=https://nuevodiario01.streamprolive.com/i/cp/hls/player.html",
       "https://nuevodiario01.streamprolive.com/hls/live.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTML_OR_JSON_RESPONSE"
   },
   {
@@ -865,18 +765,8 @@
       "#EXTINF:-1 tvg-id=\"JanamTV.in@SD\" tvg-logo=\"https://dtil.tmsimg.com/assets/s143221_ld_h15_aa.png?lock=720x540\" group-title=\"News\",Janam TV (576p)",
       "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/janamtv_nim_https/140622/janamtvdev/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://stream.berosat.live/hls/monde24h-tv-index/monde24h-tv-index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"LeMondeen24h.cd@SD\" tvg-logo=\"https://i.imgur.com/2igwi7g.png\" group-title=\"News\",Le Monde en 24h",
-      "https://stream.berosat.live/hls/monde24h-tv-index/monde24h-tv-index.m3u8"
-    ],
-    "failures": 5,
-    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -885,18 +775,8 @@
       "#EXTINF:-1 tvg-id=\"NewsMalayalam24x7.in@SD\" tvg-logo=\"https://i.postimg.cc/5tYt2Yg1/channels4_profile_(4).jpg\" group-title=\"News\",News Malayalam 24x7 (1080p)",
       "https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cdb96065-b754-4c59-93c0-fe73f482439e/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://live.newsnation81.com/newsnation81/newsnation81/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"NewsNation81.in@SD\" tvg-logo=\"https://jiotvimages.cdn.jio.com/dare_images/images/News_Nation_81.png\" group-title=\"News\",News Nation 81 (1080p)",
-      "https://live.newsnation81.com/newsnation81/newsnation81/index.m3u8"
-    ],
-    "failures": 5,
-    "reason": "NETWORK_URLError"
   },
   {
     "source": "data/playlist.m3u",
@@ -905,8 +785,8 @@
       "#EXTINF:-1 tvg-id=\"News12Bronx.us@SD\" tvg-logo=\"https://i.imgur.com/d6xQiaf.png\" group-title=\"News\",News12 Bronx (1080p) [Geo-blocked]",
       "https://mdc.ott.alticeusa.net/live4.ott.optimum.net/live4-uploads/N12XH_A1/index_new.m3u8?omap=https"
     ],
-    "failures": 5,
-    "reason": "HTTP_416"
+    "failures": 6,
+    "reason": "HTTP_408"
   },
   {
     "source": "data/playlist.m3u",
@@ -915,7 +795,7 @@
       "#EXTINF:-1 tvg-id=\"News12Westchester.us@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/News_12_logo_2019.png/960px-News_12_logo_2019.png\" group-title=\"News\",News12 Westchester (1080p) [Geo-blocked]",
       "https://mdc.ott.alticeusa.net/live4.ott.optimum.net/live4-uploads/N12WH_A1/index_new.m3u8?omap=https"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_416"
   },
   {
@@ -925,7 +805,7 @@
       "#EXTINF:-1 tvg-id=\"News12PlusHudsonValley.us@HD\" tvg-logo=\"https://i.ibb.co/cKkdC203/news12plus-HV.jpg\" group-title=\"News\",News12+ Hudson Valley (1080p) [Geo-blocked]",
       "https://mdc.ott.alticeusa.net/live4.ott.optimum.net/live4-uploads/N12PLUS_H_WC_A1/index_new.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_408"
   },
   {
@@ -935,7 +815,7 @@
       "#EXTINF:-1 tvg-id=\"News12PlusLongIsland.us@HD\" tvg-logo=\"https://i.ibb.co/p6FPNcCk/news12plus-LI.jpg\" group-title=\"News\",News12+ Long Island (1080p) [Geo-blocked]",
       "https://mdc.ott.alticeusa.net/live4.ott.optimum.net/live4-uploads/N12PLUS_H_LI_A1/index_new.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_416"
   },
   {
@@ -945,8 +825,8 @@
       "#EXTINF:-1 tvg-id=\"News12PlusNewYork.us@HD\" tvg-logo=\"https://i.ibb.co/tThKYM09/news12plus-NYC.jpg\" group-title=\"News\",News12+ New York (1080p) [Geo-blocked]",
       "https://mdc.ott.alticeusa.net/live4.ott.optimum.net/live4-uploads/N12PLUS_H_NYC_A1/index_new.m3u8"
     ],
-    "failures": 5,
-    "reason": "HTTP_408"
+    "failures": 6,
+    "reason": "HTTP_416"
   },
   {
     "source": "data/playlist.m3u",
@@ -956,7 +836,7 @@
       "#EXTVLCOPT:http-user-agent=curl/8.16.0",
       "https://ext.cdn.nashnet.tv/228.0.0.148/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -966,7 +846,7 @@
       "#EXTINF:-1 tvg-id=\"PrameyaNews7.in@SD\" tvg-logo=\"https://dtil.tmsimg.com/assets/s143578_ld_h15_aa.png?lock=720x540\" group-title=\"News\",Prameya News7 (720p)",
       "https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/7c8ab820-a4ad-4c48-b326-2d7bc6639cef/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -977,7 +857,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
       "https://streaming-live.rtp.pt/livetvhlsDVR/rtpndvr.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -988,7 +868,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
       "https://streaming-live.rtp.pt/livetvhlsDVR/rtpnHDdvr.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -998,7 +878,7 @@
       "#EXTINF:-1 tvg-id=\"TVAFolha.br@SD\" tvg-logo=\"https://i.imgur.com/I7XGMhj.png\" group-title=\"News\",TV A Folha (720p)",
       "https://video01.logicahost.com.br/tvafolha/tvafolha/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1008,7 +888,7 @@
       "#EXTINF:-1 tvg-id=\"TV5News.in@SD\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/TV5%20News.png\" group-title=\"News\",TV5 News (576p)",
       "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/tv5_nim_https/110322/tv5/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1018,7 +898,7 @@
       "#EXTINF:-1 tvg-id=\"30ALoomeredTV.us@SD\" tvg-logo=\"https://cbs12.com/resources/media/0c1ecad8-fb09-4bb2-beaa-fc561dfe624a-small21x9_LoomerStill.jpg?1603419052801\" group-title=\"News;Documentary\",30A Loomered TV",
       "https://30a-tv.com/loomer.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1028,7 +908,7 @@
       "#EXTINF:-1 tvg-id=\"AlerthAlnabawiChannel.jo@SD\" tvg-logo=\"https://i.imgur.com/iYibJxK.png\" group-title=\"Religious\",Alerth Alnabawi Channel (576p)",
       "http://82.212.74.2:8000/live/7307.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1038,7 +918,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Africa\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Africa (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-904559/africa/ngrp:angelafrica_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1048,7 +928,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@America\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV America (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-374850/america/ngrp:angelamerica_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1058,7 +938,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Arabia\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Arabia (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-213167/arabia/ngrp:angelarabia_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1068,7 +948,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Australia\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Australia (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-310787/australia/ngrp:angelaustralia_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1078,7 +958,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Chinese\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Chinese (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-999451/chinese/ngrp:angelchinese_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1088,7 +968,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Europe\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Europe (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-512011/europe/ngrp:angeleurope_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1098,7 +978,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@FarEast\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV FarEast (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-438760/fareast/ngrp:angelfareast_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1108,7 +988,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Hebrew\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Hebrew (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-150533/hebrew/ngrp:angelhebrew_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1118,7 +998,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@IndoChina\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Indo-China (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-703035/indochina/ngrp:angelindochina_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1128,8 +1008,8 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Indonesia\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Indonesia (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-234616/indonesia/ngrp:angelindonesia_all/playlist.m3u8"
     ],
-    "failures": 5,
-    "reason": "HLS_NESTING_LIMIT"
+    "failures": 6,
+    "reason": "NETWORK_URLError"
   },
   {
     "source": "data/playlist.m3u",
@@ -1138,7 +1018,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Nepal\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Nepal (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-109639/nepali/ngrp:angelnepali_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HLS_NESTING_LIMIT"
   },
   {
@@ -1148,7 +1028,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Portuguese\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Portuguese (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-382409/portuese/ngrp:angelportuguese_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1158,7 +1038,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Russian\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Russian (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-955415/russia/ngrp:angelrussia_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HLS_NESTING_LIMIT"
   },
   {
@@ -1168,7 +1048,7 @@
       "#EXTINF:-1 tvg-id=\"AngelTV.in@Spanish\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Angel-TV-hd-transparent.png\" group-title=\"Religious\",Angel TV Spanish (720p)",
       "https://janya-digimix.akamaized.net/vglive-sk-351398/spanish/ngrp:angelspanish_all/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1178,7 +1058,7 @@
       "#EXTINF:-1 tvg-id=\"FajarTV.id@SD\" tvg-logo=\"https://i.imgur.com/mkuXxRK.png\" group-title=\"Religious\",Fajar TV (720p) [Not 24/7]",
       "http://122.248.43.242:1935/FAJARTV/_definst_/myStream/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1188,7 +1068,7 @@
       "#EXTINF:-1 tvg-id=\"InTouchPlus.us@HD\" tvg-logo=\"https://d2cc5gnf1jy2pj.cloudfront.net/custom_landing_pages/intouchplus/intouchplus_logo.svg\" group-title=\"Religious\",In Touch+ (1080p) [Geo-blocked]",
       "https://amg01540-amg01540c1-amgplt0095.playout.now3.amagi.tv/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1198,7 +1078,7 @@
       "#EXTINF:-1 tvg-id=\"MangalmayTV.in@SD\" tvg-logo=\"https://jiotvimages.cdn.jio.com/dare_images/images/Mangalmaylive.png\" group-title=\"Religious\",Mangalmay TV (576p)",
       "https://yupplivegcpusa.yuppcdn.net/100823/mangalmay_1800/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1208,7 +1088,7 @@
       "#EXTINF:-1 tvg-id=\"MTA1World.uk@SD\" tvg-logo=\"https://i.imgur.com/bYiRfAg.png\" group-title=\"Religious\",MTA1 World (720p)",
       "https://chlivemta1.akamaized.net/hls/live/2008145/mta1/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1218,7 +1098,7 @@
       "#EXTINF:-1 tvg-id=\"MTA2Europe.uk@SD\" tvg-logo=\"https://i.imgur.com/aVts0sz.png\" group-title=\"Religious\",MTA2 Europe (720p)",
       "https://chlivemta1.akamaized.net/hls/live/2008145/mta2/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1228,7 +1108,7 @@
       "#EXTINF:-1 tvg-id=\"Perviyotdel.ru@SD\" tvg-logo=\"https://cdn2-static.ntv.ru/home/promo/24740/perv_otdel_llive.jpg\" group-title=\"Series\",Perviy otdel (1080p)",
       "https://cdn-dvr.ntv.ru/Perviy_otdel/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1238,7 +1118,7 @@
       "#EXTINF:-1 tvg-id=\"FBTV.tr@SD\" tvg-logo=\"https://i.imgur.com/qBVqtYd.png\" group-title=\"Sports\",FB TV",
       "http://1hskrdto.rocketcdn.com/fenerbahcetv.smil/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1253,22 +1133,12 @@
   },
   {
     "source": "data/playlist.m3u",
-    "url": "http://31.148.5.241/kanal_3/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"MatchUltra.ru@4K\" tvg-logo=\"https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg\" group-title=\"Sports\",Match! Ultra (1080p)",
-      "http://31.148.5.241/kanal_3/index.m3u8"
-    ],
-    "failures": 5,
-    "reason": "HTTP_404"
-  },
-  {
-    "source": "data/playlist.m3u",
     "url": "https://wurl120sports.global.transmit.live/hls/679a907dce42a042c23ace37/v1/stadium_gracenote/samsung_us/latest/main/hls/playlist.m3u8",
     "lines": [
       "#EXTINF:-1 tvg-id=\"Stadium.us@SD\" tvg-logo=\"https://i.imgur.com/SnZOiER.png\" group-title=\"Sports\",Stadium (720p)",
       "https://wurl120sports.global.transmit.live/hls/679a907dce42a042c23ace37/v1/stadium_gracenote/samsung_us/latest/main/hls/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_416"
   },
   {
@@ -1278,8 +1148,8 @@
       "#EXTINF:-1 tvg-id=\"Volleyball.ru@SD\" tvg-logo=\"https://smotreshka.server-img.lfstrm.tv/images/media/59/20/592021ab74bddb93907e2b18997215a9.png\" group-title=\"Sports\",Volleyball (1080p)",
       "https://fonbet.mediacdn.ru/live/volleyball/playlist.m3u8"
     ],
-    "failures": 5,
-    "reason": "NETWORK_InvalidURL"
+    "failures": 6,
+    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -1288,7 +1158,7 @@
       "#EXTINF:-1 tvg-id=\"Travelxp.in@HD\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Travelxp%20HD.png\" group-title=\"Travel\",Travelxp HD (1080p) [Geo-blocked]",
       "https://amg00416-amg00416c9-samsung-in-4882.playouts.now.amagi.tv/playlist/amg00416-travelxp-travelxphd-samsungin/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_503"
   },
   {
@@ -1298,7 +1168,7 @@
       "#EXTINF:-1 tvg-id=\"CanadaOne.ca@SD\" group-title=\"Undefined\",Canada One (720p) [Not 24/7]",
       "http://cdn8.live247stream.com/canadaone/tv/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1308,7 +1178,7 @@
       "#EXTINF:-1 group-title=\"Undefined\",Drool (1080p)",
       "https://d119f55zk8yovc.cloudfront.net/Drool.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1318,7 +1188,7 @@
       "#EXTINF:-1 group-title=\"Undefined\",Genie K Drama (1080p)",
       "https://ads.its-newid.net/api/manifest.m3u8?ads.service_id=US2000012KX&channel_id=newid_351&tp=samsung_tvplus"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_400"
   },
   {
@@ -1328,7 +1198,7 @@
       "#EXTINF:-1 group-title=\"Undefined\",Genie K Movie (1080p)",
       "https://ads.its-newid.net/api/manifest.m3u8?ads.service_id=US200001137&channel_id=newid_350&tp=samsung_tvplus"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_400"
   },
   {
@@ -1338,7 +1208,7 @@
       "#EXTINF:-1 group-title=\"Undefined\",K Drama+ (1080p)",
       "https://ads.its-newid.net/api/manifest.m3u8?ads.service_id=US1700017NM&channel_id=newid_271&tp=samsung_tvplus"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_400"
   },
   {
@@ -1348,7 +1218,7 @@
       "#EXTINF:-1 group-title=\"Undefined\",NEW KMOVIES (1080p)",
       "https://ads.its-newid.net/api/manifest.m3u8?ads.service_id=USAJ30000122O&channel_id=newid_342&tp=samsung_tvplus"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_400"
   },
   {
@@ -1358,7 +1228,7 @@
       "#EXTINF:-1 group-title=\"Undefined\",NEW KPOP (1080p)",
       "https://ads.its-newid.net/api/manifest.m3u8?ads.service_id=USAJ3000013FJ&channel_id=newid_338&tp=samsung_tvplus"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_400"
   },
   {
@@ -1369,8 +1239,8 @@
       "#EXTVLCOPT:http-referrer=https://www.pujatvaceh.com/",
       "https://pujatv.siar.us/live/pujatv.m3u8"
     ],
-    "failures": 5,
-    "reason": "NETWORK_URLError"
+    "failures": 6,
+    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -1379,7 +1249,7 @@
       "#EXTINF:-1 tvg-id=\"RPlus.in@SD\" tvg-logo=\"https://i.imgur.com/XUnWcZF.png\" group-title=\"Undefined\",R Plus (1080p)",
       "https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/e5dcc9dc-3a33-4b19-a361-5a5b3aa022f7/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1390,18 +1260,8 @@
       "#EXTVLCOPT:http-referrer=https://radartvnews.com/live-streaming/",
       "https://www.streaming.radartv.co.id/hls/test.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_URLError"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://videoserver.tmcreativos.com:19360/rnyurimaguas/rnyurimaguas.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"RNTelevision.pe@SD\" tvg-logo=\"https://i.imgur.com/oFGiW7u.png\" group-title=\"Undefined\",RN Televisi\u00f3n (720p) [Not 24/7]",
-      "https://videoserver.tmcreativos.com:19360/rnyurimaguas/rnyurimaguas.m3u8"
-    ],
-    "failures": 5,
-    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -1410,7 +1270,7 @@
       "#EXTINF:-1 tvg-id=\"SBTNacional.br@SD\" tvg-logo=\"https://i.imgur.com/tc1ALuu.png\" group-title=\"Undefined\",SBT Nacional (1080p)",
       "https://cdn.live.br1.jmvstream.com/w/LVW-10801/LVW10801_Xvg4R0u57n/chunklist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1420,7 +1280,7 @@
       "#EXTINF:-1 tvg-id=\"SCTV12.vn@SD\" tvg-logo=\"https://i.imgur.com/5pDFkH0.png\" group-title=\"Undefined\",SCTV12 (720p)",
       "https://vtvgolive-sctvdrm.vtvdigital.vn/manifest/sctv12/master.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_IncompleteRead"
   },
   {
@@ -1430,7 +1290,7 @@
       "#EXTINF:-1 tvg-id=\"SCTV14.vn@SD\" tvg-logo=\"https://i.imgur.com/rIqmRNK.png\" group-title=\"Undefined\",SCTV14 (720p)",
       "https://vtvgolive-sctvdrm.vtvdigital.vn/manifest/sctv14/master.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_IncompleteRead"
   },
   {
@@ -1440,7 +1300,7 @@
       "#EXTINF:-1 tvg-id=\"SCTV16.vn@SD\" tvg-logo=\"https://i.imgur.com/ldCYtvt.png\" group-title=\"Undefined\",SCTV16 (720p)",
       "https://vtvgolive-sctvdrm.vtvdigital.vn/manifest/sctv16/master.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_IncompleteRead"
   },
   {
@@ -1450,7 +1310,7 @@
       "#EXTINF:-1 tvg-id=\"SCTV18.vn@SD\" tvg-logo=\"https://i.imgur.com/FfUSlgI.png\" group-title=\"Undefined\",SCTV18 (720p)",
       "https://vtvgolive-sctvdrm.vtvdigital.vn/manifest/sctv18/master.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_IncompleteRead"
   },
   {
@@ -1460,7 +1320,7 @@
       "#EXTINF:-1 tvg-id=\"SCTV2.vn@SD\" tvg-logo=\"https://i.imgur.com/8i5DXIg.png\" group-title=\"Undefined\",SCTV2 (720p)",
       "https://vtvgolive-sctvdrm.vtvdigital.vn/manifest/sctv2/master.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_IncompleteRead"
   },
   {
@@ -1470,7 +1330,7 @@
       "#EXTINF:-1 tvg-id=\"SCTV4.vn@SD\" tvg-logo=\"https://i.imgur.com/qkZhzQq.png\" group-title=\"Undefined\",SCTV4 (720p)",
       "https://vtvgolive-sctvdrm.vtvdigital.vn/manifest/sctv4/master.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_IncompleteRead"
   },
   {
@@ -1480,7 +1340,7 @@
       "#EXTINF:-1 tvg-id=\"SCTV6.vn@SD\" tvg-logo=\"https://i.imgur.com/2oOVS42.png\" group-title=\"Undefined\",SCTV6 (720p)",
       "https://vtvgolive-sctvdrm.vtvdigital.vn/manifest/sctv6/master.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_IncompleteRead"
   },
   {
@@ -1490,7 +1350,7 @@
       "#EXTINF:-1 tvg-id=\"SCTV7.vn@SD\" tvg-logo=\"https://i.imgur.com/xbIUZYd.png\" group-title=\"Undefined\",SCTV7 (720p)",
       "https://vtvgolive-sctvdrm.vtvdigital.vn/manifest/sctv7/master.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_IncompleteRead"
   },
   {
@@ -1500,7 +1360,7 @@
       "#EXTINF:-1 tvg-id=\"SonyKALHindi.us@SD\" tvg-logo=\"https://i.imgur.com/9Qq8DKh.png\" group-title=\"Undefined\",Sony KAL Hindi (1080p)",
       "https://wurlsonypicturestv.global.transmit.live/hls/68deeb1c0238cda82df543dd/v1/spt_sonykal_1/lg_us/latest/main/hls/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_416"
   },
   {
@@ -1510,7 +1370,7 @@
       "#EXTINF:-1 group-title=\"Undefined\",Zoomer TV (1080p)",
       "https://d3p8ecnk6t4t73.cloudfront.net/scheduler/scheduleMaster/316.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HLS_NO_PLAYLIST_OR_SEGMENT"
   },
   {
@@ -1520,7 +1380,7 @@
       "#EXTINF:-1 tvg-id=\"NTVLaw.ru@SD\" tvg-logo=\"https://i.imgur.com/3ChnWGg.png\" group-title=\"Undefined\",\u041d\u0422\u0412 \u041f\u0440\u0430\u0432\u043e (576p)",
       "https://cdn.ntv.ru/th_pravo/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HLS_NESTING_LIMIT"
   },
   {
@@ -1530,7 +1390,7 @@
       "#EXTINF:-1 tvg-id=\"NorCastWeather.us@HD\" tvg-logo=\"https://i.imgur.com/AfjoZgo.png\" group-title=\"Weather\",NorCast Weather (1080p)",
       "https://norcast-weather.streamology.live/api/v1/streams/c1b5b114698e1ad4687153c4402d5ef0/live.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTML_OR_JSON_RESPONSE"
   },
   {
@@ -1540,27 +1400,7 @@
       "#EXTINF:-1 tvg-id=\"IN2100008VF\" tvg-chno=\"268\" tvg-logo=\"https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN2100008VF_20260623T015515SQUARE.png\" group-title=\"Hindi - News (101)\" resolution=\"hd\",News24 MP CG",
       "https://jmp2.uk/stvp-IN2100008VF"
     ],
-    "failures": 5,
-    "reason": "HTTP_404"
-  },
-  {
-    "source": "data/india-working.m3u",
-    "url": "https://live.newsnation81.com/newsnation81/newsnation81/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"NewsNation81.in@SD\" tvg-logo=\"https://jiotvimages.cdn.jio.com/dare_images/images/News_Nation_81.png\" group-title=\"News\",News Nation 81 (1080p)",
-      "https://live.newsnation81.com/newsnation81/newsnation81/index.m3u8"
-    ],
-    "failures": 5,
-    "reason": "NETWORK_URLError"
-  },
-  {
-    "source": "data/india-working.m3u",
-    "url": "https://vglivessai.akamaized.net/ptnr-lg/title-Bharat24News_LGIndia/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/ebcf5152-686a-43ae-ad13-15bc198112b7/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"Bharat24.in@SD\" tvg-logo=\"https://dtil.tmsimg.com/assets/s142710_ld_h15_aa.png?lock=720x540\" group-title=\"News\",Bharat24 (1080p)",
-      "https://vglivessai.akamaized.net/ptnr-lg/title-Bharat24News_LGIndia/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/ebcf5152-686a-43ae-ad13-15bc198112b7/index.m3u8"
-    ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_404"
   },
   {
@@ -1570,7 +1410,7 @@
       "#EXTINF:-1 tvg-id=\"ETVCinema.in@SD\" tvg-logo=\"https://dtil.tmsimg.com/assets/s143026_ld_h15_aa.png?lock=720x540\" group-title=\"Movies\",ETV Cinema (396p)",
       "https://yupplivegcpusa.yuppcdn.net/100823/smil:etvcinema.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1580,7 +1420,7 @@
       "#EXTINF:-1 tvg-id=\"DailyPostTV.in@SD\" tvg-logo=\"https://papaji.freetvindia.com/media/Daily_post.png\" group-title=\"News\",Daily Post TV (1080p)",
       "https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/103b8dd3-a888-4d1d-89a5-8a4bc25e48c1/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1590,7 +1430,7 @@
       "#EXTINF:-1 tvg-id=\"ETVPlus.in@SD\" tvg-logo=\"https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_ETV_PLUS/images/LOGO_HD/image.png\" group-title=\"Entertainment\",ETV Plus (396p)",
       "https://yupplivegcpusa.yuppcdn.net/100823/smil:etvplus.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1600,7 +1440,7 @@
       "#EXTINF:-1 tvg-id=\"KalaignarMurasu.in@SD\" tvg-logo=\"https://dtil.tmsimg.com/assets/s143561_ld_h15_aa.png?lock=720x540\" group-title=\"Entertainment\",Kalaignar Murasu (396p)",
       "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/murasu_nim_https/050522/murasu/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1610,7 +1450,7 @@
       "#EXTINF:-1 tvg-id=\"MangalmayTV.in@SD\" tvg-logo=\"https://jiotvimages.cdn.jio.com/dare_images/images/Mangalmaylive.png\" group-title=\"Religious\",Mangalmay TV (576p)",
       "https://yupplivegcpusa.yuppcdn.net/100823/mangalmay_1800/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1620,7 +1460,7 @@
       "#EXTINF:-1 tvg-id=\"PocketFilms.in@SD\" tvg-logo=\"https://jiotvimages.cdn.jio.com/dare_images/images/p_pktflm.png\" group-title=\"Movies\",Pocket Films",
       "https://vglivessai.akamaized.net/sg/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/b8ada260-bb81-472b-b7c1-3a79213a84b8/e02a0ce5-6c42-4cca-bb53-e5cfecff74a9/0.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1630,7 +1470,7 @@
       "#EXTINF:-1 tvg-id=\"SanaTV.in@SD\" tvg-logo=\"https://i.imgur.com/CR7DGBv.png\" group-title=\"Entertainment\",Sana TV (1080p)",
       "https://vglivessai.akamaized.net/us/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b6d9e864-ec16-410a-804d-ccf8f720bfaa/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1640,7 +1480,7 @@
       "#EXTINF:-1 tvg-id=\"PrameyaNews7.in@SD\" tvg-logo=\"https://dtil.tmsimg.com/assets/s143578_ld_h15_aa.png?lock=720x540\" group-title=\"News\",Prameya News7 (720p)",
       "https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/7c8ab820-a4ad-4c48-b326-2d7bc6639cef/index.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1650,7 +1490,7 @@
       "#EXTINF:-1 tvg-id=\"SonyKALHindi.us@SD\" tvg-logo=\"https://i.imgur.com/9Qq8DKh.png\" group-title=\"Undefined\",Sony KAL Hindi (1080p)",
       "https://wurlsonypicturestv.global.transmit.live/hls/68deeb1c0238cda82df543dd/v1/spt_sonykal_1/lg_us/latest/main/hls/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "HTTP_416"
   },
   {
@@ -1660,18 +1500,8 @@
       "#EXTINF:-1 tvg-id=\"FlowersTVUSA.us@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/ml/1/1c/Flowers-Onam.png\" group-title=\"Culture\",Flowers TV USA",
       "https://yuppmedtaorire.akamaized.net/v1/master/a0d007312bfd99c47f76b77ae26b1ccdaae76cb1/flowers_nim_https/050522/flowers/playlist.m3u8"
     ],
-    "failures": 5,
+    "failures": 6,
     "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://fort.co-works.org/memfs/87017643-274a-4bc0-a786-7767a0d159c2.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"FORTTV.ug@SD\" tvg-logo=\"https://i.ibb.co/4KN5zW9/fort-tv-logo-GENE.png\" group-title=\"Entertainment\",FORT TV (480p)",
-      "https://fort.co-works.org/memfs/87017643-274a-4bc0-a786-7767a0d159c2.m3u8"
-    ],
-    "failures": 4,
-    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -1680,7 +1510,7 @@
       "#EXTINF:-1 tvg-id=\"PeretzInternational.ru@SD\" tvg-logo=\"https://i.imgur.com/Y84p1y6.png\" group-title=\"Entertainment\",Peretz International (576p)",
       "http://stream.mcquack.net/121/index.m3u8"
     ],
-    "failures": 4,
+    "failures": 5,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1696,22 +1526,12 @@
   },
   {
     "source": "data/playlist.m3u",
-    "url": "https://halalondon-live.ercdn.net/halalondon/halalondon.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"HalaLondon.uk@SD\" tvg-logo=\"https://i.imgur.com/bM4VZDH.png\" group-title=\"General\",Hala London (1080p)",
-      "https://halalondon-live.ercdn.net/halalondon/halalondon.m3u8"
-    ],
-    "failures": 4,
-    "reason": "HTTP_404"
-  },
-  {
-    "source": "data/playlist.m3u",
     "url": "http://stream.mcquack.net/364/index.m3u8",
     "lines": [
       "#EXTINF:-1 tvg-id=\"Blokbaster.ru@HD\" tvg-logo=\"https://i.imgur.com/KcOi4Os.png\" group-title=\"Movies\",Blokbaster HD (1080p)",
       "http://stream.mcquack.net/364/index.m3u8"
     ],
-    "failures": 4,
+    "failures": 5,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1721,17 +1541,7 @@
       "#EXTINF:-1 tvg-id=\"Kinopokaz.ru@SD\" tvg-logo=\"https://i.imgur.com/nNjMyAq.png\" group-title=\"Movies\",Kinopokaz (576p)",
       "http://stream.mcquack.net/64/index.m3u8"
     ],
-    "failures": 4,
-    "reason": "HLS_NESTING_LIMIT"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "http://stream.mcquack.net/107/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"Muzhskoekino.ru@SD\" tvg-logo=\"https://i.imgur.com/8RN3tQC.png\" group-title=\"Movies\",Muzhskoe kino (576p)",
-      "http://stream.mcquack.net/107/index.m3u8"
-    ],
-    "failures": 4,
+    "failures": 5,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1741,18 +1551,8 @@
       "#EXTINF:-1 tvg-id=\"TV1000.bg@SD\" tvg-logo=\"https://i.imgur.com/GHNsctR.png\" group-title=\"Movies\",TV1000",
       "http://stream.mcquack.net/100/tracks-v1a1/mono.ts.m3u8?ads=1&filter.tracks=v1a1"
     ],
-    "failures": 4,
+    "failures": 5,
     "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "http://live.topestrada.com/live/topestrada/playlist.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"TopEstradaTV.mk@SD\" tvg-logo=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu5Regf9pPTMfNnFdU23otlXsvGzUmjsuHxfYaTdrWwA&s\" group-title=\"Music\",TopEstrada TV (720p)",
-      "http://live.topestrada.com/live/topestrada/playlist.m3u8"
-    ],
-    "failures": 4,
-    "reason": "NETWORK_TimeoutError"
   },
   {
     "source": "data/playlist.m3u",
@@ -1761,8 +1561,8 @@
       "#EXTINF:-1 tvg-id=\"Balabol.ru@SD\" tvg-logo=\"https://cdn2-static.ntv.ru/home/promo/24740/balabol_vse.jpg\" group-title=\"Series\",Balabol (1080p)",
       "https://cdn-dvr.ntv.ru/Balabol/index.m3u8"
     ],
-    "failures": 4,
-    "reason": "HTTP_404"
+    "failures": 5,
+    "reason": "NETWORK_InvalidURL"
   },
   {
     "source": "data/playlist.m3u",
@@ -1771,7 +1571,7 @@
       "#EXTINF:-1 tvg-id=\"Nevskiy.ru@SD\" tvg-logo=\"https://cdn2-static.ntv.ru/home/promo/24740/nevski_llive.jpg\" group-title=\"Series\",Nevskiy (1080p)",
       "https://cdn-dvr.ntv.ru/Nevskiy/index.m3u8"
     ],
-    "failures": 4,
+    "failures": 5,
     "reason": "HTTP_404"
   },
   {
@@ -1781,8 +1581,8 @@
       "#EXTINF:-1 tvg-id=\"Pes.ru@SD\" tvg-logo=\"https://cdn2-static.ntv.ru/home/promo/24740/pes_llive.jpg\" group-title=\"Series\",Pes (1080p)",
       "https://cdn-dvr.ntv.ru/Pes/index.m3u8"
     ],
-    "failures": 4,
-    "reason": "NETWORK_InvalidURL"
+    "failures": 5,
+    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -1791,29 +1591,7 @@
       "#EXTINF:-1 tvg-id=\"Shef.ru@SD\" tvg-logo=\"https://cdn2-static.ntv.ru/home/promo/24740/shef_llive.jpg\" group-title=\"Series\",Shef (1080p)",
       "https://cdn-dvr.ntv.ru/Shef/index.m3u8"
     ],
-    "failures": 4,
-    "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "http://stream.mcquack.net/416/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"Go3Sport1.ee@SD\" tvg-logo=\"https://i.imgur.com/0eZa0qh.png\" group-title=\"Sports\",Go3 Sport 1 (1080p)",
-      "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
-      "http://stream.mcquack.net/416/index.m3u8"
-    ],
-    "failures": 4,
-    "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "http://stream.mcquack.net/234/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"SetantaSports1Eurasia.ie@SD\" tvg-logo=\"https://i.imgur.com/zlJK7ca.png\" group-title=\"Sports\",Setanta Sports 1 Eurasia (1080p)",
-      "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
-      "http://stream.mcquack.net/234/index.m3u8"
-    ],
-    "failures": 3,
+    "failures": 5,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1823,7 +1601,7 @@
       "#EXTINF:-1 tvg-id=\"UGTV.id@SD\" tvg-logo=\"https://i.imgur.com/iEKDH26.png\" group-title=\"Undefined\",UGTV (720p)",
       "https://cdn.gunadarma.ac.id/streams/ugtv/ingestugtv.m3u8"
     ],
-    "failures": 4,
+    "failures": 5,
     "reason": "HTTP_404"
   },
   {
@@ -1833,7 +1611,7 @@
       "#EXTINF:-1 tvg-id=\"MontrealGreekTV.ca@SD\" tvg-logo=\"https://i.imgur.com/Y5YnUit.png\" group-title=\"Culture\",Montreal Greek TV (480p)",
       "http://live.greektv.ca/hls1/greektv.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "HTTP_404"
   },
   {
@@ -1843,7 +1621,7 @@
       "#EXTINF:-1 tvg-id=\"FicomChannel.id@SD\" tvg-logo=\"https://i.imgur.com/KMEf0Cc.png\" group-title=\"Entertainment\",Ficom Channel (720p)",
       "https://v3.siar.us/ficomchannel/live/playlist.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "HTTP_404"
   },
   {
@@ -1854,7 +1632,7 @@
       "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
       "http://stream.mcquack.net/158/index.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1864,48 +1642,8 @@
       "#EXTINF:-1 tvg-id=\"MagnavisionTV.uk@SD\" tvg-logo=\"https://i.imgur.com/mUHixbi.png\" group-title=\"Entertainment\",Magnavision TV (720p)",
       "https://manatv.akamaized.net/120723/smil:magnavision.smil/playlist.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/atv/atv_1080p.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"ATV.tr@SD\" tvg-logo=\"https://i.imgur.com/HyVUwFC.png\" group-title=\"General\",ATV (1080p)",
-      "https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/atv/atv_1080p.m3u8"
-    ],
-    "failures": 3,
-    "reason": "NETWORK_TimeoutError"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://stream.hydeinnovations.com/bukedde2flussonic/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"BukeddeTV2.ug@SD\" tvg-logo=\"https://i.imgur.com/ukwPZeY.png\" group-title=\"General\",Bukedde TV 2 (576p) [Not 24/7]",
-      "https://stream.hydeinnovations.com/bukedde2flussonic/index.m3u8"
-    ],
-    "failures": 3,
-    "reason": "HTTP_404"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "http://138.121.15.230:9002/CITY-TV/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"CitytvBogota.co@SD\" tvg-logo=\"https://i.imgur.com/h7K9EW9.png\" group-title=\"General\",Citytv Bogota (1080p)",
-      "http://138.121.15.230:9002/CITY-TV/index.m3u8"
-    ],
-    "failures": 3,
-    "reason": "HTTP_404"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://live-fi.tvkaista.net/eveo/live.m3u8?hd=true",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"Eveo.fi@SD\" tvg-logo=\"https://i.imgur.com/fFIq7tY.png\" group-title=\"General\",Eveo (720p) [Not 24/7]",
-      "https://live-fi.tvkaista.net/eveo/live.m3u8?hd=true"
-    ],
-    "failures": 3,
-    "reason": "HTTP_404"
   },
   {
     "source": "data/playlist.m3u",
@@ -1914,7 +1652,7 @@
       "#EXTINF:-1 tvg-id=\"SBTInterior.br@SD\" tvg-logo=\"https://i.imgur.com/IkZfa4j.png\" group-title=\"General\",SBT Interior (720p)",
       "https://cdn.jmvstream.com/w/LVW-10801/LVW10801_Xvg4R0u57n/playlist.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1924,17 +1662,7 @@
       "#EXTINF:-1 tvg-id=\"Nickelodeon.ru@SD\" tvg-logo=\"https://i.imgur.com/w8iE8dV.png\" group-title=\"Kids\",Nickelodeon (576p)",
       "http://stream.mcquack.net/443/index.m3u8"
     ],
-    "failures": 3,
-    "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "http://stream.mcquack.net/126/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"KinoHit.ru@SD\" tvg-logo=\"https://i.imgur.com/Ge8vkQM.png\" group-title=\"Movies\",KinoHit (576p)",
-      "http://stream.mcquack.net/126/index.m3u8"
-    ],
-    "failures": 3,
+    "failures": 4,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1944,7 +1672,7 @@
       "#EXTINF:-1 tvg-id=\"MoviesNowPlus.in@HD\" tvg-logo=\"https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/MNPlusHD.png\" group-title=\"Movies\",Movies Now + (1080p)",
       "http://103.135.253.32:8080/MN-PLUS/index.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "HTTP_404"
   },
   {
@@ -1954,17 +1682,7 @@
       "#EXTINF:-1 tvg-id=\"Shokiruyushchee.ru@HD\" tvg-logo=\"https://i.imgur.com/UG63hZ0.png\" group-title=\"Movies\",Shokiruyushchee HD (1080p)",
       "http://stream.mcquack.net/75/index.m3u8"
     ],
-    "failures": 3,
-    "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "http://stream.mcquack.net/312/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"ClassicMusic.ru@SD\" tvg-logo=\"https://i.imgur.com/TpXs1qA.png\" group-title=\"Music\",Classic Music (1080p)",
-      "http://stream.mcquack.net/312/index.m3u8"
-    ],
-    "failures": 3,
+    "failures": 4,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -1974,17 +1692,7 @@
       "#EXTINF:-1 tvg-id=\"AratuOn.br@SD\" tvg-logo=\"https://i.imgur.com/Ht4jCab.png\" group-title=\"News\",Aratu On (1080p)",
       "https://cdn.live.br1.jmvstream.com/w/LVW-9359/LVW9359_XSyReL0QVf/playlist.m3u8"
     ],
-    "failures": 3,
-    "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL1.smil/playlist.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"CCTVPlus1.cn@SD\" tvg-logo=\"https://i.imgur.com/U8d4Is6.png\" group-title=\"News\",CCTV+ 1 (600p) [Not 24/7]",
-      "https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL1.smil/playlist.m3u8"
-    ],
-    "failures": 3,
+    "failures": 4,
     "reason": "HTTP_404"
   },
   {
@@ -1994,7 +1702,7 @@
       "#EXTINF:-1 tvg-id=\"SakshiTV.in@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Sakshi_tv.jpg/960px-Sakshi_tv.jpg\" group-title=\"News\",Sakshi TV (1080p)",
       "https://stream.ottlive.co.in/sakshitv/index.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "HTTP_404"
   },
   {
@@ -2004,18 +1712,8 @@
       "#EXTINF:-1 tvg-id=\"CanalShowsport.ar@SD\" tvg-logo=\"https://i.imgur.com/0L9tW3Z.png\" group-title=\"Sports\",Canal Showsport (720p)",
       "https://livestream.lumpentv.com.ar/hls/lumpen.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "HTTP_404"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "http://158.172.155.130:8000/play/a09y/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"DeporTV.ar@SD\" tvg-logo=\"https://i.imgur.com/THk9ARS.png\" group-title=\"Sports\",DeporTV (1080p)",
-      "http://158.172.155.130:8000/play/a09y/index.m3u8"
-    ],
-    "failures": 3,
-    "reason": "RESPONSE_TOO_SMALL"
   },
   {
     "source": "data/playlist.m3u",
@@ -2029,35 +1727,14 @@
   },
   {
     "source": "data/playlist.m3u",
-    "url": "https://stream8.cinerama.uz/1004/tracks-v1a1/mono.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"Sport.uz@SD\" tvg-logo=\"https://i.imgur.com/2WJE9CM.png\" group-title=\"Sports\",Sport",
-      "https://stream8.cinerama.uz/1004/tracks-v1a1/mono.m3u8"
-    ],
-    "failures": 3,
-    "reason": "NETWORK_InvalidURL"
-  },
-  {
-    "source": "data/playlist.m3u",
     "url": "https://hgmtv.com:2020/hls/asthalive/asthalive.m3u8",
     "lines": [
       "#EXTINF:-1 tvg-id=\"AsthaTV.id@HD\" tvg-logo=\"https://astha.garuda.tv/assets/logo-DLGyXEGO.png\" group-title=\"Undefined\",Astha TV (1080p)",
       "#EXTVLCOPT:http-referrer=https://asthatv.com/",
       "https://hgmtv.com:2020/hls/asthalive/asthalive.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "HTTP_404"
-  },
-  {
-    "source": "data/playlist.m3u",
-    "url": "http://stream.mcquack.net/340/index.m3u8",
-    "lines": [
-      "#EXTINF:-1 tvg-id=\"Bigudi.ua@SD\" tvg-logo=\"https://i.imgur.com/dy9ZKG1.png\" group-title=\"Undefined\",Bigudi (576p)",
-      "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
-      "http://stream.mcquack.net/340/index.m3u8"
-    ],
-    "failures": 3,
-    "reason": "NETWORK_InvalidURL"
   },
   {
     "source": "data/playlist.m3u",
@@ -2066,7 +1743,7 @@
       "#EXTINF:-1 tvg-id=\"NST.ru@SD\" tvg-logo=\"https://i.imgur.com/uv2yxa5.png\" group-title=\"Undefined\",NST (576p)",
       "http://stream.mcquack.net/207/index.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "NETWORK_InvalidURL"
   },
   {
@@ -2076,7 +1753,7 @@
       "#EXTINF:-1 tvg-id=\"SEATV.kh@SD\" tvg-logo=\"https://i.imgur.com/oZPorvg.png\" group-title=\"Undefined\",SEATV (1080p)",
       "https://seatv.netlinkbroadcaster.com/hls/test.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "HTTP_404"
   },
   {
@@ -2086,8 +1763,8 @@
       "#EXTINF:-1 tvg-id=\"UnknownRussia.ru@SD\" tvg-logo=\"https://i.imgur.com/W7ste2f.png\" group-title=\"Undefined\",\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u0430\u044f \u0420\u043e\u0441\u0441\u0438\u044f (1080p)",
       "https://cdn.ntv.ru/unknown_russia/playlist.m3u8"
     ],
-    "failures": 3,
-    "reason": "NETWORK_InvalidURL"
+    "failures": 4,
+    "reason": "HLS_NESTING_LIMIT"
   },
   {
     "source": "data/india-working.m3u",
@@ -2096,7 +1773,7 @@
       "#EXTINF:-1 tvg-id=\"MoviesNowPlus.in@HD\" tvg-logo=\"https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_MNSYMPLUS/images/LOGO_HD/image.png\" group-title=\"Movies\",Movies Now + (1080p)",
       "http://103.135.253.32:8080/MN-PLUS/index.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "HTTP_404"
   },
   {
@@ -2106,7 +1783,7 @@
       "#EXTINF:-1 tvg-id=\"SakshiTV.in@SD\" tvg-logo=\"https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SAKSHI_TV/images/LOGO_HD/image.png\" group-title=\"News\",Sakshi TV (1080p)",
       "https://stream.ottlive.co.in/sakshitv/index.m3u8"
     ],
-    "failures": 3,
+    "failures": 4,
     "reason": "HTTP_404"
   },
   {
@@ -2115,6 +1792,247 @@
     "lines": [
       "#EXTINF:-1 tvg-id=\"MagnavisionTV.uk@SD\" tvg-logo=\"https://i.imgur.com/mUHixbi.png\" group-title=\"Entertainment\",Magnavision TV (720p)",
       "https://manatv.akamaized.net/120723/smil:magnavision.smil/playlist.m3u8"
+    ],
+    "failures": 4,
+    "reason": "NETWORK_InvalidURL"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "http://stream.mcquack.net/265/index.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"Kinokomedija.ru@SD\" tvg-logo=\"https://i.imgur.com/dVjtth0.png\" group-title=\"Comedy\",Kinokomedija (576p)",
+      "http://stream.mcquack.net/265/index.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_InvalidURL"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "http://170.83.16.50/ARTE_1/index.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"Arte1.br@SD\" tvg-logo=\"https://i.imgur.com/Ivnk7A6.png\" group-title=\"Culture\",Arte 1 (720p)",
+      "http://170.83.16.50/ARTE_1/index.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_URLError"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "http://stream.mcquack.net/205/index.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"InvestigationDiscovery.ru@SD\" tvg-logo=\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/InvestigationDiscoveryLogo2020.svg/960px-InvestigationDiscoveryLogo2020.svg.png\" group-title=\"Documentary\",Investigation Discovery (1080p)",
+      "http://stream.mcquack.net/205/index.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_InvalidURL"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://mrtvott.com/cache/MRTV-FARMER/master.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"MRTVFarmer.mm@SD\" tvg-logo=\"https://i.imgur.com/f4PWvrW.jpg\" group-title=\"Documentary;Lifestyle\",MRTV Farmer",
+      "https://mrtvott.com/cache/MRTV-FARMER/master.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_URLError"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://a-cdn.klowdtv.com/live2/justicecentral_720p/playlist.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"JusticeCentralTV.us@SD\" tvg-logo=\"https://i.imgur.com/peuHszg.png\" group-title=\"Entertainment\",Justice Central.TV (720p)",
+      "https://a-cdn.klowdtv.com/live2/justicecentral_720p/playlist.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_InvalidURL"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://redirector.rudo.video/hls-video/339f69c6122f6d8f4574732c235f09b7683e31a5/ln/ln.smil/playlist.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"LaNuestra.cl@SD\" tvg-logo=\"https://i.imgur.com/WExojSG.png\" group-title=\"Entertainment\",La Nuestra (1080p)",
+      "https://redirector.rudo.video/hls-video/339f69c6122f6d8f4574732c235f09b7683e31a5/ln/ln.smil/playlist.m3u8"
+    ],
+    "failures": 3,
+    "reason": "HTTP_404"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://mrtvott.com/cache/MRTV-Ent-HD/master.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"MRTVEntertainment.mm@SD\" tvg-logo=\"https://i.imgur.com/c9q6oT0.png\" group-title=\"Entertainment\",MRTV Entertainment",
+      "https://mrtvott.com/cache/MRTV-Ent-HD/master.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_URLError"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "http://stream.mcquack.net/157/index.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"NovyiChannel.ua@SD\" tvg-logo=\"https://i.imgur.com/Dnfhdsm.png\" group-title=\"Entertainment\",Novyi Channel (1080p)",
+      "#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+      "http://stream.mcquack.net/157/index.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_InvalidURL"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://dethich.pw/htvcgiadinh/index.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"HTVCFamily.vn@SD\" tvg-logo=\"https://i.ibb.co/BVQtkHgF/IMG-2899.png\" group-title=\"Family\",HTVC Family (720p)",
+      "https://dethich.pw/htvcgiadinh/index.m3u8"
+    ],
+    "failures": 3,
+    "reason": "HTTP_404"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://a-cdn.klowdtv.com/live1/aweint/playlist.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"AWEInternational.us@SD\" tvg-logo=\"https://i.imgur.com/VhxtMUQ.png\" group-title=\"General\",AWE International (720p)",
+      "https://a-cdn.klowdtv.com/live1/aweint/playlist.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_InvalidURL"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://live20.bozztv.com/akamaissh101/ssh101/ctv8hd/playlist.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"ConstanzaTV.do@SD\" tvg-logo=\"https://i.imgur.com/4uV90gw.png\" group-title=\"General\",ConstanzaTV (1080p) [Not 24/7]",
+      "https://live20.bozztv.com/akamaissh101/ssh101/ctv8hd/playlist.m3u8"
+    ],
+    "failures": 3,
+    "reason": "HTTP_503"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://soportedvb.click:3442/live/entunotvlive.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"EntunoTV.do@HD\" tvg-logo=\"https://imgur.com/U9OsybQ.jpg\" group-title=\"General\",Entuno TV (1080p) [Not 24/7]",
+      "https://soportedvb.click:3442/live/entunotvlive.m3u8"
+    ],
+    "failures": 3,
+    "reason": "HTTP_404"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://mrtvott.com/cache/MRTV-HD/master.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"MRTV.mm@SD\" tvg-logo=\"https://i.imgur.com/uyv7oJH.png\" group-title=\"General\",MRTV",
+      "https://mrtvott.com/cache/MRTV-HD/master.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_URLError"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"Soyuzny.ru@SD\" tvg-logo=\"https://www.mtis.by/upload/medialibrary/717/v07nk6rmf6m1mno8ujhbkcg8nstkfjgv/Slide%2016_9%20-%2050.png\" group-title=\"General\",Soyuzny (576p)",
+      "https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8"
+    ],
+    "failures": 3,
+    "reason": "HTTP_404"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "http://sdream.info:8080/hls/livestream/index.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"TVMarineret.dk@SD\" tvg-logo=\"https://i.imgur.com/r1Caske.jpg\" group-title=\"General\",TVMarineret (1080p)",
+      "http://sdream.info:8080/hls/livestream/index.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_URLError"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://mrtvott.com/cache/MRTV-HLUTTAW/master.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"HluttawSD.mm@SD\" tvg-logo=\"https://i.imgur.com/Gffq8ks.png\" group-title=\"Legislative\",Hluttaw S & D",
+      "https://mrtvott.com/cache/MRTV-HLUTTAW/master.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_URLError"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "http://stream.mcquack.net/100/index.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"vijuTV1000action.ru@SD\" tvg-logo=\"https://i.imgur.com/TMmyuzh.png\" group-title=\"Movies\",viju TV1000 action (576p)",
+      "http://stream.mcquack.net/100/index.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_InvalidURL"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "http://stream.mcquack.net/162/index.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"AmediaHit.ru@SD\" tvg-logo=\"https://i.imgur.com/a8ZBGBw.png\" group-title=\"Movies;Series\",Amedia Hit (1080p)",
+      "http://stream.mcquack.net/162/index.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_InvalidURL"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "http://stream.mcquack.net/303/index.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"MuzykaLive.ru@SD\" tvg-logo=\"https://cdn2.red-media.ru/wp-content/uploads/2016/08/LOGO_MUSIC_LIVE.png\" group-title=\"Music\",Muzyka Live (576p)",
+      "http://stream.mcquack.net/303/index.m3u8"
+    ],
+    "failures": 3,
+    "reason": "HLS_NESTING_LIMIT"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://stream.d6-pro.com/Tunes6music/live/video.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"Tunes6.in@SD\" tvg-logo=\"https://jiotvimages.cdn.jio.com/dare_images/images/Tunes_6.png\" group-title=\"Music\",Tunes 6 (720p)",
+      "https://stream.d6-pro.com/Tunes6music/live/video.m3u8"
+    ],
+    "failures": 3,
+    "reason": "HTTP_404"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://mrtvott.com/cache/MRTV-NEWS-HD/master.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"MRTVNews.mm@SD\" tvg-logo=\"https://i.imgur.com/5eK8Bc4.png\" group-title=\"News\",MRTV News",
+      "https://mrtvott.com/cache/MRTV-NEWS-HD/master.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_URLError"
+  },
+  {
+    "source": "data/playlist.m3u",
+    "url": "https://mrtvott.com/cache/MRTV-SPORT/master.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"MRTVSports.mm@SD\" tvg-logo=\"https://i.imgur.com/cFTR4kC.png\" group-title=\"Sports\",MRTV Sports [Not 24/7]",
+      "https://mrtvott.com/cache/MRTV-SPORT/master.m3u8"
+    ],
+    "failures": 3,
+    "reason": "NETWORK_URLError"
+  },
+  {
+    "source": "data/india-working.m3u",
+    "url": "https://stream.d6-pro.com/Tunes6music/live/video.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"Tunes6.in@SD\" tvg-logo=\"https://jiotvimages.cdn.jio.com/dare_images/images/Tunes_6.png\" group-title=\"Music\",Tunes 6 (720p)",
+      "https://stream.d6-pro.com/Tunes6music/live/video.m3u8"
+    ],
+    "failures": 3,
+    "reason": "HTTP_404"
+  },
+  {
+    "source": "data/india-working.m3u",
+    "url": "https://aasthaott.akamaized.net/110923/smil:vedic.smil/playlist.m3u8",
+    "lines": [
+      "#EXTINF:-1 tvg-id=\"Vedic.in@SD\" tvg-logo=\"https://dtil.tmsimg.com/assets/s144069_ld_h15_aa.png?lock=720x540\" group-title=\"Religious\",Vedic (480p)",
+      "https://aasthaott.akamaized.net/110923/smil:vedic.smil/playlist.m3u8"
     ],
     "failures": 3,
     "reason": "NETWORK_InvalidURL"
