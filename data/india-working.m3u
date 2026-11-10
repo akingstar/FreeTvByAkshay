@@ -302,8 +302,6 @@ https://d2gvyg6lvauoko.cloudfront.net/230226/gujaratfirst/playlist.m3u8?hdnts=st
 https://8yzmq2gbdvax-hls-live.wmncdn.net/bansalnewstv1/live1.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="GlobalIndia.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Global_India.png" group-title="News",Global India (720p)
 https://server.livelegitpro.in/globalindiatv/globalindiatv/video.m3u8
-#EXTINF:-1 tvg-id="GospelTVIndia.in@SD" tvg-logo="https://i.ibb.co/xhbZvzt/cropped-final-logo-300x127.png" group-title="Religious",Gospel TV India (576p)
-https://server.livelegitpro.in:9899/gospeltv/index.m3u8
 #EXTINF:-1 tvg-id="GuaranteeNews.in@SD" tvg-logo="https://media.licdn.com/dms/image/v2/D560BAQHYZzbGJ7ViZA/company-logo_200_200/company-logo_200_200/0/1728031377890?e=2147483647&v=beta&t=bIsZgNUCcg0M_-Zqeu5wKYgBt_1-pI798X9lP5CxhTM" group-title="News",Guarantee News (1080p)
 https://guaranteenews.in:8443/live/gnews/index.m3u8
 #EXTINF:-1 tvg-id="Gyandarshan.in@SD" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_GYANDARSHAN/images/LOGO_HD/image.png" group-title="Education",Gyandarshan (720p)
@@ -1335,8 +1333,6 @@ https://cdn.pishow.tv/ott/live/965/master.m3u8
 https://cdn.pishow.tv/ott/live/437/master.m3u8
 #EXTINF:-1 tvg-id="ShakthiTV.lk@SD" tvg-logo="https://i.imgur.com/RX6IwK8.png" group-title="Undefined",Shakthi TV (576p)
 https://mumbai-edge.smartplaytv.in/ShakthiTV/index.m3u8
-#EXTINF:-1 tvg-id="StarSports2Telugu.in@HD" tvg-logo="https://i.imgur.com/m7DvvqF.png" group-title="Sports",Star Sports 2 Telugu HD (576p)
-https://real-vk.proxy.nellaiiptv.com/SDMEDIA/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/FJoPnTb.png" group-title="Movies",Classic Cinema
 https://rpn.bozztv.com/gusa/gusa-classiccinema/index.m3u8
 #EXTINF:-1 tvg-id="StarPlus.uk@SD" tvg-logo="https://i.imgur.com/xWxNy3L.png" group-title="Entertainment",StarPlus (United Kingdom) (576p)
@@ -2299,8 +2295,6 @@ https://fta.ektv.in/live/52/52_0.m3u8
 https://neotv.ottlive.co.in/gtcpunjabiuk/index.m3u8
 #EXTINF:-1 tvg-id="GTCPunjabi.in@US" tvg-logo="https://media.thegtcnetwork.com/uploads/gtc-pujabin-s.jpg" group-title="Entertainment",GTC Punjabi US (1080p)
 https://neotv.ottlive.co.in/gtcpunjabiusa/index.m3u8
-#EXTINF:-1 tvg-id="Gyandarshan.in@HD" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_GYANDARSHAN/images/LOGO_HD/image.png" group-title="Education",Gyandarshan HD (576p)
-https://mumt05.tangotv.in/87NeALx2GYANDARSHAN/index.m3u8
 #EXTINF:-1 tvg-id="HindiKhabar.in@SD" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_HINDI_KHABAR/images/LOGO_HD/image.png" group-title="News",Hindi Khabar (1080p)
 https://stream.ottlive.co.in/hindikhabar/index.m3u8
 #EXTINF:-1 tvg-id="HosannaTV.in@Global" tvg-logo="https://i.imgur.com/VYorU1L.png" group-title="Religious",Hosanna TV Global
@@ -2479,8 +2473,6 @@ https://tvsen6.aynaott.com/a2cKGQtB/index.m3u8
 https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDEEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFseWRtaW51aiPhnPTI2/ruposhibangla.stream/playlist.m3u8
 #EXTINF:-1 tvg-id="WOWKidz.in@Tamil" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/yupptvnew/content/common/channel/logos/mjvezt.png" group-title="Animation;Kids",WOW Kidz Tamil (720p)
 https://yuppparoriglin.akamaized.net/181224/smil:wowkidztam.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
-#EXTINF:-1 tvg-id="Bharat24.in@SD" tvg-logo="https://dtil.tmsimg.com/assets/s142710_ld_h15_aa.png?lock=720x540" group-title="News",Bharat24 (1080p)
-https://vglivessai.akamaized.net/ptnr-lg/title-Bharat24News_LGIndia/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/ebcf5152-686a-43ae-ad13-15bc198112b7/index.m3u8
 #EXTINF:-1 tvg-id="KannurVision.in@SD" tvg-logo="https://i.imgur.com/FCXqPer.png" group-title="News",Kannur Vision (1080p)
 https://stream.logichost.in/kannurvision/live/playlist.m3u8
 #EXTINF:-1 tvg-id="SonyYay.in@SD" tvg-logo="https://dtil.tmsimg.com/assets/s159100_ld_h15_aa.png?lock=720x540" group-title="Animation;Kids",Sony Yay! (576p)
@@ -2552,3 +2544,14 @@ https://fta.ektv.in/live/589/master.m3u8
 https://fta.ektv.in/live/688/master.m3u8
 #EXTINF:-1 tvg-id="VistaarNews.in@SD" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_VISTAAR_NEWS/images/LOGO_HD/image.png" group-title="News",Vistaar News (1080p)
 https://stream.ottlive.co.in/vistaartv/index.m3u8
+#EXTINF:-1 tvg-id="SonyKALHindi.us@SD" tvg-logo="https://i.imgur.com/9Qq8DKh.png" group-title="Undefined",Sony KAL Hindi (1080p)
+https://wurlsonypicturestv.global.transmit.live/hls/68deeb1c0238cda82df543dd/v1/spt_sonykal_1/lg_us/latest/main/hls/playlist.m3u8
+#EXTINF:-1 tvg-id="NewsNation81.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/News_Nation_81.png" group-title="News",News Nation 81 (1080p)
+https://live.newsnation81.com/newsnation81/newsnation81/index.m3u8
+#EXTINF:-1 tvg-id="Pradesh24Gujarati.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Pradesh24_Gujarati.png" group-title="News",Pradesh24 Gujarati (1080p)
+https://stream2.livebox.co.in/pradesh24hls/live.m3u8
+#EXTINF:-1 tvg-id="9PlusNews.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/9plusnews.png" group-title="News",9 Plus News (1080p)
+https://stream.ottlive.co.in/9plusnews/index.m3u8
+#EXTINF:-1 tvg-id="apsat-inlg-gujaratfirst" tvg-chno="1" tvg-logo="https://d2aqhkzukipl76.cloudfront.net/gujarat-first/logo/Gujarat-first-Logo_400x200.png" group-title="English (India) - General (9)" resolution="fhd",Gujarat First
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36
+https://vglivessai.akamaized.net/ptnr-lg/title-Gujarat_First_News/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/bdacf79b-158c-4ddf-ac17-6fabbb9249ae/index.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNT]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.targetad=[TARGETAD_ALLOWED]&ads.live=[CONTENT_LIVE]&ads.resolution=[RESOLUTION]&ads.webosversion=[WEBOS_VERSION]&ads.firmwareversion=[FIRMWARE_VERSION]&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.parentalControls=[PCS]&ads.givn=[NONCE]&ads.xdid=[XDID]&ads.xdmodel=[XDMODEL]
