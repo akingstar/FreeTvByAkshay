@@ -922,8 +922,6 @@ https://d1msejlow1t3l4.cloudfront.net/fta/vtvgujarati/playlist.m3u8
 https://playhls.media.nic.in/hls/live/vyas/vyas.m3u8
 #EXTINF:-1 tvg-id="WahPunjabi.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Wah_Punjabi.png" group-title="Music",Wah Punjabi (720p)
 https://yuppnimrestreammum.akamaized.net/181224/smil:wahpunjabi.smil/playlist.m3u8?hdnts=st=1735898689~exp=1835898688~acl=*~hmac=f5fe24724fe05481e3841f9eb5ab8efdee0a3dd83645ae9dcf45703f525bab7b
-#EXTINF:-1 tvg-id="VelichamTV.in@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/en/e/e4/Logo_of_Velicham_TV.png" group-title="News",Velicham TV (576p)
-https://mumbai-edge.smartplaytv.in/Velichamtv/index.m3u8
 #EXTINF:-1 tvg-id="TV27News.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/TV27_News.png" group-title="News",TV27 News (1080p)
 https://stream.ottlive.co.in/tv27/index.m3u8
 #EXTINF:-1 tvg-id="ValamTVDayro.in@SD" tvg-logo="https://papaji.freetvindia.com/media/channels/Valam_Dayro.png" group-title="Religious",Valam TV Dayro (576p)
@@ -2392,8 +2390,6 @@ https://yuppparoriglin.akamaized.net/181224/smil:wowkidztam.smil/playlist.m3u8?h
 https://stream.logichost.in/kannurvision/live/playlist.m3u8
 #EXTINF:-1 tvg-id="SakshiTV.in@SD" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SAKSHI_TV/images/LOGO_HD/image.png" group-title="News",Sakshi TV (1080p)
 https://stream.ottlive.co.in/sakshitv/index.m3u8
-#EXTINF:-1 tvg-id="MagnavisionTV.uk@SD" tvg-logo="https://i.imgur.com/mUHixbi.png" group-title="Entertainment",Magnavision TV (720p)
-https://manatv.akamaized.net/120723/smil:magnavision.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="ArputharYesuTV.in@SD" tvg-logo="https://arputharyesutv.net/wp-content/uploads/2022/07/AR-LOGO-PNG.png" group-title="Religious",Arputhar Yesu TV (576p)
 https://account33.livebox.co.in/jesushelpshls/live.m3u8
 #EXTINF:-1 tvg-id="News7Tamil.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/News7_Tamil.png" group-title="News",News 7 Tamil (576p)
@@ -2505,3 +2501,29 @@ https://mumt04.tangotv.in/m18aqlK4MKNNEWSHINDI/index.m3u8
 https://mumt04.tangotv.in/m18aqlK4ARYANTVNATIONAL/index.m3u8
 #EXTINF:-1 tvg-id="BigTV24x7.in@SD" tvg-logo="https://i.postimg.cc/rpHrRxR5/big_tv_malayalam.png" group-title="News",Big TV 24x7 (1080p)
 https://stream.ottlive.co.in/bigtvmalayalam/index.m3u8
+#EXTINF:-1 tvg-id="CVRNews.in@SD" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_CVR_NEWS/images/LOGO_HD/LOGO_HD_image.png" group-title="News",CVR News (576p)
+https://mumbai-edge.smartplaytv.in/CVRNews/index.m3u8
+#EXTINF:-1 tvg-id="IqraBangla.uk@SD" tvg-logo="https://i.imgur.com/BZBZAeC.png" group-title="Religious",Iqra Bangla (576p)
+https://tvsen3.aynaott.com/EuEy5mBW/index.m3u8
+#EXTINF:-1 tvg-id="AzanTV.ca@SD" tvg-logo="https://i.imgur.com/JlqS6I4.jpeg" group-title="Religious",Azan TV
+https://dbcanada.sonarbanglatv.com/azantv/atv/index.m3u8
+#EXTINF:-1 tvg-id="DesheBidesheTV.ca@SD" tvg-logo="https://i.imgur.com/Ek1Ohj6.png" group-title="General",DesheBideshe TV
+https://dbcanada.sonarbanglatv.com/deshebideshe/dbtv/index.m3u8
+#EXTINF:-1 tvg-id="PublicFirst.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Public_First.png" group-title="News",Public First (576p)
+https://samitaorigin.tangotv.in/PUBLICFIRST/SAMITAORIGIN/index.m3u8
+#EXTINF:-1 tvg-id="France24.fr" tvg-chno="2229" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Estrella_TV_Logo_2020.png/500px-Estrella_TV_Logo_2020.png" group-title="English (Intl) - News (239)",France 24 ᶠᴴᴰ
+https://live.france24.com/hls/live/2037179-b/F24_FR_HI_HLS/master_5000.m3u8
+#EXTINF:-1 tvg-id="VistaarNews.in@SD" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_VISTAAR_NEWS/images/LOGO_HD/image.png" group-title="News",Vistaar News (1080p)
+https://stream.ottlive.co.in/vistaartv/index.m3u8
+#EXTINF:-1 tvg-id="AasthaTamil.in@SD" tvg-logo="https://i.imgur.com/YQK9ewf.png" group-title="Religious",Aastha Tamil (480p)
+https://aasthaott.akamaized.net/110923/smil:aasthatamil.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="GSTV.in@SD" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/GS_TV.png" group-title="News",GS TV (576p)
+https://cdnplay.peanutsquare.com/560828843292539228453915.m3u8
+#EXTINF:-1 tvg-id="Kabaddi24x7.in@SD" tvg-logo="https://papaji.freetvindia.com/media/kabaddi_24x7.png" group-title="Sports",Kabaddi 24x7 (720p)
+https://samitaorigin.tangotv.in/KABADDI24X7/SAMITAORIGIN/index.m3u8
+#EXTINF:-1 tvg-id="SankaraTV.in@SD" tvg-logo="https://i.imgur.com/2z0bDRD.png" group-title="Religious",Sankara TV (576p)
+https://mumbai-edge.smartplaytv.in/SriSankara/index.m3u8
+#EXTINF:-1 tvg-id="Aastha.in@HD" tvg-logo="https://i.imgur.com/IqgrV92.png" group-title="Religious",Aastha HD (720p)
+https://aasthaott.akamaized.net/110923/smil:aasthatv.smil/index.m3u8
+#EXTINF:-1 tvg-id="KCLTV.in@SD" tvg-logo="https://i.imgur.com/bkp9dIm.png" group-title="Entertainment",KCL TV (720p)
+https://kcltv.livebox.co.in/kclhls/live.m3u8
